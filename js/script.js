@@ -7,8 +7,8 @@
         sheet not published, IDs not set yet…) we load /data/<tab>.json.
      2. Rows where "show" is FALSE are dropped, the rest sorted by "order".
      3. Each section is drawn. A section with no rows is hidden, together
-        with its link in the menu. Section numbers ("01 —", "02 —") and the
-        alternating blue/navy backgrounds adjust automatically.
+        with its link in the menu. The alternating blue/navy backgrounds
+        adjust automatically.
 
    You normally never need to edit this file. Your content lives in the
    Google Sheet; your settings live in js/config.js.
@@ -22,7 +22,7 @@
   /* The sheet tabs we load (must match the tab names in the Sheet). */
   var TABS = ["profile", "skills", "experience", "education", "projects", "books", "podcasts", "following"];
 
-  /* The page sections, top to bottom (used for numbering "01 —" etc.). */
+  /* The page sections, top to bottom (used for the alternating colours). */
   var SECTIONS = ["about", "skills", "experience", "education", "projects", "books", "podcasts", "following", "contact"];
 
   /* Text used when a key is missing or empty in the "profile" tab.
@@ -321,7 +321,7 @@
     document.querySelector("[data-footer-updated]").textContent =
       profile.last_updated ? "Last updated: " + formatDate(profile.last_updated) : "";
 
-    // Section titles and intros (label numbers are added later in finishSections)
+    // Section titles and intros (labels are filled in later by finishSections)
     SECTIONS.forEach(function (id) {
       var section = document.getElementById(id);
       var title = section.querySelector('[data-field="title"]');
@@ -518,7 +518,7 @@
       var alt = "Cover of " + b.title + (b.author ? " by " + b.author : "");
       return '<li class="book">' +
         '<div class="book-cover">' + imageHtml(b.cover_url, { alt: alt, placeholder: b.title }) + "</div>" +
-        '<div class="book-body">' +
+        '<div class="book-info">' +
           (b.category || b.status
             ? '<div class="book-meta">' +
                 (b.category ? '<span class="book-category">' + esc(b.category) + "</span>" : "") +
@@ -528,8 +528,8 @@
           '<h3 class="book-title">' + esc(b.title) + "</h3>" +
           (b.author ? '<span class="book-author">by ' + esc(b.author) + "</span>" : "") +
           stars +
-          (summary ? '<p class="book-summary">' + esc(summary) + "</p>" : "") +
           (b.takeaway ? '<p class="book-takeaway"><span class="book-takeaway-label">Key takeaway</span>' + esc(b.takeaway) + "</p>" : "") +
+          (summary ? '<details class="book-more"><summary>Read summary</summary><p class="book-summary">' + esc(summary) + "</p></details>" : "") +
         "</div>" +
       "</li>";
     }).join("") + "</ul>";
@@ -613,10 +613,10 @@
   }
 
   /* ===================================================================
-     AFTER DRAWING: hide empty sections, number & colour the rest
+     AFTER DRAWING: hide empty sections, label & colour the rest
      =================================================================== */
   function finishSections(hasContent) {
-    var number = 0;
+    var position = 0; // counts visible sections, for the alternating colours
     SECTIONS.forEach(function (id) {
       var section = document.getElementById(id);
       var visible = hasContent[id] !== false;
@@ -626,10 +626,10 @@
       if (navItem) navItem.hidden = !visible;
       if (!visible) return;
 
-      number++;
-      section.classList.toggle("alt", number % 2 === 0); // every 2nd visible section = navy
+      position++;
+      section.classList.toggle("alt", position % 2 === 0); // every 2nd visible section = navy
       var label = section.querySelector('[data-field="label"]');
-      if (label) label.textContent = (number < 10 ? "0" : "") + number + " — " + text(id + "_label");
+      if (label) label.textContent = text(id + "_label");
     });
   }
 
