@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [1.1.0] — 2026-09-30
+
 ### Changed
 - New deep sapphire blue colour scheme (`#0B2A6F` / `#081F55`, footer `#05163D`)
   with a soft blue glow behind the hero photo. Share image updated to match.
