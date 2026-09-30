@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [1.2.0] — 2026-09-30
+
 ### Changed
 - Books section redesigned as a learning library: 10 books in cards (3 / 2 / 1 per row
   on desktop / tablet / phone) with authentic covers, category, summary and a
