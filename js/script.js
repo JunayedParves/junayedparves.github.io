@@ -518,6 +518,7 @@
       return '<li class="podcast">' +
         '<div class="podcast-cover">' + imageHtml(p.cover_url, { alt: "", placeholder: initialsOf(p.name), initials: true }) + "</div>" +
         '<div class="podcast-info">' +
+          (p.category ? '<span class="podcast-category">' + esc(p.category) + "</span>" : "") +
           '<h3 class="podcast-name">' + esc(p.name) + "</h3>" +
           (p.host ? '<span class="podcast-host">Hosted by ' + esc(p.host) + "</span>" : "") +
           (p.why ? '<p class="podcast-why">' + esc(p.why) + "</p>" : "") +

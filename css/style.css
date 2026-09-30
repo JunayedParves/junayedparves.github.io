@@ -13,17 +13,18 @@
 
 /* ---------- 1. VARIABLES ---------- */
 :root {
-  --royal: #1D3FA6;        /* main background */
-  --navy: #16317F;         /* alternating section background */
-  --footer: #10275F;       /* footer background */
-  --ink: #10204F;          /* dark text on gold/cream */
+  --royal: #0B2A6F;        /* main background (deep sapphire blue) */
+  --navy: #081F55;         /* alternating section background (darker) */
+  --footer: #05163D;       /* footer background (darkest) */
+  --ink: #0A1A40;          /* dark text on gold/cream */
   --gold: #F6C453;         /* accent: buttons, labels, highlights */
   --gold-hover: #FFE09A;
   --cream: #F7F4EC;        /* light cards and main text */
   --text-soft: #DCE3F7;    /* body copy on blue */
   --text-muted: #C9D3F2;   /* secondary text on blue */
   --card-text: #3A4670;    /* secondary text on cream cards */
-  --placeholder: #2A4DB8;  /* image placeholder blue */
+  --placeholder: #1B3F99;  /* image placeholder blue */
+  --glow: rgba(66, 118, 255, 0.28); /* soft light-blue glow behind the hero */
 
   --card-bg: rgba(255, 255, 255, 0.07);
   --border: rgba(255, 255, 255, 0.16);
@@ -109,7 +110,7 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; }
 .btn-cream   { background: var(--cream); color: var(--ink); }
 .btn-cream:hover { background: #fff; color: var(--ink); }
 .btn-ink     { background: var(--ink);   color: var(--cream); }
-.btn-ink:hover { background: #0a1535; color: var(--cream); }
+.btn-ink:hover { background: #041030; color: var(--cream); }
 .btn-small   { padding: 12px 20px; font-size: 15px; }
 .btn[disabled] { opacity: .6; cursor: wait; transform: none; }
 
@@ -190,7 +191,7 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(29, 63, 166, 0.94);
+  background: rgba(11, 42, 111, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
@@ -314,7 +315,11 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; }
 .split .section-head-text { align-self: start; }
 
 /* ---------- 6. ABOUT ---------- */
-.section-about { padding: 88px 0 96px; }
+.section-about {
+  padding: 88px 0 96px;
+  /* a soft blue glow behind the photo makes the deep blue feel richer */
+  background: radial-gradient(900px 560px at 82% 30%, var(--glow), transparent 65%), var(--section-bg);
+}
 
 .about-grid {
   display: grid;
@@ -401,7 +406,7 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; }
   font-family: var(--font-serif);
   font-size: 22px;
 }
-.skill-icon img { width: 28px; height: 28px; object-fit: contain; }
+.skill-icon img { width: 36px; height: 36px; object-fit: contain; }
 .skill-name { display: block; font-weight: 600; font-size: 19px; line-height: 1.3; }
 .skill-detail { display: block; margin-top: 6px; font-size: 13px; line-height: 1.45; color: var(--text-muted); }
 
@@ -580,6 +585,13 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; }
 }
 .podcast-cover img { width: 100%; height: 100%; object-fit: cover; }
 .podcast-info { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.podcast-category {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
 .podcast-name { font-size: 20px; font-weight: 600; line-height: 1.3; }
 .podcast-host { font-size: 14px; color: var(--text-muted); }
 .podcast-why { font-size: 15px; line-height: 1.55; color: var(--text-soft); }

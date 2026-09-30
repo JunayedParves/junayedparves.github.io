@@ -1,38 +1,82 @@
 [
   {
     "order": "1",
-    "name": "Explicit Measures",
-    "host": "Mike Carlo, Seth Bauer & Tommy Puglia",
-    "cover_url": "",
-    "why": "Practical Power BI and Fabric discussions from people who build real solutions.",
-    "link_url": "https://www.youtube.com/@PowerBITips",
-    "show": "FALSE"
+    "name": "The Analytics Power Hour",
+    "host": "Michael Helbling, Tim Wilson & Moe Kiss",
+    "cover_url": "assets/images/podcasts/analytics-power-hour.jpg",
+    "why": "An engaging, cocktail-style round-table on the real-world realities of digital analytics, data leadership, metrics skepticism and data team culture.",
+    "link_url": "https://analyticshour.io/",
+    "category": "Data Analytics & Strategy",
+    "show": "TRUE"
   },
   {
     "order": "2",
-    "name": "storytelling with data podcast",
-    "host": "Cole Nussbaumer Knaflic",
-    "cover_url": "",
-    "why": "Short episodes on making charts and presentations that actually get understood.",
-    "link_url": "https://www.storytellingwithdata.com/podcast",
-    "show": "FALSE"
+    "name": "Super Data Science",
+    "host": "Dr. Jon Krohn",
+    "cover_url": "assets/images/podcasts/super-data-science.jpg",
+    "why": "Deep technical yet accessible discussions on the latest tools, predictive modeling, machine learning frameworks and career strategies across industry and academia.",
+    "link_url": "https://www.superdatascience.com/podcast",
+    "category": "Data Science & Machine Learning",
+    "show": "TRUE"
   },
   {
     "order": "3",
-    "name": "Data Skeptic",
-    "host": "Kyle Polich",
-    "cover_url": "",
-    "why": "Accessible explanations of statistics and machine-learning ideas.",
-    "link_url": "https://dataskeptic.com",
-    "show": "FALSE"
+    "name": "DataFramed",
+    "host": "Adel Nehme & Richie Cotton",
+    "cover_url": "assets/images/podcasts/dataframed.jpg",
+    "why": "Produced by DataCamp, it explores how industry leaders apply business intelligence, cloud data stacks and data literacy to drive business decisions.",
+    "link_url": "https://www.datacamp.com/podcast",
+    "category": "Applied Analytics & AI",
+    "show": "TRUE"
   },
   {
     "order": "4",
-    "name": "SuperDataScience",
-    "host": "Jon Krohn",
-    "cover_url": "",
-    "why": "Interviews with data professionals about careers, tools and trends.",
-    "link_url": "https://www.superdatascience.com/podcast",
-    "show": "FALSE"
+    "name": "Data Stories",
+    "host": "Enrico Bertini & Moritz Stefaner",
+    "cover_url": "assets/images/podcasts/data-stories.jpg",
+    "why": "Dedicated to the visual side of analytics: dashboard UX, representing complex information, cognitive design and communicating numbers clearly.",
+    "link_url": "https://datastori.es/",
+    "category": "Data Visualization & Storytelling",
+    "show": "TRUE"
+  },
+  {
+    "order": "5",
+    "name": "Data Skeptic",
+    "host": "Kyle Polich",
+    "cover_url": "assets/images/podcasts/data-skeptic.jpg",
+    "why": "Brings a rigorous, scientific eye to the claims of Big Data: statistics, anomaly detection, ML methodology, and separating hype from genuine analytical value.",
+    "link_url": "https://dataskeptic.com/",
+    "category": "Statistics & Critical Analysis",
+    "show": "TRUE"
+  },
+  {
+    "order": "6",
+    "name": "Mavens of Data",
+    "host": "Maven Analytics Team",
+    "cover_url": "assets/images/podcasts/mavens-of-data.jpg",
+    "why": "Practical discussions, career roadmaps and portfolio guidance for modern business intelligence professionals, data analysts and BI engineers.",
+    "link_url": "https://podcasts.apple.com/us/podcast/mavens-of-data/id1752013464",
+    "category": "Career & Practical Analytics",
+    "show": "TRUE"
+  },
+  {
+    "order": "7",
+    "name": "A Bit of Optimism",
+    "host": "Simon Sinek",
+    "cover_url": "assets/images/podcasts/a-bit-of-optimism.jpg",
+    "why": "Conversations on leadership, workplace trust, emotional intelligence and resilience: essential human skills for driving impact and leading analytical teams.",
+    "link_url": "https://simonsinek.com/podcast/",
+    "category": "Leadership & Human Dynamics",
+    "show": "TRUE"
+  },
+  {
+    "order": "8",
+    "name": "The Diary of a CEO",
+    "host": "Steven Bartlett",
+    "cover_url": "assets/images/podcasts/diary-of-a-ceo.jpg",
+    "why": "Unfiltered deep-dives with world-class founders, operators and behavioral experts on decision-making, executive habits and high-performance strategy.",
+    "link_url": "https://podcasts.apple.com/us/podcast/the-diary-of-a-ceo-with-steven-bartlett/id1291423644",
+    "category": "Entrepreneurship & Mindset",
+    "show": "TRUE"
   }
 ]
