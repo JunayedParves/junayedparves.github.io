@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [1.3.0] — 2026-10-01
+
 ### Changed
 - "People & organizations I follow" rebuilt as a personal learning ecosystem:
   5 people and 4 platforms in two groups ("People I learn from" / "Platforms I
