@@ -1,0 +1,10 @@
+order,type,title,institution,years,detail,show
+1,degree,"Postgraduate Diploma, Business IT",Bangladesh University of Engineering and Technology (BUET),2026 — 2027,In progress,TRUE
+2,degree,ACCA Qualification,Association of Chartered Certified Accountants,2025,In progress,TRUE
+3,degree,"MBA, Accounting & Information Systems",University of Dhaka,2021,,TRUE
+4,degree,BSc in Statistics,Dhaka College (University of Dhaka),2015,,TRUE
+10,certification,Google Business Intelligence Specialization,Coursera,,,TRUE
+11,certification,Power BI Specialist,Maven Analytics,,,TRUE
+12,certification,Associate Data Analyst Professional Certificate,DataCamp,,,TRUE
+13,certification,Career Essentials in Data Analysis,Microsoft & LinkedIn Learning,,,TRUE
+14,certification,Business Analytics with Excel,,,,TRUE

@@ -1,0 +1,38 @@
+[
+  {
+    "order": "1",
+    "title": "Start with Why",
+    "author": "Simon Sinek",
+    "cover_url": "assets/images/books/start-with-why.webp",
+    "rating": "5",
+    "review": "Every good dashboard starts with why the business needs it. I now open each reporting request by asking what decision it should support.",
+    "show": "TRUE"
+  },
+  {
+    "order": "2",
+    "title": "Storytelling with Data",
+    "author": "Cole Nussbaumer Knaflic",
+    "cover_url": "",
+    "rating": "5",
+    "review": "Write your own 2–3 line review: the one idea you took away and how you applied it.",
+    "show": "FALSE"
+  },
+  {
+    "order": "3",
+    "title": "Naked Statistics",
+    "author": "Charles Wheelan",
+    "cover_url": "",
+    "rating": "4",
+    "review": "Write your own 2–3 line review.",
+    "show": "FALSE"
+  },
+  {
+    "order": "4",
+    "title": "The Big Book of Dashboards",
+    "author": "Steve Wexler, Jeffrey Shaffer & Andy Cotgreave",
+    "cover_url": "",
+    "rating": "4",
+    "review": "Write your own 2–3 line review.",
+    "show": "FALSE"
+  }
+]

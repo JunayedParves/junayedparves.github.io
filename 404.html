@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#1D3FA6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <!--
+    GitHub Pages shows this page for any address that doesn't exist.
+    It can be opened from any folder depth, so links and styles use
+    absolute paths ("/css/style.css"). If your site lives in a sub-folder
+    (e.g. username.github.io/portfolio/), change "/" to "/portfolio/".
+  -->
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .notfound {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 64px 0;
+    }
+    .notfound .container { display: flex; flex-direction: column; gap: 24px; }
+    .notfound-code {
+      font-family: var(--font-serif);
+      font-size: clamp(120px, 22vw, 220px);
+      line-height: .9;
+      color: var(--gold);
+    }
+    .notfound p { max-width: 520px; font-size: 18px; color: var(--text-soft); }
+  </style>
+</head>
+<body>
+  <main class="notfound">
+    <div class="container">
+      <p class="eyebrow">Error 404 — Page not found</p>
+      <div class="notfound-code" aria-hidden="true">404</div>
+      <h1 class="section-title">This page took a wrong turn in the data.</h1>
+      <p>The link may be old or mistyped. The rest of the portfolio is just one click away.</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="/">Back to the homepage</a>
+        <a class="btn btn-outline" href="/#projects">See projects</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

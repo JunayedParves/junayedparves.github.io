@@ -1,0 +1,52 @@
+# ---------------------------------------------------------------------
+# Deploy to GitHub Pages
+# Publishes the site every time something is pushed to the main branch.
+# Also runs after the daily content sync, because commits made by a
+# workflow don't trigger other workflows on their own.
+#
+# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+# ---------------------------------------------------------------------
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["Sync content from Google Sheet"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # After a sync, only deploy if the sync succeeded
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the repository (latest main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

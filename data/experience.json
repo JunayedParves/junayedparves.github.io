@@ -1,0 +1,52 @@
+[
+  {
+    "order": "1",
+    "title": "Senior Analyst",
+    "company": "Green Delta Insurance PLC",
+    "city": "Dhaka",
+    "start": "Jan 2025",
+    "end": "",
+    "bullets": "Designed, developed and deployed operational and financial Power BI dashboards tracking premium collection, renewal rates and branch performance, now used by 6 business units for daily decision-making | Maintained SQL and Power BI reporting solutions across underwriting and finance, reducing manual compilation time and improving report turnaround | Automated 3 recurring reporting workflows, eliminating manual errors and freeing analyst capacity for higher-value analysis | Partnered with underwriting, finance and reporting stakeholders to gather requirements and align dashboards with evolving business needs",
+    "show": "TRUE"
+  },
+  {
+    "order": "2",
+    "title": "Data Analyst, Operational Risk Management",
+    "company": "MetLife Bangladesh",
+    "city": "Dhaka",
+    "start": "Mar 2024",
+    "end": "Dec 2024",
+    "bullets": "Analyzed operational risk datasets to detect exposure trends across claims, policy services and underwriting, informing mitigation decisions for a regulated life insurance portfolio | Produced regulatory-grade risk reports for compliance governance, ensuring data integrity across cross-functional submissions | Collaborated with underwriting, claims and finance teams to evaluate and mitigate risk exposure and align reporting with regulatory requirements",
+    "show": "TRUE"
+  },
+  {
+    "order": "3",
+    "title": "Senior Executive, Product Development & QA",
+    "company": "Bikroy",
+    "city": "Dhaka",
+    "start": "Mar 2023",
+    "end": "Aug 2023",
+    "bullets": "Developed and maintained QA metrics and reports using SQL and Google Sheets to extract actionable insights from large product and platform datasets | Tracked and documented platform defects, producing structured reports that reduced issue-resolution time with the engineering team | Conducted field research and translated user feedback into data-driven recommendations for the product team",
+    "show": "TRUE"
+  },
+  {
+    "order": "4",
+    "title": "Business Intelligence Analyst",
+    "company": "Secret Recipe Bangladesh (Fair Group)",
+    "city": "Dhaka",
+    "start": "Feb 2022",
+    "end": "Mar 2023",
+    "bullets": "Designed and maintained Power BI and Excel sales performance dashboards, enabling real-time visibility into revenue trends across outlets | Analyzed POS data to optimize inventory turnover and sourcing, reducing food waste by 10% and food costs by 8% | Delivered ongoing KPI reporting and sales forecasts to operations and leadership, informing pricing and promotional strategy",
+    "show": "TRUE"
+  },
+  {
+    "order": "5",
+    "title": "Analyst, Data Processing",
+    "company": "Quantanite",
+    "city": "Dhaka",
+    "start": "Sep 2020",
+    "end": "Sep 2021",
+    "bullets": "Conducted systematic data quality checks and validation protocols to improve data integrity across client datasets | Collaborated with 80+ team members across functions to maintain data compliance, privacy standards and process efficiency",
+    "show": "TRUE"
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "key": "name",
+    "value": "M K Junayed Parves"
+  },
+  {
+    "key": "initials",
+    "value": "JP"
+  },
+  {
+    "key": "role",
+    "value": "Business Intelligence Analyst"
+  },
+  {
+    "key": "headline",
+    "value": "Hi, I'm Junayed. | I turn data into decisions."
+  },
+  {
+    "key": "bio",
+    "value": "Business Intelligence Analyst with 4+ years of experience designing Power BI dashboards, writing complex SQL queries and delivering strategic reporting across insurance, e-commerce and F&B operations."
+  },
+  {
+    "key": "photo_url",
+    "value": "assets/images/portrait.jpg"
+  },
+  {
+    "key": "resume_url",
+    "value": "assets/resume.pdf"
+  },
+  {
+    "key": "email",
+    "value": "jndparves@gmail.com"
+  },
+  {
+    "key": "linkedin",
+    "value": "https://www.linkedin.com/in/junayedparves"
+  },
+  {
+    "key": "github",
+    "value": "https://github.com/JunayedParves"
+  },
+  {
+    "key": "location",
+    "value": "Dhaka, Bangladesh"
+  },
+  {
+    "key": "stat1_value",
+    "value": "4+"
+  },
+  {
+    "key": "stat1_label",
+    "value": "Years experience"
+  },
+  {
+    "key": "stat2_value",
+    "value": "6"
+  },
+  {
+    "key": "stat2_label",
+    "value": "Business units served"
+  },
+  {
+    "key": "stat3_value",
+    "value": "Dhaka"
+  },
+  {
+    "key": "stat3_label",
+    "value": "Based in"
+  },
+  {
+    "key": "last_updated",
+    "value": "2026-09-30"
+  },
+  {
+    "key": "about_label",
+    "value": "About me"
+  },
+  {
+    "key": "skills_label",
+    "value": "Skills & tools"
+  },
+  {
+    "key": "skills_title",
+    "value": "My analytics toolkit"
+  },
+  {
+    "key": "skills_intro",
+    "value": "How I use these tools together: SQL to extract and clean the data, Power BI and Excel to model and report it."
+  },
+  {
+    "key": "skills_chips_label",
+    "value": "Also working with:"
+  },
+  {
+    "key": "experience_label",
+    "value": "Experience"
+  },
+  {
+    "key": "experience_title",
+    "value": "Where I've worked"
+  },
+  {
+    "key": "experience_intro",
+    "value": "Most recent first."
+  },
+  {
+    "key": "education_label",
+    "value": "Education"
+  },
+  {
+    "key": "education_title",
+    "value": "Education & certifications"
+  },
+  {
+    "key": "education_intro",
+    "value": ""
+  },
+  {
+    "key": "projects_label",
+    "value": "Project showcase"
+  },
+  {
+    "key": "projects_title",
+    "value": "Selected work"
+  },
+  {
+    "key": "projects_intro",
+    "value": ""
+  },
+  {
+    "key": "books_label",
+    "value": "Bookshelf"
+  },
+  {
+    "key": "books_title",
+    "value": "Books I've read & reviewed"
+  },
+  {
+    "key": "books_intro",
+    "value": ""
+  },
+  {
+    "key": "podcasts_label",
+    "value": "In my ears"
+  },
+  {
+    "key": "podcasts_title",
+    "value": "Podcasts I listen to"
+  },
+  {
+    "key": "podcasts_intro",
+    "value": ""
+  },
+  {
+    "key": "following_label",
+    "value": "Staying current"
+  },
+  {
+    "key": "following_title",
+    "value": "People & organizations I follow"
+  },
+  {
+    "key": "following_intro",
+    "value": "How I keep my skills up to date."
+  },
+  {
+    "key": "contact_label",
+    "value": "Résumé & contact"
+  },
+  {
+    "key": "contact_title",
+    "value": "Let's work together"
+  },
+  {
+    "key": "contact_intro",
+    "value": ""
+  },
+  {
+    "key": "resume_note",
+    "value": "Two pages, PDF. Last updated Sep 2026."
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "order": "1",
+    "name": "Explicit Measures",
+    "host": "Mike Carlo, Seth Bauer & Tommy Puglia",
+    "cover_url": "",
+    "why": "Practical Power BI and Fabric discussions from people who build real solutions.",
+    "link_url": "https://www.youtube.com/@PowerBITips",
+    "show": "FALSE"
+  },
+  {
+    "order": "2",
+    "name": "storytelling with data podcast",
+    "host": "Cole Nussbaumer Knaflic",
+    "cover_url": "",
+    "why": "Short episodes on making charts and presentations that actually get understood.",
+    "link_url": "https://www.storytellingwithdata.com/podcast",
+    "show": "FALSE"
+  },
+  {
+    "order": "3",
+    "name": "Data Skeptic",
+    "host": "Kyle Polich",
+    "cover_url": "",
+    "why": "Accessible explanations of statistics and machine-learning ideas.",
+    "link_url": "https://dataskeptic.com",
+    "show": "FALSE"
+  },
+  {
+    "order": "4",
+    "name": "SuperDataScience",
+    "host": "Jon Krohn",
+    "cover_url": "",
+    "why": "Interviews with data professionals about careers, tools and trends.",
+    "link_url": "https://www.superdatascience.com/podcast",
+    "show": "FALSE"
+  }
+]

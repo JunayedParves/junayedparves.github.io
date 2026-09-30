@@ -1,0 +1,83 @@
+[
+  {
+    "order": "1",
+    "type": "degree",
+    "title": "Postgraduate Diploma, Business IT",
+    "institution": "Bangladesh University of Engineering and Technology (BUET)",
+    "years": "2026 — 2027",
+    "detail": "In progress",
+    "show": "TRUE"
+  },
+  {
+    "order": "2",
+    "type": "degree",
+    "title": "ACCA Qualification",
+    "institution": "Association of Chartered Certified Accountants",
+    "years": "2025",
+    "detail": "In progress",
+    "show": "TRUE"
+  },
+  {
+    "order": "3",
+    "type": "degree",
+    "title": "MBA, Accounting & Information Systems",
+    "institution": "University of Dhaka",
+    "years": "2021",
+    "detail": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "4",
+    "type": "degree",
+    "title": "BSc in Statistics",
+    "institution": "Dhaka College (University of Dhaka)",
+    "years": "2015",
+    "detail": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "10",
+    "type": "certification",
+    "title": "Google Business Intelligence Specialization",
+    "institution": "Coursera",
+    "years": "",
+    "detail": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "11",
+    "type": "certification",
+    "title": "Power BI Specialist",
+    "institution": "Maven Analytics",
+    "years": "",
+    "detail": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "12",
+    "type": "certification",
+    "title": "Associate Data Analyst Professional Certificate",
+    "institution": "DataCamp",
+    "years": "",
+    "detail": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "13",
+    "type": "certification",
+    "title": "Career Essentials in Data Analysis",
+    "institution": "Microsoft & LinkedIn Learning",
+    "years": "",
+    "detail": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "14",
+    "type": "certification",
+    "title": "Business Analytics with Excel",
+    "institution": "",
+    "years": "",
+    "detail": "",
+    "show": "TRUE"
+  }
+]

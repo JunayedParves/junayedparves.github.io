@@ -1,0 +1,5 @@
+order,title,author,cover_url,rating,review,show
+1,Start with Why,Simon Sinek,assets/images/books/start-with-why.webp,5,Every good dashboard starts with why the business needs it. I now open each reporting request by asking what decision it should support.,TRUE
+2,Storytelling with Data,Cole Nussbaumer Knaflic,,5,Write your own 2–3 line review: the one idea you took away and how you applied it.,FALSE
+3,Naked Statistics,Charles Wheelan,,4,Write your own 2–3 line review.,FALSE
+4,The Big Book of Dashboards,"Steve Wexler, Jeffrey Shaffer & Andy Cotgreave",,4,Write your own 2–3 line review.,FALSE

@@ -1,0 +1,46 @@
+key,value
+name,M K Junayed Parves
+initials,JP
+role,Business Intelligence Analyst
+headline,"Hi, I'm Junayed. | I turn data into decisions."
+bio,"Business Intelligence Analyst with 4+ years of experience designing Power BI dashboards, writing complex SQL queries and delivering strategic reporting across insurance, e-commerce and F&B operations."
+photo_url,assets/images/portrait.jpg
+resume_url,assets/resume.pdf
+email,jndparves@gmail.com
+linkedin,https://www.linkedin.com/in/junayedparves
+github,https://github.com/JunayedParves
+location,"Dhaka, Bangladesh"
+stat1_value,4+
+stat1_label,Years experience
+stat2_value,6
+stat2_label,Business units served
+stat3_value,Dhaka
+stat3_label,Based in
+last_updated,2026-09-30
+about_label,About me
+skills_label,Skills & tools
+skills_title,My analytics toolkit
+skills_intro,"How I use these tools together: SQL to extract and clean the data, Power BI and Excel to model and report it."
+skills_chips_label,Also working with:
+experience_label,Experience
+experience_title,Where I've worked
+experience_intro,Most recent first.
+education_label,Education
+education_title,Education & certifications
+education_intro,
+projects_label,Project showcase
+projects_title,Selected work
+projects_intro,
+books_label,Bookshelf
+books_title,Books I've read & reviewed
+books_intro,
+podcasts_label,In my ears
+podcasts_title,Podcasts I listen to
+podcasts_intro,
+following_label,Staying current
+following_title,People & organizations I follow
+following_intro,How I keep my skills up to date.
+contact_label,Résumé & contact
+contact_title,Let's work together
+contact_intro,
+resume_note,"Two pages, PDF. Last updated Sep 2026."

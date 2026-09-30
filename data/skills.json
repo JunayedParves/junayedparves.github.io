@@ -1,0 +1,122 @@
+[
+  {
+    "order": "1",
+    "name": "Excel",
+    "detail": "Pivot tables, Power Query, VLOOKUP",
+    "icon_url": "assets/images/icons/excel.svg",
+    "type": "tile",
+    "show": "TRUE"
+  },
+  {
+    "order": "2",
+    "name": "Power BI",
+    "detail": "Dashboard design & deployment",
+    "icon_url": "assets/images/icons/powerbi.svg",
+    "type": "tile",
+    "show": "TRUE"
+  },
+  {
+    "order": "3",
+    "name": "SQL",
+    "detail": "SQL Server, MySQL, complex queries",
+    "icon_url": "assets/images/icons/sql.svg",
+    "type": "tile",
+    "show": "TRUE"
+  },
+  {
+    "order": "4",
+    "name": "Tableau",
+    "detail": "Dashboards, visualization",
+    "icon_url": "assets/images/icons/tableau.svg",
+    "type": "tile",
+    "show": "TRUE"
+  },
+  {
+    "order": "5",
+    "name": "Python",
+    "detail": "pandas, NumPy",
+    "icon_url": "assets/images/icons/python.svg",
+    "type": "tile",
+    "show": "TRUE"
+  },
+  {
+    "order": "6",
+    "name": "Statistics",
+    "detail": "Trend & root-cause analysis",
+    "icon_url": "assets/images/icons/statistics.svg",
+    "type": "tile",
+    "show": "TRUE"
+  },
+  {
+    "order": "10",
+    "name": "Google Looker Studio",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "11",
+    "name": "Data cleaning & validation",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "12",
+    "name": "Data warehousing",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "13",
+    "name": "KPI development",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "14",
+    "name": "Report automation",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "15",
+    "name": "Data governance",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "16",
+    "name": "Stakeholder management",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "17",
+    "name": "Microsoft 365",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "18",
+    "name": "Google Workspace",
+    "detail": "",
+    "icon_url": "",
+    "type": "chip",
+    "show": "TRUE"
+  }
+]

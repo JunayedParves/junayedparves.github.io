@@ -1,0 +1,16 @@
+# ---- Local working files: NOT published to GitHub ----
+# Design mockup and original source files (kept on your computer only)
+Portfolio — Desktop-html/
+Linkedin.html
+Junayed_Parves_Resume_BI_Analyst.pdf
+Portfolio Image.png
+Book Image/
+
+# ---- System / editor clutter ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.claude/
+node_modules/
+*.log

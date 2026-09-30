@@ -1,0 +1,56 @@
+[
+  {
+    "order": "1",
+    "name": "Guy in a Cube",
+    "role_org": "Adam Saxton & Patrick LeBlanc · Power BI tips",
+    "avatar_url": "",
+    "platform": "YouTube",
+    "link_url": "https://www.youtube.com/@GuyInACube",
+    "show": "FALSE"
+  },
+  {
+    "order": "2",
+    "name": "SQLBI",
+    "role_org": "Marco Russo & Alberto Ferrari · DAX experts",
+    "avatar_url": "",
+    "platform": "Blog",
+    "link_url": "https://www.sqlbi.com",
+    "show": "FALSE"
+  },
+  {
+    "order": "3",
+    "name": "Cole Nussbaumer Knaflic",
+    "role_org": "Founder · storytelling with data",
+    "avatar_url": "",
+    "platform": "LinkedIn",
+    "link_url": "https://www.linkedin.com/in/colenussbaumer",
+    "show": "FALSE"
+  },
+  {
+    "order": "4",
+    "name": "Maven Analytics",
+    "role_org": "Data & BI training",
+    "avatar_url": "",
+    "platform": "Community",
+    "link_url": "https://mavenanalytics.io",
+    "show": "FALSE"
+  },
+  {
+    "order": "5",
+    "name": "Microsoft Power BI",
+    "role_org": "Official product team",
+    "avatar_url": "",
+    "platform": "Blog",
+    "link_url": "https://powerbi.microsoft.com/blog",
+    "show": "FALSE"
+  },
+  {
+    "order": "6",
+    "name": "Chandoo",
+    "role_org": "Purna Duggirala · Excel & Power BI",
+    "avatar_url": "",
+    "platform": "YouTube",
+    "link_url": "https://www.youtube.com/@chandoo_",
+    "show": "FALSE"
+  }
+]

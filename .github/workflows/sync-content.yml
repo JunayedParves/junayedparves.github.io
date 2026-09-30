@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------
+# Sync content from Google Sheet
+# Every day (and whenever you click "Run workflow"), this copies your
+# Google Sheet into data/*.json and commits it, so every content change
+# is saved in git history and can be rolled back.
+# It only commits when something actually changed.
+# ---------------------------------------------------------------------
+name: Sync content from Google Sheet
+
+on:
+  schedule:
+    - cron: "0 2 * * *"      # every day at 02:00 UTC (08:00 in Dhaka)
+  workflow_dispatch:          # adds a "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write             # allows the workflow to push the commit
+
+concurrency:
+  group: sync-content
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download the sheet and convert to JSON
+        run: node scripts/sync.js
+
+      - name: Commit and push if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ index.html
+          if git diff --cached --quiet; then
+            echo "No content changes — nothing to commit."
+          else
+            git commit -m "content: sync from Google Sheet $(date -u +%Y-%m-%d)"
+            git push
+          fi

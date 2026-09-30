@@ -1,0 +1,16 @@
+order,name,detail,icon_url,type,show
+1,Excel,"Pivot tables, Power Query, VLOOKUP",assets/images/icons/excel.svg,tile,TRUE
+2,Power BI,Dashboard design & deployment,assets/images/icons/powerbi.svg,tile,TRUE
+3,SQL,"SQL Server, MySQL, complex queries",assets/images/icons/sql.svg,tile,TRUE
+4,Tableau,"Dashboards, visualization",assets/images/icons/tableau.svg,tile,TRUE
+5,Python,"pandas, NumPy",assets/images/icons/python.svg,tile,TRUE
+6,Statistics,Trend & root-cause analysis,assets/images/icons/statistics.svg,tile,TRUE
+10,Google Looker Studio,,,chip,TRUE
+11,Data cleaning & validation,,,chip,TRUE
+12,Data warehousing,,,chip,TRUE
+13,KPI development,,,chip,TRUE
+14,Report automation,,,chip,TRUE
+15,Data governance,,,chip,TRUE
+16,Stakeholder management,,,chip,TRUE
+17,Microsoft 365,,,chip,TRUE
+18,Google Workspace,,,chip,TRUE

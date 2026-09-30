@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO:START
+       This block is rewritten automatically by scripts/sync.js from the
+       "profile" tab of your Google Sheet (name, role, bio). You can edit it
+       by hand too, but the next sync will overwrite it. -->
+  <title>M K Junayed Parves · Business Intelligence Analyst</title>
+  <meta name="description" content="Business Intelligence Analyst with 4+ years of experience designing Power BI dashboards, writing complex SQL queries and delivering strategic reporting…">
+  <link rel="canonical" href="https://junayedparves.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://junayedparves.github.io/">
+  <meta property="og:title" content="M K Junayed Parves · Business Intelligence Analyst">
+  <meta property="og:description" content="Business Intelligence Analyst with 4+ years of experience designing Power BI dashboards, writing complex SQL queries and delivering strategic reporting…">
+  <meta property="og:image" content="https://junayedparves.github.io/assets/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- SEO:END -->
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#1D3FA6">
+
+  <!-- Fonts: DM Serif Display (headings), IBM Plex Sans (body), IBM Plex Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Scripts load after the page is drawn ("defer"), in this order. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/script.js"></script>
+</head>
+
+<!--
+  HOW THIS PAGE WORKS
+  This file is only the empty "frame" of the site. There is no personal
+  text in here: js/script.js fills every section with data from your
+  Google Sheet (or from /data/*.json if Google can't be reached).
+  Grey pulsing boxes (class "skeleton") are shown while data loads.
+-->
+<body class="is-loading">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="#about">
+        <span class="brand-mark" data-profile="initials" aria-hidden="true"></span>
+        <span class="brand-name" data-profile="name"></span>
+      </a>
+
+      <!-- Hamburger button: only visible on small screens -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="visually-hidden">Menu</span>
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#about">About</a></li>
+        <li data-nav="skills"><a href="#skills">Skills</a></li>
+        <li data-nav="experience"><a href="#experience">Experience</a></li>
+        <li data-nav="education"><a href="#education">Education</a></li>
+        <li data-nav="projects"><a href="#projects">Projects</a></li>
+        <li data-nav="books"><a href="#books">Books</a></li>
+        <li data-nav="podcasts"><a href="#podcasts">Podcasts</a></li>
+        <li data-nav="following"><a href="#following">Following</a></li>
+        <li><a class="btn btn-gold btn-small" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ 1. ABOUT ============ -->
+    <section id="about" class="section section-about" data-section="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-text">
+          <p class="eyebrow" data-field="label"></p>
+          <h1 id="about-title" class="about-title" data-profile-html="headline">
+            <span class="skeleton skeleton-line skeleton-xl"></span>
+            <span class="skeleton skeleton-line skeleton-xl w-70"></span>
+          </h1>
+          <p class="about-bio" data-profile="bio">
+            <span class="skeleton skeleton-line"></span>
+            <span class="skeleton skeleton-line w-80"></span>
+          </p>
+          <div class="btn-row">
+            <a class="btn btn-gold" href="#projects">See my projects</a>
+            <a class="btn btn-outline" data-resume-link href="#contact">Download résumé</a>
+          </div>
+          <dl class="stats" data-stats></dl>
+        </div>
+        <div class="portrait-wrap">
+          <div class="portrait-frame" aria-hidden="true"></div>
+          <div class="portrait" data-portrait></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. SKILLS ============ -->
+    <section id="skills" class="section" data-section="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-text">
+            <p class="eyebrow" data-field="label"></p>
+            <h2 id="skills-title" class="section-title" data-field="title"></h2>
+          </div>
+          <p class="section-intro" data-field="intro"></p>
+        </div>
+        <div data-body>
+          <div class="skeleton-grid"><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. EXPERIENCE ============ -->
+    <section id="experience" class="section" data-section="experience" aria-labelledby="experience-title">
+      <div class="container split">
+        <div class="section-head-text">
+          <p class="eyebrow" data-field="label"></p>
+          <h2 id="experience-title" class="section-title" data-field="title"></h2>
+          <p class="section-intro" data-field="intro"></p>
+        </div>
+        <div data-body>
+          <div class="skeleton skeleton-card"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. EDUCATION ============ -->
+    <section id="education" class="section" data-section="education" aria-labelledby="education-title">
+      <div class="container split">
+        <div class="section-head-text">
+          <p class="eyebrow" data-field="label"></p>
+          <h2 id="education-title" class="section-title" data-field="title"></h2>
+          <p class="section-intro" data-field="intro"></p>
+        </div>
+        <div data-body>
+          <div class="skeleton-grid"><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. PROJECTS ============ -->
+    <section id="projects" class="section" data-section="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-text">
+            <p class="eyebrow" data-field="label"></p>
+            <h2 id="projects-title" class="section-title" data-field="title"></h2>
+            <p class="section-intro" data-field="intro"></p>
+          </div>
+          <!-- Filter buttons are created by script.js from the categories in your data -->
+          <div class="filter-tabs" role="group" aria-label="Filter projects by category" data-filters></div>
+        </div>
+        <div data-body>
+          <div class="skeleton-grid"><div class="skeleton skeleton-card tall"></div><div class="skeleton skeleton-card tall"></div><div class="skeleton skeleton-card tall"></div></div>
+        </div>
+        <p class="filter-status visually-hidden" aria-live="polite" data-filter-status></p>
+      </div>
+    </section>
+
+    <!-- ============ 6. BOOKS ============ -->
+    <section id="books" class="section" data-section="books" aria-labelledby="books-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-text">
+            <p class="eyebrow" data-field="label"></p>
+            <h2 id="books-title" class="section-title" data-field="title"></h2>
+          </div>
+          <p class="section-intro" data-field="intro"></p>
+        </div>
+        <div data-body>
+          <div class="skeleton-grid"><div class="skeleton skeleton-card tall"></div><div class="skeleton skeleton-card tall"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. PODCASTS ============ -->
+    <section id="podcasts" class="section" data-section="podcasts" aria-labelledby="podcasts-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-text">
+            <p class="eyebrow" data-field="label"></p>
+            <h2 id="podcasts-title" class="section-title" data-field="title"></h2>
+          </div>
+          <p class="section-intro" data-field="intro"></p>
+        </div>
+        <div data-body>
+          <div class="skeleton-grid"><div class="skeleton skeleton-card"></div><div class="skeleton skeleton-card"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. FOLLOWING ============ -->
+    <section id="following" class="section" data-section="following" aria-labelledby="following-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-text">
+            <p class="eyebrow" data-field="label"></p>
+            <h2 id="following-title" class="section-title" data-field="title"></h2>
+          </div>
+          <p class="section-intro" data-field="intro"></p>
+        </div>
+        <div data-body>
+          <div class="skeleton-grid"><div class="skeleton skeleton-card short"></div><div class="skeleton skeleton-card short"></div><div class="skeleton skeleton-card short"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. RÉSUMÉ & CONTACT ============ -->
+    <section id="contact" class="section" data-section="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head-text">
+            <p class="eyebrow" data-field="label"></p>
+            <h2 id="contact-title" class="section-title" data-field="title"></h2>
+          </div>
+          <p class="section-intro" data-field="intro"></p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Gold résumé card: filled by script.js -->
+          <div class="resume-card" data-resume-card>
+            <div class="skeleton skeleton-card"></div>
+          </div>
+
+          <!-- Contact form: sends to Formspree (form ID lives in js/config.js) -->
+          <form class="contact-form" data-contact-form novalidate>
+            <h3 class="form-title">Send me a message</h3>
+
+            <div class="field">
+              <label for="cf-name">Name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+            </div>
+            <div class="field">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="5" placeholder="Tell me about your project or role" required></textarea>
+            </div>
+
+            <!-- Spam trap: real people never see or fill this field -->
+            <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <button class="btn btn-cream" type="submit">Send message</button>
+            <p class="form-status" role="status" aria-live="polite" data-form-status></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p data-footer-copy></p>
+      <p class="footer-updated" data-footer-updated></p>
+      <a class="back-to-top" href="#about">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <noscript>
+    <p class="noscript">This site needs JavaScript turned on to load its content.</p>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,6 @@
+order,title,category,description,image_url,link_url,link_label,show
+1,Databel Churn Review,Power BI,"A 4-page executive report on telecom customer churn: headline KPIs, root causes and retention recommendations. Found month-to-month customers churned 17× more than two-year customers, with the third support call as the tipping point.",,https://github.com/JunayedParves/Databel-Churn-PowerBI,View on GitHub,TRUE
+2,This portfolio website,Web App,"A fast, accessible portfolio in plain HTML, CSS and JavaScript. All content is managed from a Google Sheet, backed up to GitHub daily by a GitHub Action.",,https://github.com/JunayedParves/junayedparves.github.io,View repository,TRUE
+3,Insurance KPI dashboard,Power BI,"An anonymised version of my premium collection, renewal and branch-performance reporting.",,,View dashboard,FALSE
+4,SQL case study,GitHub,A query-driven analysis that starts from a clear business question and ends with an answer.,,,View repository,FALSE
+5,Tableau storytelling dashboard,Tableau,A Tableau Public visualization telling one clear story with data.,,,View on Tableau Public,FALSE
