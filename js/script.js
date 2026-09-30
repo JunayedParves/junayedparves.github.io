@@ -499,12 +499,23 @@
         ? '<span class="stars" role="img" aria-label="Rated ' + rating + ' out of 5">' +
             "★★★★★".slice(0, rating) + "☆☆☆☆☆".slice(0, 5 - rating) + "</span>"
         : "";
+      var summary = b.summary || b.review; // "review" = older column name, still supported
+      var alt = "Cover of " + b.title + (b.author ? " by " + b.author : "");
       return '<li class="book">' +
-        '<div class="book-cover">' + imageHtml(b.cover_url, { alt: "Cover of " + b.title, placeholder: b.title }) + "</div>" +
-        '<h3 class="book-title">' + esc(b.title) + "</h3>" +
-        (b.author ? '<span class="book-author">by ' + esc(b.author) + "</span>" : "") +
-        stars +
-        (b.review ? '<p class="book-review">' + esc(b.review) + "</p>" : "") +
+        '<div class="book-cover">' + imageHtml(b.cover_url, { alt: alt, placeholder: b.title }) + "</div>" +
+        '<div class="book-body">' +
+          (b.category || b.status
+            ? '<div class="book-meta">' +
+                (b.category ? '<span class="book-category">' + esc(b.category) + "</span>" : "") +
+                (b.status ? '<span class="book-status">' + esc(b.status) + "</span>" : "") +
+              "</div>"
+            : "") +
+          '<h3 class="book-title">' + esc(b.title) + "</h3>" +
+          (b.author ? '<span class="book-author">by ' + esc(b.author) + "</span>" : "") +
+          stars +
+          (summary ? '<p class="book-summary">' + esc(summary) + "</p>" : "") +
+          (b.takeaway ? '<p class="book-takeaway"><span class="book-takeaway-label">Key takeaway</span>' + esc(b.takeaway) + "</p>" : "") +
+        "</div>" +
       "</li>";
     }).join("") + "</ul>";
     return true;

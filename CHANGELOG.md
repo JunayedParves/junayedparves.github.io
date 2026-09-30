@@ -13,7 +13,14 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Changed
+- Books section redesigned as a learning library: 10 books in cards (3 / 2 / 1 per row
+  on desktop / tablet / phone) with authentic covers, category, summary and a
+  "Key takeaway" box, plus a subtle hover effect.
+
+### Added
+- New optional `books` columns: `category`, `summary` (replaces `review`, which still
+  works), `takeaway` and `status`.
 
 ## [1.1.0] — 2026-09-30
 
