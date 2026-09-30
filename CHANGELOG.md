@@ -19,8 +19,13 @@ This project uses [Semantic Versioning](https://semver.org/):
   learn from"), each card with an authentic photo or official logo, type,
   description, a "Why follow" box, topic tags and an external link.
   People have round photos (gold ring); platforms have square logos (cream ring).
+- Experience: job dates now sit in their own column (always right-aligned on
+  desktop, on their own line on phones).
 
 ### Added
+- Company logos on each Experience entry and institution logos on each degree card,
+  shown on a small cream tile. New optional `logo_url` column in the `experience`
+  and `education` tabs. Logos live in `assets/images/logos/`.
 - New `following` columns: `group`, `image_alt`, `description`, `why`, `tags`,
   `link_label`, `image_credit` (the old `platform` pill was removed).
 - Photo credit line for images that require attribution (DJ Patil, CC BY-SA 4.0).

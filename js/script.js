@@ -389,6 +389,13 @@
     return true;
   }
 
+  /* Organisation / institution logo on a small cream tile ("" if no logo). */
+  function orgLogo(url, name) {
+    if (!url) return "";
+    name = String(name || "").replace(/\s*\([^)]*\)\s*$/, ""); // "Dhaka College (University of Dhaka)" → "Dhaka College"
+    return '<div class="org-logo">' + imageHtml(url, { alt: name ? name + " logo" : "", placeholder: initialsOf(name) }) + "</div>";
+  }
+
   /* ---------- Experience: vertical timeline ---------- */
   function renderExperience(rows) {
     if (!rows.length) return false;
@@ -397,11 +404,14 @@
       var org = [job.company, job.city].filter(Boolean).join(" · ");
       var bullets = splitBars(job.bullets);
       return '<li class="job">' +
-        '<div class="job-top">' +
-          '<h3 class="job-title">' + esc(job.title) + "</h3>" +
+        '<div class="job-head">' +
+          orgLogo(job.logo_url, job.company) +
+          '<div class="job-head-text">' +
+            '<h3 class="job-title">' + esc(job.title) + "</h3>" +
+            (org ? '<p class="job-org">' + esc(org) + "</p>" : "") +
+          "</div>" +
           (dates ? '<span class="job-dates">' + esc(dates) + "</span>" : "") +
         "</div>" +
-        (org ? '<p class="job-org">' + esc(org) + "</p>" : "") +
         (bullets.length ? "<ul>" + bullets.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" : "") +
       "</li>";
     }).join("") + "</ol>";
@@ -419,7 +429,10 @@
     if (degrees.length) {
       html += '<ul class="degree-grid" role="list">' + degrees.map(function (d) {
         return '<li class="degree-card">' +
-          (d.years ? '<span class="degree-years">' + esc(d.years) + "</span>" : "") +
+          (d.logo_url || d.years
+            ? '<div class="degree-top">' + orgLogo(d.logo_url, d.institution) +
+                (d.years ? '<span class="degree-years">' + esc(d.years) + "</span>" : "") + "</div>"
+            : "") +
           '<h3 class="degree-title">' + esc(d.title) + "</h3>" +
           (d.institution ? '<span class="degree-inst">' + esc(d.institution) + "</span>" : "") +
           (d.detail ? '<span class="degree-detail">' + esc(d.detail) + "</span>" : "") +
