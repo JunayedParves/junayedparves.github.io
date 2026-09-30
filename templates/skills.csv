@@ -1,9 +1,9 @@
 order,name,detail,icon_url,type,show
-1,Excel,"Pivot tables, Power Query, VLOOKUP",assets/images/icons/excel.svg,tile,TRUE
-2,Power BI,Dashboard design & deployment,assets/images/icons/powerbi.svg,tile,TRUE
-3,SQL,"SQL Server, MySQL, complex queries",assets/images/icons/sql.svg,tile,TRUE
-4,Tableau,"Dashboards, visualization",assets/images/icons/tableau.svg,tile,TRUE
-5,Python,"pandas, NumPy",assets/images/icons/python.svg,tile,TRUE
+1,Excel,"Pivot tables, Power Query, VLOOKUP",assets/images/icons/excel-logo.png,tile,TRUE
+2,Power BI,Dashboard design & deployment,assets/images/icons/powerbi-logo.png,tile,TRUE
+3,SQL,"SQL Server, MySQL, complex queries",assets/images/icons/sql-logo.png,tile,TRUE
+4,Tableau,"Dashboards, visualization",assets/images/icons/tableau-logo.png,tile,TRUE
+5,Python,"pandas, NumPy",assets/images/icons/python-logo.png,tile,TRUE
 6,Statistics,Trend & root-cause analysis,assets/images/icons/statistics.svg,tile,TRUE
 10,Google Looker Studio,,,chip,TRUE
 11,Data cleaning & validation,,,chip,TRUE

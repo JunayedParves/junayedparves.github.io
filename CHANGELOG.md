@@ -20,6 +20,8 @@ This project uses [Semantic Versioning](https://semver.org/):
 ### Added
 - Optional `category` column in the `podcasts` tab, shown as a small gold label.
 - Podcast list: 8 shows with official cover art stored in `assets/images/podcasts/`.
+- Real brand logos for the Excel, Power BI, SQL, Tableau and Python skill tiles
+  (`assets/images/icons/*-logo.png`, cleaned to transparent 128px squares).
 
 ## [1.0.0] — 2026-09-30
 
