@@ -558,7 +558,7 @@ Every tab except `profile`: **`order`** = position (lower first). **`show`** = `
 | `projects` | order, title, category, description, image_url, link_url, link_label, show | `category` = Power BI, Web App, Tableau or GitHub (must match exactly). Filter tabs appear only for categories in use |
 | `books` | order, title, author, cover_url, category, summary, takeaway, status, rating, show | `summary` ≈ 40–70 words. `takeaway` = one sentence (shown in a gold "Key takeaway" box). Optional: `status` (e.g. Read / Reading / Want to Read), `rating` 1–5 (stars). Covers live in `assets/images/books/` |
 | `podcasts` | order, name, host, cover_url, why, link_url, category, show | `category` (optional) shows as a small gold label, e.g. "Data Visualization & Storytelling" |
-| `following` | order, name, role_org, avatar_url, platform, link_url, show | `platform` = any label, e.g. LinkedIn, YouTube, Blog |
+| `following` | order, group, name, role_org, avatar_url, image_alt, description, why, tags, link_label, link_url, image_credit, show | `group` = `people` (round photo) or `platforms` (square logo). `role_org` = the type line. `tags` separated by `\|`. `link_label` = link text (e.g. "YouTube channel"). Optional: `image_alt` (overrides the automatic alt text), `image_credit` = `Photo: Name, licence \| https://source` for photos that need attribution. Group headings come from `following_people_title` / `following_platforms_title` in `profile` |
 
 **Adding a column** doesn't break anything; the site simply ignores it.
 **Renaming a column** does: keep the header names exactly as above.

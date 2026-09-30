@@ -13,7 +13,17 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Changed
+- "People & organizations I follow" rebuilt as a personal learning ecosystem:
+  5 people and 4 platforms in two groups ("People I learn from" / "Platforms I
+  learn from"), each card with an authentic photo or official logo, type,
+  description, a "Why follow" box, topic tags and an external link.
+  People have round photos (gold ring); platforms have square logos (cream ring).
+
+### Added
+- New `following` columns: `group`, `image_alt`, `description`, `why`, `tags`,
+  `link_label`, `image_credit` (the old `platform` pill was removed).
+- Photo credit line for images that require attribution (DJ Patil, CC BY-SA 4.0).
 
 ## [1.2.0] — 2026-09-30
 
