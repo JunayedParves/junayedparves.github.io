@@ -553,8 +553,8 @@ Every tab except `profile`: **`order`** = position (lower first). **`show`** = `
 | Tab | Columns | Notes |
 |---|---|---|
 | `skills` | order, name, detail, icon_url, type, show | `type` = `tile` (big card with icon) or `chip` (small pill). Icons are in `assets/images/icons/` |
-| `experience` | order, title, company, city, start, end, bullets, show | `bullets` separated by `\|`. Empty `end` = "Present" |
-| `education` | order, type, title, institution, years, detail, show | `type` = `degree` (card) or `certification` (chip) |
+| `experience` | order, title, company, city, start, end, bullets, logo_url, show | `bullets` separated by `\|`. Empty `end` = "Present". `logo_url` (optional) = company logo, e.g. `assets/images/logos/metlife.png` |
+| `education` | order, type, title, institution, years, detail, logo_url, show | `type` = `degree` (card) or `certification` (chip). `logo_url` (optional) = institution logo, shown on degree cards |
 | `projects` | order, title, category, description, image_url, link_url, link_label, show | `category` = Power BI, Web App, Tableau or GitHub (must match exactly). Filter tabs appear only for categories in use |
 | `books` | order, title, author, cover_url, category, summary, takeaway, status, rating, show | `summary` ≈ 40–70 words. `takeaway` = one sentence (shown in a gold "Key takeaway" box). Optional: `status` (e.g. Read / Reading / Want to Read), `rating` 1–5 (stars). Covers live in `assets/images/books/` |
 | `podcasts` | order, name, host, cover_url, why, link_url, category, show | `category` (optional) shows as a small gold label, e.g. "Data Visualization & Storytelling" |

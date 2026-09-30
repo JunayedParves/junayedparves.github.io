@@ -6,6 +6,7 @@
     "institution": "Bangladesh University of Engineering and Technology (BUET)",
     "years": "2026 — 2027",
     "detail": "In progress",
+    "logo_url": "assets/images/logos/buet.png",
     "show": "TRUE"
   },
   {
@@ -15,6 +16,7 @@
     "institution": "Association of Chartered Certified Accountants",
     "years": "2025",
     "detail": "In progress",
+    "logo_url": "assets/images/logos/acca.png",
     "show": "TRUE"
   },
   {
@@ -24,6 +26,7 @@
     "institution": "University of Dhaka",
     "years": "2021",
     "detail": "",
+    "logo_url": "assets/images/logos/university-of-dhaka.png",
     "show": "TRUE"
   },
   {
@@ -33,6 +36,7 @@
     "institution": "Dhaka College (University of Dhaka)",
     "years": "2015",
     "detail": "",
+    "logo_url": "assets/images/logos/dhaka-college.png",
     "show": "TRUE"
   },
   {
@@ -42,6 +46,7 @@
     "institution": "Coursera",
     "years": "",
     "detail": "",
+    "logo_url": "",
     "show": "TRUE"
   },
   {
@@ -51,6 +56,7 @@
     "institution": "Maven Analytics",
     "years": "",
     "detail": "",
+    "logo_url": "",
     "show": "TRUE"
   },
   {
@@ -60,6 +66,7 @@
     "institution": "DataCamp",
     "years": "",
     "detail": "",
+    "logo_url": "",
     "show": "TRUE"
   },
   {
@@ -69,6 +76,7 @@
     "institution": "Microsoft & LinkedIn Learning",
     "years": "",
     "detail": "",
+    "logo_url": "",
     "show": "TRUE"
   },
   {
@@ -78,6 +86,7 @@
     "institution": "",
     "years": "",
     "detail": "",
+    "logo_url": "",
     "show": "TRUE"
   }
 ]

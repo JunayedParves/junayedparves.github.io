@@ -13,7 +13,14 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Added
+- Company logos on each Experience entry and institution logos on each degree card,
+  shown on a small cream tile. New optional `logo_url` column in the `experience`
+  and `education` tabs. Logos live in `assets/images/logos/`.
+
+### Changed
+- Experience: job dates now sit in their own column (always right-aligned on
+  desktop, on their own line on phones).
 
 ## [1.2.0] — 2026-09-30
 
