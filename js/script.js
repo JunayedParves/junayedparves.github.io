@@ -45,6 +45,8 @@
     podcasts_title: "Podcasts I listen to",
     following_label: "Staying current",
     following_title: "People & organizations I follow",
+    following_people_title: "People I learn from",
+    following_platforms_title: "Platforms I learn from",
     contact_label: "Résumé & contact",
     contact_title: "Let's work together",
     resume_note: "One page, PDF."
@@ -541,22 +543,59 @@
     return true;
   }
 
-  /* ---------- People & organizations I follow ---------- */
-  function renderFollowing(rows) {
-    if (!rows.length) return false;
-    body("following").innerHTML = '<ul class="follow-grid" role="list">' + rows.map(function (f) {
-      var link = safeUrl(f.link_url);
-      var inner =
-        '<div class="follow-avatar">' + imageHtml(f.avatar_url, { alt: "", placeholder: initialsOf(f.name), initials: true }) + "</div>" +
+  /* ---------- People & organizations I follow ----------
+     Rows are split into two groups by the "group" column:
+     "people" (round photo) and "platforms" (square logo). */
+  var FOLLOW_GROUPS = [
+    { key: "people", icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>' },
+    { key: "platforms", icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>' }
+  ];
+  var EXTERNAL_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+
+  function followCard(f, isLogo) {
+    var link = safeUrl(f.link_url);
+    var tags = splitBars(f.tags);
+    var credit = splitBars(f.image_credit); // "Photo: Name, licence | https://source"
+    var creditUrl = safeUrl(credit[1]);
+    return '<li class="follow-card">' +
+      '<div class="follow-head">' +
+        '<div class="follow-avatar' + (isLogo ? " is-logo" : "") + '">' +
+          imageHtml(f.avatar_url, { alt: f.image_alt || (isLogo ? f.name + " logo" : f.name), placeholder: initialsOf(f.name), initials: true }) +
+        "</div>" +
         '<div class="follow-text">' +
-          '<span class="follow-name">' + esc(f.name) + "</span>" +
+          '<h4 class="follow-name">' + esc(f.name) + "</h4>" +
           (f.role_org ? '<span class="follow-role">' + esc(f.role_org) + "</span>" : "") +
         "</div>" +
-        (f.platform ? '<span class="follow-platform">' + esc(f.platform) + "</span>" : "");
-      return "<li>" + (link
-        ? '<a class="follow-card" href="' + esc(link) + '"' + linkAttrs(link) + ">" + inner + "</a>"
-        : '<div class="follow-card">' + inner + "</div>") + "</li>";
-    }).join("") + "</ul>";
+      "</div>" +
+      (f.description ? '<p class="follow-desc">' + esc(f.description) + "</p>" : "") +
+      (f.why ? '<p class="follow-why"><span class="follow-why-label">Why follow</span>' + esc(f.why) + "</p>" : "") +
+      (tags.length ? '<ul class="follow-tags" aria-label="Topics">' + tags.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : "") +
+      (link ? '<a class="text-link follow-link" href="' + esc(link) + '"' + linkAttrs(link) + ">" +
+        esc(f.link_label || "Learn more") + " " + EXTERNAL_ICON +
+        '<span class="visually-hidden"> — ' + esc(f.name) + (isExternal(link) ? " (opens in a new tab)" : "") + "</span></a>" : "") +
+      (credit[0] ? '<small class="follow-credit">' + (creditUrl
+        ? '<a href="' + esc(creditUrl) + '"' + linkAttrs(creditUrl) + ">" + esc(credit[0]) + "</a>"
+        : esc(credit[0])) + "</small>" : "") +
+    "</li>";
+  }
+
+  function renderFollowing(rows) {
+    if (!rows.length) return false;
+    var html = "";
+    FOLLOW_GROUPS.forEach(function (group) {
+      var items = rows.filter(function (f) {
+        var g = (f.group || "people").toLowerCase();
+        return group.key === "platforms" ? /^(platform|org)/.test(g) : !/^(platform|org)/.test(g);
+      });
+      if (!items.length) return;
+      html += '<div class="follow-group">' +
+        '<h3 class="follow-group-title"><span class="follow-group-icon">' + group.icon + "</span>" +
+          esc(text("following_" + group.key + "_title")) + "</h3>" +
+        '<ul class="follow-grid" role="list">' +
+          items.map(function (f) { return followCard(f, group.key === "platforms"); }).join("") +
+        "</ul></div>";
+    });
+    body("following").innerHTML = html;
     return true;
   }
 
