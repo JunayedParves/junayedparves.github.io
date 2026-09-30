@@ -540,26 +540,75 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; }
 .project-card .text-link:hover { color: var(--navy); }
 
 /* ---------- 11. BOOKS ---------- */
+/* Each book is a card: a "shelf" panel with the cover, then the text.
+   Covers keep their real proportions (never stretched or cropped): every
+   cover is shown at the same height, centred on a panel of fixed size. */
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
-.book { display: flex; flex-direction: column; gap: 12px; }
-.book-cover {
-  aspect-ratio: 3 / 4;
-  border-radius: 8px 16px 16px 8px;
-  border-left: 10px solid var(--gold);
+.book {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   overflow: hidden;
-  background: var(--placeholder);
-  margin-bottom: 4px;
+  transition: border-color .2s ease, transform .2s ease;
 }
-.book:nth-child(even) .book-cover { border-left-color: var(--cream); }
-.book-cover img { width: 100%; height: 100%; object-fit: cover; }
+.book:hover { border-color: rgba(246, 196, 83, 0.55); transform: translateY(-3px); }
+.book-cover {
+  height: 280px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.18);
+}
+.book-cover img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 16px 28px -12px rgba(0, 0, 0, 0.7);
+  transition: transform .2s ease;
+}
+.book:hover .book-cover img { transform: scale(1.03); }
+.book-cover .img-ph { width: 150px; border-radius: 6px; }
+.book-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+.book-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.book-status {
+  padding: 3px 10px;
+  border-radius: var(--pill);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+  color: var(--text-soft);
+}
 .book-title { font-size: 19px; font-weight: 600; line-height: 1.3; }
 .book-author { font-size: 14px; color: var(--text-muted); }
 .stars { color: var(--gold); font-size: 16px; letter-spacing: 3px; }
-.book-review { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
+.book-summary { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
+.book-takeaway {
+  margin-top: auto;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border-left: 3px solid var(--gold);
+  background: rgba(246, 196, 83, 0.08);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--cream);
+}
+.book-takeaway-label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
 
 /* ---------- 12. PODCASTS ---------- */
 .podcast-grid {
@@ -585,7 +634,8 @@ h1, h2, h3, p, ul, dl, dd { margin: 0; }
 }
 .podcast-cover img { width: 100%; height: 100%; object-fit: cover; }
 .podcast-info { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.podcast-category {
+.podcast-category,
+.book-category {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.08em;
@@ -747,7 +797,6 @@ a.follow-card:hover { color: var(--cream); border-color: var(--gold); background
 /* Large tablets / small laptops */
 @media (max-width: 1180px) {
   .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .book-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .follow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   /* Hamburger menu */
@@ -777,6 +826,7 @@ a.follow-card:hover { color: var(--cream); border-color: var(--gold); background
   .portrait-wrap { justify-self: center; width: min(100%, 400px); }
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .podcast-grid { grid-template-columns: 1fr; }
+  .book-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* Phones */
@@ -802,8 +852,9 @@ a.follow-card:hover { color: var(--cream); border-color: var(--gold); background
   .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .skill-tile { min-height: 168px; padding: 18px; }
   .degree-grid, .project-grid, .follow-grid { grid-template-columns: 1fr; }
-  .book-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-  .book-title { font-size: 17px; }
+  .book-grid { grid-template-columns: 1fr; gap: 20px; }
+  .book-cover { height: 250px; }
+  .book-body { padding: 20px; }
 
   .timeline { padding-left: 28px; }
   .job::before { left: -39px; }
