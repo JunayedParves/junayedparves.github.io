@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [1.4.0] — 2026-10-01
+
 ### Changed
 - Section labels no longer show numbers ("01 — About me" → "About me") and are now
   a bold gold badge with a glowing dot, so each section heading stands out.
