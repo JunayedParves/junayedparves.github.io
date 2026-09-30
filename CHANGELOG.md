@@ -13,7 +13,12 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Changed
+- Section labels no longer show numbers ("01 — About me" → "About me") and are now
+  a bold gold badge with a glowing dot, so each section heading stands out.
+- Books section decluttered using the podcast card style: cover on the left, text on
+  the right, 2 per row (1 on phones). Each card shows category, title, author and the
+  Key takeaway; the longer summary is folded behind a "Read summary" toggle.
 
 ## [1.3.0] — 2026-10-01
 

@@ -252,7 +252,7 @@ Run workflow → Run workflow**.
   The same trick works in `profile → headline` to split it over lines.
 - **Leave `end` empty** in `experience` to show "Present".
 - **A whole section disappears** when its tab has no visible rows (e.g. Podcasts). The menu link
-  goes too, and the section numbers ("01 —", "02 —") renumber themselves.
+  goes too, and the alternating blue/navy backgrounds adjust themselves.
 - **Section headings** (like "My analytics toolkit") come from the `profile` tab:
   `skills_title`, `skills_intro`, `skills_label`, and the same for `experience_`, `education_`,
   `projects_`, `books_`, `podcasts_`, `following_` and `contact_`. Leave one empty to use the default.
@@ -539,7 +539,7 @@ Every tab except `profile`: **`order`** = position (lower first). **`show`** = `
 | `email`, `linkedin`, `github`, `location` | Contact details shown in the gold card |
 | `stat1_value` / `stat1_label` … `stat3_…` | The three quick stats (e.g. `4+` / `Years in BI & analytics`) |
 | `last_updated` | 2026-09-30 (shown in the footer) |
-| `<section>_label` | Small gold label, e.g. `skills_label` = "Skills & tools" (the number is added automatically) |
+| `<section>_label` | Gold badge above the heading, e.g. `skills_label` = "Skills & tools" |
 | `<section>_title` | Big heading, e.g. `projects_title` = "Selected work" |
 | `<section>_intro` | One-line intro next to or under the heading (optional) |
 | `skills_chips_label` | Text before the skill chips ("Also working with:") |
