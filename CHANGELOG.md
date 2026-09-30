@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [1.5.0] — 2026-10-01
+
 ### Changed
 - About stats: "6 / Business units served" replaced with "Focus industries:
   Insurance, E-Commerce, F&B Operations". A stat value can now hold several
