@@ -289,7 +289,10 @@
     var stats = "";
     for (var i = 1; i <= 3; i++) {
       var value = profile["stat" + i + "_value"], label = profile["stat" + i + "_label"];
-      if (value) stats += '<div class="stat"><dt>' + esc(label) + "</dt><dd>" + esc(value) + "</dd></div>";
+      // "|" in the value = one item per line (e.g. "Insurance | E-Commerce | F&B Operations")
+      var lines = splitBars(value);
+      if (value) stats += '<div class="stat' + (lines.length > 1 ? " stat-list" : "") + '"><dt>' + esc(label) + "</dt><dd>" +
+        lines.map(esc).join("<br>") + "</dd></div>";
     }
     var statsEl = document.querySelector("[data-stats]");
     statsEl.innerHTML = stats;

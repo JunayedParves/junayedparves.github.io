@@ -13,7 +13,14 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Changed
+- About stats: "6 / Business units served" replaced with "Focus industries:
+  Insurance, E-Commerce, F&B Operations". A stat value can now hold several
+  lines (separate them with `|` in the Sheet); labels stay aligned.
+- Experience & Education logos now sit directly on the blue (no cream tile).
+  Logos with dark text (Green Delta, MetLife, Quantanite, ACCA) use light
+  "reversed" versions so they stay readable; brand colours are unchanged.
+  BUET's emblem keeps its white field. Logos are left-aligned.
 
 ## [1.4.0] — 2026-10-01
 
