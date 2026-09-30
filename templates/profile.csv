@@ -39,7 +39,9 @@ podcasts_title,Podcasts I listen to
 podcasts_intro,
 following_label,Staying current
 following_title,People & organizations I follow
-following_intro,How I keep my skills up to date.
+following_intro,"My learning journey in data has been shaped by educators, practitioners and learning platforms that make complex ideas practical. These are the people and organizations I regularly learn from to strengthen my technical skills, business thinking and approach to analytics."
+following_people_title,People I learn from
+following_platforms_title,Platforms I learn from
 contact_label,Résumé & contact
 contact_title,Let's work together
 contact_intro,

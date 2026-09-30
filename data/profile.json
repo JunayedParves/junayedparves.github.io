@@ -161,7 +161,15 @@
   },
   {
     "key": "following_intro",
-    "value": "How I keep my skills up to date."
+    "value": "My learning journey in data has been shaped by educators, practitioners and learning platforms that make complex ideas practical. These are the people and organizations I regularly learn from to strengthen my technical skills, business thinking and approach to analytics."
+  },
+  {
+    "key": "following_people_title",
+    "value": "People I learn from"
+  },
+  {
+    "key": "following_platforms_title",
+    "value": "Platforms I learn from"
   },
   {
     "key": "contact_label",
