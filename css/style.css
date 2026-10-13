@@ -513,6 +513,22 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
 .org-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
 .org-logo .img-ph { background: none; color: var(--text-soft); font-family: var(--font-display); font-size: 20px; }
 
+/* Square company mark on a tile (Experience). All marks share one size. */
+.org-mark {
+  flex-shrink: 0;
+  width: 56px; height: 56px;
+  padding: 9px;
+  border-radius: 14px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 8px 20px -12px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.org-mark img { width: 100%; height: 100%; object-fit: contain; }
+.org-mark .img-ph { background: none; color: var(--text-soft); font-family: var(--font-display); font-size: 18px; padding: 0; }
+
 /* ---------- 8. EXPERIENCE (timeline) ---------- */
 .timeline {
   list-style: none;
@@ -524,7 +540,7 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
 .job::before { /* the dot on the line */
   content: "";
   position: absolute;
-  left: -51px; top: 21px; /* centred on the 60px logo */
+  left: -51px; top: 19px; /* centred on the 56px logo tile */
   width: 18px; height: 18px;
   border-radius: 50%;
   background: var(--text-soft);
@@ -634,44 +650,86 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
 .project-title { font-size: 19px; font-weight: 700; line-height: 1.3; }
 .project-desc { font-size: 15px; line-height: 1.55; color: var(--text-soft); flex-grow: 1; }
 
-/* ---------- 11. BOOKS ---------- */
-/* Same card style as the podcasts: cover on the left, text on the right.
-   Only the first few books show; "Read more" expands the shelf with a
-   smooth height animation (see script.js). The longer summary in each card
-   is folded away behind "Read summary". Covers are never stretched. */
-.book-shelf {
+/* ---------- 11-13. COMPACT CARDS: BOOKS, PODCASTS, FOLLOWING ----------
+   Small cards, 5 in a row on desktop. Only the first row shows; the
+   "Read more" button expands the shelf (smooth height animation in
+   script.js). Longer text in each card sits behind a small toggle. */
+.shelf {
   overflow: hidden;
   transition: height .55s cubic-bezier(.2, .7, .2, 1);
 }
-.book-grid {
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  align-items: start; /* opening one summary doesn't stretch its neighbour */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start; /* opening one card's details doesn't stretch its neighbours */
 }
-.book {
-  padding: 20px;
+.card-grid > [hidden] { display: none; }
+/* Cards revealed by "Read more" fade and slide in, one after another */
+.card-grid > .is-revealing { animation: card-in .5s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.book, .podcast, .follow-card {
+  padding: 14px;
   border-radius: var(--radius);
   background: var(--card-bg);
   border: 1px solid var(--border);
   display: flex;
-  gap: 22px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
   transition: border-color .2s ease, transform .2s ease;
 }
-.book[hidden] { display: none; }
-.book:hover { border-color: var(--accent-border); transform: translateY(-3px); }
-/* Books revealed by "Read more" fade and slide in, one after another */
-.book.is-revealing { animation: book-in .5s cubic-bezier(.2, .7, .2, 1) both; }
-@keyframes book-in {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: none; }
+.book:hover, .podcast:hover, .follow-card:hover { border-color: var(--accent-border); transform: translateY(-3px); }
+
+/* text inside every compact card */
+.card-body { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.card-category {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-light);
 }
+.card-title { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.card-meta { font-size: 12.5px; line-height: 1.4; color: var(--text-muted); }
+.card-link { display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; margin-top: 4px; font-size: 13.5px; }
+.card-more-text { font-size: 13px; line-height: 1.55; color: var(--text-soft); margin-top: 8px; }
+
+/* small "Why I listen / Takeaway" toggle (native <details>: keyboard-accessible) */
+.card-more { margin-top: 4px; }
+.card-more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--accent-light);
+  cursor: pointer;
+  list-style: none;
+}
+.card-more summary::-webkit-details-marker { display: none; }
+.card-more summary::after {
+  content: "";
+  width: 6px; height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s ease;
+}
+.card-more[open] summary::after { transform: translateY(1px) rotate(-135deg); }
+.card-more summary:hover { color: #C4B8FF; }
+
+/* Books: cover on a small "shelf" panel, never stretched or cropped */
 .book-cover {
-  flex-shrink: 0;
-  width: 116px; height: 174px;
+  height: 170px;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.22);
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 }
 .book-cover img {
@@ -679,51 +737,105 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
   max-height: 100%;
   width: auto;
   height: auto;
-  border-radius: 6px;
-  box-shadow: 0 14px 24px -12px rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.85);
   transition: transform .2s ease;
 }
-.book:hover .book-cover img { transform: scale(1.03); }
-.book-cover .img-ph { border-radius: 6px; }
-.book-info { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1; align-self: stretch; }
-.book-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.book:hover .book-cover img { transform: scale(1.04); }
+.book-cover .img-ph { border-radius: 4px; font-size: 11px; }
 .book-status {
-  padding: 3px 10px;
+  align-self: flex-start;
+  padding: 2px 8px;
   border-radius: var(--pill);
   border: 1px solid var(--border-strong);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-soft);
 }
-.book-title { font-size: 19px; font-weight: 700; line-height: 1.3; }
-.book-author { font-size: 14px; color: var(--text-muted); }
-.stars { color: #FBBF24; font-size: 16px; letter-spacing: 3px; }
-.book-summary { font-size: 15px; line-height: 1.6; color: var(--text-soft); margin-top: 8px; }
+.stars { color: #FBBF24; font-size: 13px; letter-spacing: 2px; }
 
-/* "Read summary" toggle (a native <details> element: keyboard-accessible) */
-.book-more summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 600;
-  font-size: 14.5px;
+/* Podcasts: square cover art */
+.podcast-cover {
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--placeholder);
+}
+.podcast-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .2s ease; }
+.podcast:hover .podcast-cover img { transform: scale(1.04); }
+
+/* "Key takeaway" / "Why follow" box inside the toggles */
+.book-takeaway,
+.follow-why {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.book-takeaway-label,
+.follow-why-label {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--accent-light);
-  cursor: pointer;
-  list-style: none;
 }
-.book-more summary::-webkit-details-marker { display: none; }
-.book-more summary::after {
-  content: "";
-  width: 7px; height: 7px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform .2s ease;
-}
-.book-more[open] summary::after { transform: translateY(1px) rotate(-135deg); }
-.book-more summary:hover { color: #C4B8FF; }
 
-/* "Read more / Show less" button under the shelf */
-.shelf-toggle-row { display: flex; justify-content: center; margin-top: 32px; }
+/* Following: two groups; people = round photo with violet ring,
+   platforms = rounded-square logo with a light ring */
+.follow-group + .follow-group { margin-top: 48px; }
+.follow-group-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 19px;
+  font-weight: 700;
+}
+.follow-group-icon {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient);
+  color: #fff;
+}
+.follow-card { padding: 20px 14px 16px; align-items: center; text-align: center; }
+.follow-card .card-body { align-items: center; }
+.follow-card .card-link { align-self: center; }
+.follow-card .card-more { text-align: left; }
+.follow-avatar {
+  flex-shrink: 0;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  background: var(--placeholder);
+}
+.follow-avatar.is-logo { border-radius: 16px; border-color: var(--border-strong); }
+.follow-avatar img { width: 100%; height: 100%; object-fit: cover; transition: transform .2s ease; }
+.follow-card:hover .follow-avatar img { transform: scale(1.05); }
+.follow-avatar .img-ph.initials { font-size: 20px; }
+.follow-tags { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 5px; }
+.follow-tags li {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-strong);
+  font-size: 11px;
+  color: var(--text-soft);
+}
+.follow-credit { font-size: 10.5px; color: var(--text-muted); }
+.follow-credit a { color: inherit; }
+
+/* "Read more / Show less" button under a shelf */
+.shelf-toggle-row { display: flex; justify-content: center; margin-top: 24px; }
 .shelf-toggle .chevron {
   width: 8px; height: 8px;
   border-right: 2px solid currentColor;
@@ -732,134 +844,6 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
   transition: transform .3s ease;
 }
 .shelf-toggle[aria-expanded="true"] .chevron { transform: translateY(2px) rotate(-135deg); }
-
-.book-takeaway,
-.follow-why {
-  margin-top: auto;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border-left: 3px solid var(--accent);
-  background: var(--accent-soft);
-  font-size: 14.5px;
-  line-height: 1.5;
-  color: var(--text);
-}
-.book-takeaway-label,
-.follow-why-label {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-light);
-}
-
-/* ---------- 12. PODCASTS ---------- */
-.podcast-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-.podcast {
-  padding: 20px;
-  border-radius: var(--radius);
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  transition: border-color .2s ease, transform .2s ease;
-}
-.podcast:hover { border-color: var(--accent-border); transform: translateY(-3px); }
-.podcast-cover {
-  flex-shrink: 0;
-  width: 136px; height: 136px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--placeholder);
-}
-.podcast-cover img { width: 100%; height: 100%; object-fit: cover; }
-.podcast-info { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.podcast-category,
-.book-category {
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-light);
-}
-.podcast-name { font-size: 19px; font-weight: 700; line-height: 1.3; }
-.podcast-host { font-size: 14px; color: var(--text-muted); }
-.podcast-why { font-size: 15px; line-height: 1.55; color: var(--text-soft); }
-
-/* ---------- 13. FOLLOWING ---------- */
-/* Two groups ("People" and "Platforms") of the same card design.
-   People have round photos with a violet ring; platforms have rounded-square
-   logos with a light ring, so the two groups are easy to tell apart. */
-.follow-group + .follow-group { margin-top: 56px; }
-.follow-group-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-  font-size: 21px;
-  font-weight: 700;
-}
-.follow-group-icon {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--gradient);
-  color: #fff;
-}
-.follow-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-.follow-card {
-  padding: 24px;
-  border-radius: var(--radius);
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: border-color .2s ease, transform .2s ease;
-}
-.follow-card:hover { border-color: var(--accent-border); transform: translateY(-3px); }
-.follow-head { display: flex; align-items: center; gap: 16px; }
-.follow-avatar {
-  flex-shrink: 0;
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--accent);
-  background: var(--placeholder);
-}
-.follow-avatar.is-logo { border-radius: 14px; border-color: var(--border-strong); }
-.follow-avatar img { width: 100%; height: 100%; object-fit: cover; transition: transform .2s ease; }
-.follow-card:hover .follow-avatar img { transform: scale(1.05); }
-.follow-avatar .img-ph.initials { font-size: 20px; }
-.follow-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.follow-name { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.3; }
-.follow-role { font-size: 13.5px; line-height: 1.4; color: var(--text-muted); }
-.follow-desc { font-size: 15px; line-height: 1.6; color: var(--text-soft); }
-.follow-tags { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
-.follow-tags li {
-  padding: 3px 10px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-strong);
-  font-size: 12px;
-  color: var(--text-soft);
-}
-.follow-link { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; }
-.follow-credit { font-size: 11.5px; color: var(--text-muted); }
-.follow-credit a { color: inherit; }
 
 /* ---------- 14. CONTACT ---------- */
 .contact-grid {
@@ -983,7 +967,7 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
 /* Large tablets / small laptops */
 @media (max-width: 1180px) {
   .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .follow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
   /* Hamburger menu */
   .nav-toggle { display: block; }
@@ -1011,8 +995,7 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
   .split { gap: 40px; }
   .portrait-wrap { justify-self: center; width: min(100%, 400px); }
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .podcast-grid { grid-template-columns: 1fr; }
-  .book-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* Phones */
@@ -1040,10 +1023,11 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
 
   .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .skill-tile { min-height: 164px; padding: 18px; }
-  .degree-grid, .project-grid, .follow-grid { grid-template-columns: 1fr; }
-  .book { padding: 16px; gap: 16px; }
-  .book-cover { width: 84px; height: 126px; }
-  .book-title { font-size: 17.5px; }
+  .degree-grid, .project-grid { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .book, .podcast, .follow-card { padding: 12px; }
+  .book-cover { height: 150px; padding: 10px; }
+  .card-title { font-size: 14px; }
 
   .timeline { padding-left: 28px; }
   .job::before { left: -39px; }
@@ -1051,11 +1035,8 @@ h1, h2, h3, h4, p, ul, dl, dd { margin: 0; }
   .job-head { flex-wrap: wrap; align-items: flex-start; gap: 8px 14px; }
   .job-head .job-dates { order: 3; flex-basis: 100%; margin-left: 0; padding-top: 0; }
   .org-logo { width: 100px; height: 48px; }
+  .org-mark { width: 48px; height: 48px; padding: 8px; border-radius: 12px; }
   .job::before { top: 15px; }
-
-  .podcast { gap: 16px; align-items: flex-start; padding: 16px; }
-  .podcast-cover { width: 88px; height: 88px; }
-  .podcast-name { font-size: 17.5px; }
 
   .resume-card, .contact-form { padding: 28px 22px; }
   .resume-title { font-size: 27px; }

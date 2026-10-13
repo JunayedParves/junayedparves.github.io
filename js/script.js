@@ -41,7 +41,9 @@
     projects_title: "Selected work",
     books_label: "Bookshelf",
     books_title: "Books I've read & reviewed",
-    books_visible: "4",          // books shown before "Read more"
+    books_visible: "5",          // items shown before "Read more" (one row on desktop)
+    podcasts_visible: "5",
+    following_visible: "5",
     podcasts_label: "In my ears",
     podcasts_title: "Podcasts I listen to",
     following_label: "Staying current",
@@ -424,10 +426,10 @@
   }
 
   /* Organisation / institution logo on a small cream tile ("" if no logo). */
-  function orgLogo(url, name) {
+  function orgLogo(url, name, variant) {
     if (!url) return "";
     name = String(name || "").replace(/\s*\([^)]*\)\s*$/, ""); // "Dhaka College (University of Dhaka)" → "Dhaka College"
-    return '<div class="org-logo">' + imageHtml(url, { alt: name ? name + " logo" : "", placeholder: initialsOf(name) }) + "</div>";
+    return '<div class="' + (variant === "mark" ? "org-mark" : "org-logo") + '">' + imageHtml(url, { alt: name ? name + " logo" : "", placeholder: initialsOf(name) }) + "</div>";
   }
 
   /* ---------- Experience: vertical timeline ---------- */
@@ -439,7 +441,7 @@
       var bullets = splitBars(job.bullets);
       return '<li class="job">' +
         '<div class="job-head">' +
-          orgLogo(job.logo_url, job.company) +
+          orgLogo(job.logo_url, job.company, "mark") +
           '<div class="job-head-text">' +
             '<h3 class="job-title">' + esc(job.title) + "</h3>" +
             (org ? '<p class="job-org">' + esc(org) + "</p>" : "") +
@@ -539,14 +541,122 @@
     return true;
   }
 
-  /* ---------- Books ----------
-     Only the first few books show (profile key "books_visible", default 4);
-     the rest are revealed by the "Read more" button below the shelf. */
+  /* ===================================================================
+     COMPACT COLLECTIONS (Books, Podcasts, People, Platforms)
+     Small cards, 5 in a row on desktop. Only the first row shows; a
+     "Read more" button expands the rest with a smooth animation.
+     How many show first: profile keys books_visible, podcasts_visible,
+     following_visible (default 5).
+     =================================================================== */
+
+  /* Wrap a list of cards in an expandable "shelf" + its toggle button.
+     Items after the first `visible` are hidden until "Read more" is pressed. */
+  function shelfHtml(id, listClass, itemsHtml, total, visible, noun) {
+    var more = total - visible;
+    return '<div class="shelf" id="' + id + '"><ul class="' + listClass + '" role="list">' + itemsHtml + "</ul></div>" +
+      (more > 0
+        ? '<div class="shelf-toggle-row"><button type="button" class="btn btn-outline shelf-toggle" aria-expanded="false" aria-controls="' + id +
+            '" data-shelf-toggle="' + id + '" data-more="' + more + '" data-noun="' + esc(noun) + '">' +
+            '<span class="shelf-toggle-label">' + shelfLabel(false, more, noun) + '</span><span class="chevron" aria-hidden="true"></span></button></div>'
+        : "");
+  }
+
+  /* Opening tag for a card; cards beyond the first row start hidden */
+  function cardOpen(className, index, visible) {
+    return '<li class="' + className + (index >= visible ? ' shelf-extra" hidden' : '"') + ">";
+  }
+
+  function visibleCount(key) {
+    return Math.max(1, parseInt(text(key), 10) || 5);
+  }
+
+  function shelfLabel(expanded, more, noun) {
+    if (expanded) return "Show less";
+    var plural = noun === "person" ? "people" : noun.slice(-1) === "s" ? noun : noun + "s";
+    return "Read more (" + more + " more " + (more === 1 ? noun : plural) + ")";
+  }
+
+  /* Small "more details" toggle inside a card (native <details>: keyboard-accessible) */
+  function cardMore(label, innerHtml) {
+    return innerHtml ? '<details class="card-more"><summary>' + esc(label) + "</summary>" + innerHtml + "</details>" : "";
+  }
+
+  /* Make every shelf inside `root` expandable with a smooth height animation. */
+  function setupShelves(root) {
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    root.querySelectorAll("[data-shelf-toggle]").forEach(function (button) {
+      var shelf = document.getElementById(button.getAttribute("data-shelf-toggle"));
+      var label = button.querySelector(".shelf-toggle-label");
+      var more = parseInt(button.getAttribute("data-more"), 10);
+      var noun = button.getAttribute("data-noun");
+      var extras = [].slice.call(shelf.querySelectorAll(".shelf-extra"));
+
+      // Animate the shelf's height from one value to another, then call done()
+      function animateHeight(from, to, done) {
+        if (reduceMotion || from === to) { done(); return; }
+        shelf.style.height = from + "px";
+        void shelf.offsetHeight;          // make the browser register the start height
+        shelf.style.height = to + "px";
+        var finished = false;
+        function finish() {
+          if (finished) return;
+          finished = true;
+          shelf.removeEventListener("transitionend", onEnd);
+          done();
+        }
+        function onEnd(event) { if (event.target === shelf) finish(); }
+        shelf.addEventListener("transitionend", onEnd);
+        setTimeout(finish, 800);          // safety net if the event never fires
+      }
+
+      button.addEventListener("click", function () {
+        var expanded = button.getAttribute("aria-expanded") === "true";
+        var from = shelf.offsetHeight;
+
+        if (!expanded) {
+          // Show the hidden cards and measure the full height first...
+          extras.forEach(function (card) { card.hidden = false; });
+          var to = shelf.scrollHeight;
+          // ...then let each card fade and slide in, slightly staggered
+          extras.forEach(function (card, i) {
+            var delay = i * 60;
+            card.style.animationDelay = delay + "ms";
+            card.classList.add("is-revealing");
+            var cleanUp = function () {
+              card.classList.remove("is-revealing");
+              card.style.animationDelay = "";
+            };
+            card.addEventListener("animationend", cleanUp, { once: true });
+            setTimeout(cleanUp, delay + 700); // in case the browser skips the animation
+          });
+          animateHeight(from, to, function () { shelf.style.height = ""; });
+        } else {
+          // Measure the collapsed height, then shrink to it and hide the extra cards
+          extras.forEach(function (card) { card.hidden = true; });
+          var collapsed = shelf.offsetHeight;
+          extras.forEach(function (card) { card.hidden = false; });
+          animateHeight(from, collapsed, function () {
+            extras.forEach(function (card) { card.hidden = true; });
+            shelf.style.height = "";
+          });
+          // If the top of the shelf has scrolled out of view, bring it back
+          if (shelf.getBoundingClientRect().top < 80) {
+            var top = shelf.getBoundingClientRect().top + window.pageYOffset - 140;
+            window.scrollTo({ top: top, behavior: reduceMotion ? "auto" : "smooth" });
+          }
+        }
+        button.setAttribute("aria-expanded", String(!expanded));
+        label.textContent = shelfLabel(!expanded, more, noun);
+      });
+    });
+  }
+
+  /* ---------- Books ---------- */
   function renderBooks(rows) {
     if (!rows.length) return false;
-    var visible = Math.max(1, parseInt(text("books_visible"), 10) || 4);
-    var more = rows.length - visible;
-    body("books").innerHTML = '<div class="book-shelf" id="book-shelf"><ul class="book-grid" role="list">' + rows.map(function (b, index) {
+    var visible = visibleCount("books_visible");
+    var items = rows.map(function (b, index) {
       var rating = Math.max(0, Math.min(5, Math.round(parseFloat(b.rating) || 0)));
       var stars = rating
         ? '<span class="stars" role="img" aria-label="Rated ' + rating + ' out of 5">' +
@@ -554,119 +664,46 @@
         : "";
       var summary = b.summary || b.review; // "review" = older column name, still supported
       var alt = "Cover of " + b.title + (b.author ? " by " + b.author : "");
-      return '<li class="book' + (index >= visible ? ' book-extra" hidden' : '"') + ">" +
+      var details =
+        (b.takeaway ? '<p class="book-takeaway"><span class="book-takeaway-label">Key takeaway</span>' + esc(b.takeaway) + "</p>" : "") +
+        (summary ? '<p class="card-more-text">' + esc(summary) + "</p>" : "");
+      return cardOpen("book", index, visible) +
         '<div class="book-cover">' + imageHtml(b.cover_url, { alt: alt, placeholder: b.title }) + "</div>" +
-        '<div class="book-info">' +
-          (b.category || b.status
-            ? '<div class="book-meta">' +
-                (b.category ? '<span class="book-category">' + esc(b.category) + "</span>" : "") +
-                (b.status ? '<span class="book-status">' + esc(b.status) + "</span>" : "") +
-              "</div>"
-            : "") +
-          '<h3 class="book-title">' + esc(b.title) + "</h3>" +
-          (b.author ? '<span class="book-author">by ' + esc(b.author) + "</span>" : "") +
+        '<div class="card-body">' +
+          (b.category ? '<span class="card-category">' + esc(b.category) + "</span>" : "") +
+          '<h3 class="card-title">' + esc(b.title) + "</h3>" +
+          (b.author ? '<span class="card-meta">by ' + esc(b.author) + "</span>" : "") +
+          (b.status ? '<span class="book-status">' + esc(b.status) + "</span>" : "") +
           stars +
-          (b.takeaway ? '<p class="book-takeaway"><span class="book-takeaway-label">Key takeaway</span>' + esc(b.takeaway) + "</p>" : "") +
-          (summary ? '<details class="book-more"><summary>Read summary</summary><p class="book-summary">' + esc(summary) + "</p></details>" : "") +
+          cardMore("Takeaway", details) +
         "</div>" +
       "</li>";
-    }).join("") + "</ul></div>" +
-    (more > 0
-      ? '<div class="shelf-toggle-row"><button type="button" class="btn btn-outline shelf-toggle" aria-expanded="false" aria-controls="book-shelf" data-shelf-toggle>' +
-          '<span class="shelf-toggle-label">' + shelfLabel(false, more) + '</span><span class="chevron" aria-hidden="true"></span></button></div>'
-      : "");
-    if (more > 0) setupBookShelf(more);
+    }).join("");
+    body("books").innerHTML = shelfHtml("book-shelf", "book-grid card-grid", items, rows.length, visible, "book");
+    setupShelves(body("books"));
     return true;
-  }
-
-  function shelfLabel(expanded, more) {
-    return expanded ? "Show less" : "Read more (" + more + " more book" + (more === 1 ? "" : "s") + ")";
-  }
-
-  /* Expand / collapse the bookshelf with a smooth height animation. */
-  function setupBookShelf(more) {
-    var shelf = document.getElementById("book-shelf");
-    var button = document.querySelector("[data-shelf-toggle]");
-    var label = button.querySelector(".shelf-toggle-label");
-    var extras = [].slice.call(shelf.querySelectorAll(".book-extra"));
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // Animate the shelf's height from one value to another, then call done()
-    function animateHeight(from, to, done) {
-      if (reduceMotion || from === to) { done(); return; }
-      shelf.style.height = from + "px";
-      void shelf.offsetHeight;            // make the browser register the start height
-      shelf.style.height = to + "px";
-      var finished = false;
-      function finish() {
-        if (finished) return;
-        finished = true;
-        shelf.removeEventListener("transitionend", onEnd);
-        done();
-      }
-      function onEnd(event) { if (event.target === shelf) finish(); }
-      shelf.addEventListener("transitionend", onEnd);
-      setTimeout(finish, 800);            // safety net if the event never fires
-    }
-
-    button.addEventListener("click", function () {
-      var expanded = button.getAttribute("aria-expanded") === "true";
-      var from = shelf.offsetHeight;
-
-      if (!expanded) {
-        // Show the hidden books and measure the full height first...
-        extras.forEach(function (book) { book.hidden = false; });
-        var to = shelf.scrollHeight;
-        // ...then let each one fade and slide in, slightly staggered
-        extras.forEach(function (book, i) {
-          var delay = i * 70;
-          book.style.animationDelay = delay + "ms";
-          book.classList.add("is-revealing");
-          var cleanUp = function () {
-            book.classList.remove("is-revealing");
-            book.style.animationDelay = "";
-          };
-          book.addEventListener("animationend", cleanUp, { once: true });
-          setTimeout(cleanUp, delay + 700); // in case the browser skips the animation
-        });
-        animateHeight(from, to, function () { shelf.style.height = ""; });
-      } else {
-        // Measure the collapsed height, then shrink to it and hide the extra books
-        extras.forEach(function (book) { book.hidden = true; });
-        var to = shelf.offsetHeight;
-        extras.forEach(function (book) { book.hidden = false; });
-        animateHeight(from, to, function () {
-          extras.forEach(function (book) { book.hidden = true; });
-          shelf.style.height = "";
-        });
-        // If the top of the section has scrolled out of view, bring it back
-        var section = document.getElementById("books");
-        if (section.getBoundingClientRect().top < 0) {
-          section.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-        }
-      }
-      button.setAttribute("aria-expanded", String(!expanded));
-      label.textContent = shelfLabel(!expanded, more);
-    });
   }
 
   /* ---------- Podcasts ---------- */
   function renderPodcasts(rows) {
     if (!rows.length) return false;
-    body("podcasts").innerHTML = '<ul class="podcast-grid" role="list">' + rows.map(function (p) {
+    var visible = visibleCount("podcasts_visible");
+    var items = rows.map(function (p, index) {
       var link = safeUrl(p.link_url);
-      return '<li class="podcast">' +
+      return cardOpen("podcast", index, visible) +
         '<div class="podcast-cover">' + imageHtml(p.cover_url, { alt: "", placeholder: initialsOf(p.name), initials: true }) + "</div>" +
-        '<div class="podcast-info">' +
-          (p.category ? '<span class="podcast-category">' + esc(p.category) + "</span>" : "") +
-          '<h3 class="podcast-name">' + esc(p.name) + "</h3>" +
-          (p.host ? '<span class="podcast-host">Hosted by ' + esc(p.host) + "</span>" : "") +
-          (p.why ? '<p class="podcast-why">' + esc(p.why) + "</p>" : "") +
-          (link ? '<a class="text-link" href="' + esc(link) + '"' + linkAttrs(link) + ">Listen " +
+        '<div class="card-body">' +
+          (p.category ? '<span class="card-category">' + esc(p.category) + "</span>" : "") +
+          '<h3 class="card-title">' + esc(p.name) + "</h3>" +
+          (p.host ? '<span class="card-meta">Hosted by ' + esc(p.host) + "</span>" : "") +
+          cardMore("Why I listen", p.why ? '<p class="card-more-text">' + esc(p.why) + "</p>" : "") +
+          (link ? '<a class="text-link card-link" href="' + esc(link) + '"' + linkAttrs(link) + ">Listen " +
             '<span aria-hidden="true">→</span><span class="visually-hidden"> to ' + esc(p.name) + "</span></a>" : "") +
         "</div>" +
       "</li>";
-    }).join("") + "</ul>";
+    }).join("");
+    body("podcasts").innerHTML = shelfHtml("podcast-shelf", "podcast-grid card-grid", items, rows.length, visible, "podcast");
+    setupShelves(body("podcasts"));
     return true;
   }
 
@@ -674,40 +711,41 @@
      Rows are split into two groups by the "group" column:
      "people" (round photo) and "platforms" (square logo). */
   var FOLLOW_GROUPS = [
-    { key: "people", icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>' },
-    { key: "platforms", icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>' }
+    { key: "people", noun: "person", icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>' },
+    { key: "platforms", noun: "platform", icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>' }
   ];
-  var EXTERNAL_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
+  var EXTERNAL_ICON = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
 
-  function followCard(f, isLogo) {
+  function followCard(f, isLogo, index, visible) {
     var link = safeUrl(f.link_url);
     var tags = splitBars(f.tags);
     var credit = splitBars(f.image_credit); // "Photo: Name, licence | https://source"
     var creditUrl = safeUrl(credit[1]);
-    return '<li class="follow-card">' +
-      '<div class="follow-head">' +
-        '<div class="follow-avatar' + (isLogo ? " is-logo" : "") + '">' +
-          imageHtml(f.avatar_url, { alt: f.image_alt || (isLogo ? f.name + " logo" : f.name), placeholder: initialsOf(f.name), initials: true }) +
-        "</div>" +
-        '<div class="follow-text">' +
-          '<h4 class="follow-name">' + esc(f.name) + "</h4>" +
-          (f.role_org ? '<span class="follow-role">' + esc(f.role_org) + "</span>" : "") +
-        "</div>" +
-      "</div>" +
-      (f.description ? '<p class="follow-desc">' + esc(f.description) + "</p>" : "") +
+    var details =
+      (f.description ? '<p class="card-more-text">' + esc(f.description) + "</p>" : "") +
       (f.why ? '<p class="follow-why"><span class="follow-why-label">Why follow</span>' + esc(f.why) + "</p>" : "") +
-      (tags.length ? '<ul class="follow-tags" aria-label="Topics">' + tags.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : "") +
-      (link ? '<a class="text-link follow-link" href="' + esc(link) + '"' + linkAttrs(link) + ">" +
-        esc(f.link_label || "Learn more") + " " + EXTERNAL_ICON +
-        '<span class="visually-hidden"> — ' + esc(f.name) + (isExternal(link) ? " (opens in a new tab)" : "") + "</span></a>" : "") +
-      (credit[0] ? '<small class="follow-credit">' + (creditUrl
-        ? '<a href="' + esc(creditUrl) + '"' + linkAttrs(creditUrl) + ">" + esc(credit[0]) + "</a>"
-        : esc(credit[0])) + "</small>" : "") +
+      (tags.length ? '<ul class="follow-tags" aria-label="Topics">' + tags.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" : "");
+    return cardOpen("follow-card", index, visible) +
+      '<div class="follow-avatar' + (isLogo ? " is-logo" : "") + '">' +
+        imageHtml(f.avatar_url, { alt: f.image_alt || (isLogo ? f.name + " logo" : f.name), placeholder: initialsOf(f.name), initials: true }) +
+      "</div>" +
+      '<div class="card-body">' +
+        '<h4 class="card-title">' + esc(f.name) + "</h4>" +
+        (f.role_org ? '<span class="card-meta">' + esc(f.role_org) + "</span>" : "") +
+        cardMore("Why follow", details) +
+        (link ? '<a class="text-link card-link" href="' + esc(link) + '"' + linkAttrs(link) + ">" +
+          esc(f.link_label || "Learn more") + " " + EXTERNAL_ICON +
+          '<span class="visually-hidden"> — ' + esc(f.name) + (isExternal(link) ? " (opens in a new tab)" : "") + "</span></a>" : "") +
+        (credit[0] ? '<small class="follow-credit">' + (creditUrl
+          ? '<a href="' + esc(creditUrl) + '"' + linkAttrs(creditUrl) + ">" + esc(credit[0]) + "</a>"
+          : esc(credit[0])) + "</small>" : "") +
+      "</div>" +
     "</li>";
   }
 
   function renderFollowing(rows) {
     if (!rows.length) return false;
+    var visible = visibleCount("following_visible");
     var html = "";
     FOLLOW_GROUPS.forEach(function (group) {
       var items = rows.filter(function (f) {
@@ -718,11 +756,13 @@
       html += '<div class="follow-group">' +
         '<h3 class="follow-group-title"><span class="follow-group-icon">' + group.icon + "</span>" +
           esc(text("following_" + group.key + "_title")) + "</h3>" +
-        '<ul class="follow-grid" role="list">' +
-          items.map(function (f) { return followCard(f, group.key === "platforms"); }).join("") +
-        "</ul></div>";
+        shelfHtml("follow-" + group.key + "-shelf", "follow-grid card-grid",
+          items.map(function (f, i) { return followCard(f, group.key === "platforms", i, visible); }).join(""),
+          items.length, visible, group.noun) +
+        "</div>";
     });
     body("following").innerHTML = html;
+    setupShelves(body("following"));
     return true;
   }
 
