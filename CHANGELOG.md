@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [2.2.0] — 2026-10-13
+
 ### Added
 - Six Tableau Public dashboards in Selected work (new **Tableau** filter tab):
   Road Accident Dashboard, Global CO2 Emissions, Sugar Wagon Geospatial Analysis,
