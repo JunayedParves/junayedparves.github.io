@@ -532,18 +532,19 @@ Every tab except `profile`: **`order`** = position (lower first). **`show`** = `
 | `name` | M K Junayed Parves |
 | `initials` | JP (the logo badge; optional, otherwise made from your name) |
 | `role` | Business Intelligence Analyst (used in the browser tab title and share preview) |
-| `headline` | `Hi, I'm Junayed. \| I turn data into decisions.` (`\|` = new line) |
+| `headline` | `Hi, I'm *Junayed*. \| I turn data into decisions.` (`\|` = new, smaller line; `*word*` = violet highlight) |
 | `bio` | 2–3 sentences under the headline |
 | `photo_url` | assets/images/portrait.jpg |
 | `resume_url` | assets/resume.pdf |
-| `email`, `linkedin`, `github`, `location` | Contact details shown in the gold card |
-| `stat1_value` / `stat1_label` … `stat3_…` | The three quick stats (e.g. `4+` / `Years in BI & analytics`) |
+| `email`, `linkedin`, `github`, `location` | Contact details shown in the violet résumé card |
+| `stat1_value` / `stat1_label` … `stat3_…` | The three quick stats (e.g. `4+` / `Years experience`). Use `\|` in a value for several lines, e.g. `Insurance \| E-Commerce \| F&B Operations`. The icon is picked from the label; set `stat1_icon` (calendar, briefcase, pin, chart, spark) to choose one |
 | `last_updated` | 2026-09-30 (shown in the footer) |
-| `<section>_label` | Gold badge above the heading, e.g. `skills_label` = "Skills & tools" |
+| `<section>_label` | Small violet chip above the heading, e.g. `skills_label` = "Skills & tools" |
 | `<section>_title` | Big heading, e.g. `projects_title` = "Selected work" |
 | `<section>_intro` | One-line intro next to or under the heading (optional) |
 | `skills_chips_label` | Text before the skill chips ("Also working with:") |
-| `resume_note` | Text in the gold résumé card |
+| `resume_note` | Text in the violet résumé card |
+| `books_visible` | How many books show before the "Read more" button (default 4) |
 
 `<section>` is one of: `about` (label only), `skills`, `experience`, `education`, `projects`,
 `books`, `podcasts`, `following`, `contact`.
@@ -556,8 +557,8 @@ Every tab except `profile`: **`order`** = position (lower first). **`show`** = `
 | `experience` | order, title, company, city, start, end, bullets, logo_url, show | `bullets` separated by `\|`. Empty `end` = "Present". `logo_url` (optional) = company logo, e.g. `assets/images/logos/metlife.png` |
 | `education` | order, type, title, institution, years, detail, logo_url, show | `type` = `degree` (card) or `certification` (chip). `logo_url` (optional) = institution logo, shown on degree cards |
 | `projects` | order, title, category, description, image_url, link_url, link_label, show | `category` = Power BI, Web App, Tableau or GitHub (must match exactly). Filter tabs appear only for categories in use |
-| `books` | order, title, author, cover_url, category, summary, takeaway, status, rating, show | `summary` ≈ 40–70 words. `takeaway` = one sentence (shown in a gold "Key takeaway" box). Optional: `status` (e.g. Read / Reading / Want to Read), `rating` 1–5 (stars). Covers live in `assets/images/books/` |
-| `podcasts` | order, name, host, cover_url, why, link_url, category, show | `category` (optional) shows as a small gold label, e.g. "Data Visualization & Storytelling" |
+| `books` | order, title, author, cover_url, category, summary, takeaway, status, rating, show | `summary` ≈ 40–70 words. `takeaway` = one sentence (shown in a violet "Key takeaway" box). Optional: `status` (e.g. Read / Reading / Want to Read), `rating` 1–5 (stars). Covers live in `assets/images/books/` |
+| `podcasts` | order, name, host, cover_url, why, link_url, category, show | `category` (optional) shows as a small violet label, e.g. "Data Visualization & Storytelling" |
 | `following` | order, group, name, role_org, avatar_url, image_alt, description, why, tags, link_label, link_url, image_credit, show | `group` = `people` (round photo) or `platforms` (square logo). `role_org` = the type line. `tags` separated by `\|`. `link_label` = link text (e.g. "YouTube channel"). Optional: `image_alt` (overrides the automatic alt text), `image_credit` = `Photo: Name, licence \| https://source` for photos that need attribution. Group headings come from `following_people_title` / `following_platforms_title` in `profile` |
 
 **Adding a column** doesn't break anything; the site simply ignores it.

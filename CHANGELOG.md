@@ -13,7 +13,21 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Changed
+- **New theme** (from the supplied reference design): near-black navy background,
+  violet → indigo gradient accent, Inter as the heading and body font (replaces
+  DM Serif Display / IBM Plex Sans). Gradient buttons, small violet section chips,
+  dark project cards, violet résumé card, violet portrait frame with a dot pattern,
+  violet favicon and a new share image. All sections and content are unchanged.
+- About stats are now cards with violet icon squares (icon picked from the label,
+  or set `statN_icon`).
+- Bookshelf shows the first 4 books; "Read more" expands the rest with a smooth
+  height animation and staggered fade-in, "Show less" collapses it (`books_visible`
+  in the profile tab sets how many show).
+
+### Added
+- `*word*` in the headline highlights it with violet gradient text, e.g.
+  `Hi, I'm *Junayed*.`; lines after the first are shown slightly smaller.
 
 ## [1.5.0] — 2026-10-01
 

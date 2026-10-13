@@ -20,12 +20,12 @@
   <!-- SEO:END -->
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta name="theme-color" content="#0B2A6F">
+  <meta name="theme-color" content="#0B0F1E">
 
-  <!-- Fonts: DM Serif Display (headings), IBM Plex Sans (body), IBM Plex Mono (labels) -->
+  <!-- Fonts: Inter (headings and body), IBM Plex Mono (dates) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -68,7 +68,7 @@
         <li data-nav="books"><a href="#books">Books</a></li>
         <li data-nav="podcasts"><a href="#podcasts">Podcasts</a></li>
         <li data-nav="following"><a href="#following">Following</a></li>
-        <li><a class="btn btn-gold btn-small" href="#contact">Contact</a></li>
+        <li><a class="btn btn-primary btn-small" href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -89,10 +89,10 @@
             <span class="skeleton skeleton-line w-80"></span>
           </p>
           <div class="btn-row">
-            <a class="btn btn-gold" href="#projects">See my projects</a>
+            <a class="btn btn-primary" href="#projects">See my projects</a>
             <a class="btn btn-outline" data-resume-link href="#contact">Download résumé</a>
           </div>
-          <dl class="stats" data-stats></dl>
+          <ul class="stats" role="list" data-stats></ul>
         </div>
         <div class="portrait-wrap">
           <div class="portrait-frame" aria-hidden="true"></div>
@@ -249,7 +249,7 @@
             <!-- Spam trap: real people never see or fill this field -->
             <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-            <button class="btn btn-cream" type="submit">Send message</button>
+            <button class="btn btn-primary" type="submit">Send message</button>
             <p class="form-status" role="status" aria-live="polite" data-form-status></p>
           </form>
         </div>
