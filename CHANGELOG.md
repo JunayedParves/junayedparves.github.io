@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [2.1.0] — 2026-10-13
+
 ### Changed
 - Experience: company logos replaced with uniform square brand marks on a tile
   (Green Delta "G", MetLife "M", Bikroy smiley, Secret Recipe "SR", Quantanite
