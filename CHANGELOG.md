@@ -13,6 +13,10 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+- _Add changes here as you work. Move them under a new version when you release._
+
+## [2.0.0] — 2026-10-13
+
 ### Changed
 - **New theme** (from the supplied reference design): near-black navy background,
   violet → indigo gradient accent, Inter as the heading and body font (replaces
