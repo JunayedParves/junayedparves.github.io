@@ -41,6 +41,7 @@
     projects_title: "Selected work",
     books_label: "Bookshelf",
     books_title: "Books I've read & reviewed",
+    books_visible: "4",          // books shown before "Read more"
     podcasts_label: "In my ears",
     podcasts_title: "Podcasts I listen to",
     following_label: "Staying current",
@@ -94,6 +95,31 @@
     if (!words.length) return "";
     if (words.length === 1) return words[0].charAt(0).toUpperCase();
     return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase();
+  }
+
+  /* Escape text, then turn *word* into violet gradient text (used in the headline). */
+  function highlight(value) {
+    return esc(value).replace(/\*([^*]+)\*/g, '<span class="text-gradient">$1</span>');
+  }
+
+  /* Small line icons for the About stats, picked from the stat label
+     (or set one yourself with a profile key like stat1_icon = calendar). */
+  var STAT_ICONS = {
+    calendar: '<path d="M7 3v3M17 3v3M4 9h16"/><rect x="4" y="5" width="16" height="15" rx="2"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>',
+    pin: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+    chart: '<path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/>',
+    spark: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>'
+  };
+  function statIcon(name, label) {
+    var l = String(label || "").toLowerCase();
+    var key = STAT_ICONS[name] ? name
+      : /year|experience/.test(l) ? "calendar"
+      : /industr|sector|domain|business/.test(l) ? "briefcase"
+      : /based|location|city|country/.test(l) ? "pin"
+      : /project|dashboard|report/.test(l) ? "chart" : "spark";
+    return '<span class="stat-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+      STAT_ICONS[key] + "</svg></span>";
   }
 
   /* Split "one | two | three" into ["one", "two", "three"]. */
@@ -279,9 +305,12 @@
     var desc = document.querySelector('meta[name="description"]');
     if (desc && profile.bio) desc.setAttribute("content", profile.bio);
 
-    // Headline: use "|" in the sheet to start a new line
+    // Headline: "|" starts a new (slightly smaller) line; *word* = violet highlight,
+    // e.g. "Hi, I'm *Junayed*. | I turn data into decisions."
     var headline = document.querySelector('[data-profile-html="headline"]');
-    headline.innerHTML = splitBars(profile.headline || name).map(esc).join("<br>");
+    var headLines = splitBars(profile.headline || name);
+    headline.innerHTML = (headLines.length ? highlight(headLines[0]) : "") +
+      headLines.slice(1).map(function (line) { return '<span class="headline-sub">' + highlight(line) + "</span>"; }).join("");
 
     document.querySelector('[data-profile="bio"]').textContent = profile.bio || "";
 
@@ -291,8 +320,10 @@
       var value = profile["stat" + i + "_value"], label = profile["stat" + i + "_label"];
       // "|" in the value = one item per line (e.g. "Insurance | E-Commerce | F&B Operations")
       var lines = splitBars(value);
-      if (value) stats += '<div class="stat' + (lines.length > 1 ? " stat-list" : "") + '"><dt>' + esc(label) + "</dt><dd>" +
-        lines.map(esc).join("<br>") + "</dd></div>";
+      if (value) stats += '<li class="stat' + (lines.length > 1 ? " stat-list" : "") + '">' +
+        statIcon(profile["stat" + i + "_icon"], label) +
+        '<span class="stat-text"><span class="stat-value">' + lines.map(esc).join("<br>") + "</span>" +
+        '<span class="stat-label">' + esc(label) + "</span></span></li>";
     }
     var statsEl = document.querySelector("[data-stats]");
     statsEl.innerHTML = stats;
@@ -346,7 +377,7 @@
     if (github) contacts += '<li>GitHub: <a href="' + esc(github) + '"' + linkAttrs(github) + ">" + esc(prettyUrl(github)) + "</a></li>";
 
     var button = resume
-      ? '<a class="btn btn-ink" href="' + esc(resume) + '"' + (isExternal(resume) ? linkAttrs(resume) : " download") + ">" +
+      ? '<a class="btn btn-light" href="' + esc(resume) + '"' + (isExternal(resume) ? linkAttrs(resume) : " download") + ">" +
           '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M4 20h16"/></svg>' +
           "Download PDF</a>"
       : "";
@@ -445,7 +476,7 @@
     if (certs.length) {
       html += '<div class="cert-row"><h3>Certifications</h3><ul>' + certs.map(function (c) {
         var tip = [c.institution, c.years, c.detail].filter(Boolean).join(" · ");
-        return '<li class="chip chip-cream"' + (tip ? ' title="' + esc(tip) + '"' : "") + ">" + esc(c.title) +
+        return '<li class="chip chip-accent"' + (tip ? ' title="' + esc(tip) + '"' : "") + ">" + esc(c.title) +
           (c.institution ? '<span class="visually-hidden"> — ' + esc(c.institution) + "</span>" : "") + "</li>";
       }).join("") + "</ul></div>";
     }
@@ -508,10 +539,14 @@
     return true;
   }
 
-  /* ---------- Books ---------- */
+  /* ---------- Books ----------
+     Only the first few books show (profile key "books_visible", default 4);
+     the rest are revealed by the "Read more" button below the shelf. */
   function renderBooks(rows) {
     if (!rows.length) return false;
-    body("books").innerHTML = '<ul class="book-grid" role="list">' + rows.map(function (b) {
+    var visible = Math.max(1, parseInt(text("books_visible"), 10) || 4);
+    var more = rows.length - visible;
+    body("books").innerHTML = '<div class="book-shelf" id="book-shelf"><ul class="book-grid" role="list">' + rows.map(function (b, index) {
       var rating = Math.max(0, Math.min(5, Math.round(parseFloat(b.rating) || 0)));
       var stars = rating
         ? '<span class="stars" role="img" aria-label="Rated ' + rating + ' out of 5">' +
@@ -519,7 +554,7 @@
         : "";
       var summary = b.summary || b.review; // "review" = older column name, still supported
       var alt = "Cover of " + b.title + (b.author ? " by " + b.author : "");
-      return '<li class="book">' +
+      return '<li class="book' + (index >= visible ? ' book-extra" hidden' : '"') + ">" +
         '<div class="book-cover">' + imageHtml(b.cover_url, { alt: alt, placeholder: b.title }) + "</div>" +
         '<div class="book-info">' +
           (b.category || b.status
@@ -535,8 +570,84 @@
           (summary ? '<details class="book-more"><summary>Read summary</summary><p class="book-summary">' + esc(summary) + "</p></details>" : "") +
         "</div>" +
       "</li>";
-    }).join("") + "</ul>";
+    }).join("") + "</ul></div>" +
+    (more > 0
+      ? '<div class="shelf-toggle-row"><button type="button" class="btn btn-outline shelf-toggle" aria-expanded="false" aria-controls="book-shelf" data-shelf-toggle>' +
+          '<span class="shelf-toggle-label">' + shelfLabel(false, more) + '</span><span class="chevron" aria-hidden="true"></span></button></div>'
+      : "");
+    if (more > 0) setupBookShelf(more);
     return true;
+  }
+
+  function shelfLabel(expanded, more) {
+    return expanded ? "Show less" : "Read more (" + more + " more book" + (more === 1 ? "" : "s") + ")";
+  }
+
+  /* Expand / collapse the bookshelf with a smooth height animation. */
+  function setupBookShelf(more) {
+    var shelf = document.getElementById("book-shelf");
+    var button = document.querySelector("[data-shelf-toggle]");
+    var label = button.querySelector(".shelf-toggle-label");
+    var extras = [].slice.call(shelf.querySelectorAll(".book-extra"));
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Animate the shelf's height from one value to another, then call done()
+    function animateHeight(from, to, done) {
+      if (reduceMotion || from === to) { done(); return; }
+      shelf.style.height = from + "px";
+      void shelf.offsetHeight;            // make the browser register the start height
+      shelf.style.height = to + "px";
+      var finished = false;
+      function finish() {
+        if (finished) return;
+        finished = true;
+        shelf.removeEventListener("transitionend", onEnd);
+        done();
+      }
+      function onEnd(event) { if (event.target === shelf) finish(); }
+      shelf.addEventListener("transitionend", onEnd);
+      setTimeout(finish, 800);            // safety net if the event never fires
+    }
+
+    button.addEventListener("click", function () {
+      var expanded = button.getAttribute("aria-expanded") === "true";
+      var from = shelf.offsetHeight;
+
+      if (!expanded) {
+        // Show the hidden books and measure the full height first...
+        extras.forEach(function (book) { book.hidden = false; });
+        var to = shelf.scrollHeight;
+        // ...then let each one fade and slide in, slightly staggered
+        extras.forEach(function (book, i) {
+          var delay = i * 70;
+          book.style.animationDelay = delay + "ms";
+          book.classList.add("is-revealing");
+          var cleanUp = function () {
+            book.classList.remove("is-revealing");
+            book.style.animationDelay = "";
+          };
+          book.addEventListener("animationend", cleanUp, { once: true });
+          setTimeout(cleanUp, delay + 700); // in case the browser skips the animation
+        });
+        animateHeight(from, to, function () { shelf.style.height = ""; });
+      } else {
+        // Measure the collapsed height, then shrink to it and hide the extra books
+        extras.forEach(function (book) { book.hidden = true; });
+        var to = shelf.offsetHeight;
+        extras.forEach(function (book) { book.hidden = false; });
+        animateHeight(from, to, function () {
+          extras.forEach(function (book) { book.hidden = true; });
+          shelf.style.height = "";
+        });
+        // If the top of the section has scrolled out of view, bring it back
+        var section = document.getElementById("books");
+        if (section.getBoundingClientRect().top < 0) {
+          section.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+        }
+      }
+      button.setAttribute("aria-expanded", String(!expanded));
+      label.textContent = shelfLabel(!expanded, more);
+    });
   }
 
   /* ---------- Podcasts ---------- */
