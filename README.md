@@ -544,7 +544,7 @@ Every tab except `profile`: **`order`** = position (lower first). **`show`** = `
 | `<section>_intro` | One-line intro next to or under the heading (optional) |
 | `skills_chips_label` | Text before the skill chips ("Also working with:") |
 | `resume_note` | Text in the violet résumé card |
-| `books_visible` | How many books show before the "Read more" button (default 4) |
+| `books_visible`, `podcasts_visible`, `following_visible` | How many items show before the "Read more" button (default 5 = one row on desktop) |
 
 `<section>` is one of: `about` (label only), `skills`, `experience`, `education`, `projects`,
 `books`, `podcasts`, `following`, `contact`.

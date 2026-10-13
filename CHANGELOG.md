@@ -13,7 +13,16 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Changed
+- Experience: company logos replaced with uniform square brand marks on a tile
+  (Green Delta "G", MetLife "M", Bikroy smiley, Secret Recipe "SR", Quantanite
+  symbol), sourced from each company's official website/artwork.
+- Books, Podcasts, People and Platforms use compact cards, 5 per row on desktop
+  (4 on small laptops, 3 on tablets, 2 on phones). The first 5 show; "Read more"
+  expands the rest with a smooth animation. Longer text (takeaway & summary, why I
+  listen, why follow) sits behind a small toggle inside each card.
+- `books_visible`, `podcasts_visible`, `following_visible` (default 5) set how many
+  items show before "Read more".
 
 ## [2.0.0] — 2026-10-13
 
