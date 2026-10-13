@@ -13,7 +13,15 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-- _Add changes here as you work. Move them under a new version when you release._
+### Added
+- Six Tableau Public dashboards in Selected work (new **Tableau** filter tab):
+  Road Accident Dashboard, Global CO2 Emissions, Sugar Wagon Geospatial Analysis,
+  Maven Supplies Executive Dashboard, UFO Sightings in the USA, King County Real
+  Estate. Thumbnails from Tableau Public stored in `assets/images/projects/`; each
+  card links to the live viz.
+
+### Changed
+- Project thumbnails are anchored to the top, so dashboard titles and KPIs stay visible.
 
 ## [2.1.0] — 2026-10-13
 

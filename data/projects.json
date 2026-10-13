@@ -40,13 +40,63 @@
     "show": "FALSE"
   },
   {
-    "order": "5",
-    "title": "Tableau storytelling dashboard",
+    "order": "10",
+    "title": "Road Accident Dashboard",
     "category": "Tableau",
-    "description": "A Tableau Public visualization telling one clear story with data.",
-    "image_url": "",
-    "link_url": "",
+    "description": "Interactive dashboard of road accident data: total casualties and accidents with year-over-year change, breakdowns by severity, vehicle type, road surface and light conditions, and a map of accident locations.",
+    "image_url": "assets/images/projects/tableau-road-accident.jpg",
+    "link_url": "https://public.tableau.com/app/profile/junayed.parves/viz/RoadAccidentDashboard_17892367695180/RoadAccidentDashbaord",
     "link_label": "View on Tableau Public",
-    "show": "FALSE"
+    "show": "TRUE"
+  },
+  {
+    "order": "11",
+    "title": "Global CO2 Emissions",
+    "category": "Tableau",
+    "description": "Explores CO2 emissions by country: a world emissions map, emissions versus population, and each country's share of global emissions over time.",
+    "image_url": "assets/images/projects/tableau-global-co2.jpg",
+    "link_url": "https://public.tableau.com/app/profile/junayed.parves/viz/GlobalCO2Emission_17298395236390/GlobalCO2Emmision",
+    "link_label": "View on Tableau Public",
+    "show": "TRUE"
+  },
+  {
+    "order": "12",
+    "title": "Sugar Wagon Geospatial Analysis",
+    "category": "Tableau",
+    "description": "Customer distribution analytics for a sugar manufacturer: maps customers within a chosen distance of each factory, with a sales-versus-goal KPI and a customer detail table to support delivery planning.",
+    "image_url": "assets/images/projects/tableau-sugar-wagon.jpg",
+    "link_url": "https://public.tableau.com/app/profile/junayed.parves/viz/SugarWagonGeospatialAnalysis/SugarWagonGeospatialAnalysis",
+    "link_label": "View on Tableau Public",
+    "show": "TRUE"
+  },
+  {
+    "order": "13",
+    "title": "Maven Supplies Executive Dashboard",
+    "category": "Tableau",
+    "description": "Executive retail sales view with YTD sales, profit and discount KPIs, sales versus goal by region, sales and profit by city and category, and trends over time, filterable by date, region and segment.",
+    "image_url": "assets/images/projects/tableau-maven-supplies.jpg",
+    "link_url": "https://public.tableau.com/app/profile/junayed.parves/viz/MavenSuppliesDashboard_17297091401490/ExecutiveDashboard",
+    "link_label": "View on Tableau Public",
+    "show": "TRUE"
+  },
+  {
+    "order": "14",
+    "title": "UFO Sightings in the USA",
+    "category": "Tableau",
+    "description": "Analyses reported UFO sightings across US states from 1990 to 2014: a state-level map, the most commonly reported shapes, and how sightings changed year by year.",
+    "image_url": "assets/images/projects/tableau-ufo-sightings.jpg",
+    "link_url": "https://public.tableau.com/app/profile/junayed.parves/viz/UFO_Sighting_Dashboard/Dashboard1",
+    "link_label": "View on Tableau Public",
+    "show": "TRUE"
+  },
+  {
+    "order": "15",
+    "title": "King County Real Estate",
+    "category": "Tableau",
+    "description": "Real estate dashboard for King County, Washington: median price, homes sold and typical build year, a zip-code price map, and the weekly median price trend.",
+    "image_url": "assets/images/projects/tableau-king-county.jpg",
+    "link_url": "https://public.tableau.com/app/profile/junayed.parves/viz/KingCountryRealEstate_16995452184610/KingCountyRealEstate",
+    "link_label": "View on Tableau Public",
+    "show": "TRUE"
   }
 ]
