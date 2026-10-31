@@ -13,7 +13,9 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
-### Changed — complete redesign (3.0.0)
+## [3.0.0] — 2026-10-31
+
+### Changed — complete redesign
 - **Positioning:** rebuilt for Data Analyst, Business Intelligence Analyst and Business Analyst
   roles. The new hero ("Turning Data Into Business Intelligence & Decisions") shows target roles,
   capabilities, résumé, LinkedIn, GitHub and Tableau Public links.
