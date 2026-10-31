@@ -1,0 +1,112 @@
+{
+  "slug": "databel-customer-churn",
+  "subtitle": "A four-page executive Power BI report on telecom churn: who leaves, why, and the three changes most likely to keep them.",
+  "seo_description": "Customer churn analytics case study: Power BI report with DAX and Power Query, contract, tenure, support-call and plan-fit analysis, validated with Python and published as an interactive web replica.",
+  "facts": [
+    ["Domain", "Telecommunications · customer retention"],
+    ["Scale", "6,687 customers · 29 columns"],
+    ["Analytics", "Descriptive · diagnostic"],
+    ["Built with", "Power BI (PBIP), DAX, Power Query, pandas"]
+  ],
+  "gallery": [
+    { "src": "01.jpg", "caption": "1 · Executive Summary: KPIs, churn categories, top reasons and recommendations" },
+    { "src": "02.jpg", "caption": "2 · Contract & Tenure: churn by contract, tenure and payment method" },
+    { "src": "03.jpg", "caption": "3 · Service & Plan Fit: support calls, international-plan fit, plans and add-ons" },
+    { "src": "04.jpg", "caption": "4 · Who Churns: age, senior × contract, group plans, gender and top states" }
+  ],
+  "sections": [
+    {
+      "id": "summary", "title": "Executive summary",
+      "paragraphs": [
+        "Databel, a telecom provider, loses **1 in 4 customers (26.9%, 1,796 of 6,687)**, and with them **$66.1K of $207.5K in monthly revenue (31.9%)**. I built a four-page executive Power BI report that explains who churns and why, and ends with three recommendations.",
+        "Because not every reviewer has Power BI, I also published an **interactive browser replica** of all four pages with the same filters, computed from the same CSV. A pandas script re-checks every validation figure against the source."
+      ],
+      "callout": "Databel is a fictional company in a **practice dataset**. The findings describe that dataset, not a real operator.",
+      "callout_type": "warn"
+    },
+    {
+      "id": "problem", "title": "Business problem",
+      "paragraphs": [
+        "Losing a quarter of customers, and almost a third of monthly revenue, is unsustainable. Management needed to know which customers leave, why they leave, and which levers (contracts, support, plan design) would reduce churn."
+      ]
+    },
+    {
+      "id": "objectives", "title": "Analytical objectives",
+      "list": [
+        "Quantify churn and the revenue lost with it.",
+        "Rank the reasons customers give for leaving.",
+        "Test how contract type, tenure, support calls, plan fit and demographics relate to churn.",
+        "Translate the strongest signals into a short list of recommendations."
+      ]
+    },
+    {
+      "id": "data", "title": "Dataset",
+      "paragraphs": [
+        "One customer-level table: 6,687 customers and 29 columns including contract type, tenure, payment method, plans and add-ons, support calls, demographics, state, churn label, churn category and churn reason."
+      ]
+    },
+    {
+      "id": "preparation", "title": "Data preparation & validation",
+      "list": [
+        "Converted empty Churn Category and Churn Reason text into true nulls in Power Query, so blank filtering and reason counts work, with displayed values unchanged.",
+        "Held the data path in a `DataFolder` parameter so the project refreshes on any machine.",
+        "`validate.py` rebuilds the model logic in pandas and checks every figure: totals, contract, tenure, payment, service calls, plan fit, age and senior × contract.",
+        "`validate_report.py` parses every report JSON file, checks field references and runs Microsoft's PBIR validator."
+      ]
+    },
+    {
+      "id": "method", "title": "Approach",
+      "list": [
+        "Churn rate and revenue-lost measures in DAX, with headline sentences bound to measures so they update with slicers.",
+        "Segment comparisons: contract × tenure, support calls, international-plan fit, group versus individual, age and senior × contract.",
+        "A Top 10 states table with in-cell data bars instead of a filled map, which current Power BI Desktop blocks and which would send state names to an online service.",
+        "The whole PBIP project is generated from a Python script, so every page, visual and measure is reproducible."
+      ]
+    },
+    {
+      "id": "kpis", "title": "Key metrics",
+      "kpis": [
+        ["Churn rate", "Churned customers ÷ all customers"],
+        ["Revenue lost", "Monthly charges of churned customers"],
+        ["Churn by segment", "Churn rate within each contract, tenure, plan or demographic group"]
+      ]
+    },
+    { "id": "dashboard", "title": "The report", "gallery": true,
+      "paragraphs": ["Four pages with slicers for state, age group, contract type and gender. The live web version reproduces all of them in the browser."] },
+    {
+      "id": "findings", "title": "Key findings",
+      "findings": [
+        "**Competitors are the main reason:** 45.5% of churners with a recorded reason left for a competitor (\"better offer\" 303, \"better devices\" 297).",
+        "**Contract type is the strongest signal:** month-to-month customers churn at 46.3%, against 11.3% on one-year and 2.8% on two-year contracts (about 17×). Seniors on month-to-month contracts churn at 74.6%.",
+        "**New customers leave fastest:** churn is 53.1% in the first 6 months and falls to 9.7% after 4 years.",
+        "**The third support call is a tipping point:** churn jumps from 36.6% at 2 calls to 87.5% at 3, and 99.7–100% at 4 or more.",
+        "**Plan fit matters:** customers paying for the international plan without calling abroad churn at 71.2%, against 7.6% for those who use it; group-plan customers churn at 6.5% versus 32.8% for individuals.",
+        "**California is an outlier** at 63.2% churn, though on only 68 customers."
+      ]
+    },
+    {
+      "id": "recommendations", "title": "Recommendations",
+      "list": [
+        "**Move month-to-month customers onto 1–2 year contracts.** They churn at 46%, compared with 3% on two-year plans.",
+        "**Escalate any customer on their third support call.** 88–100% of them leave.",
+        "**Fix plan mismatch.** Sell the international plan to customers who actually call abroad, and push group plans, which churn at 7%."
+      ]
+    },
+    {
+      "id": "implementation", "title": "Technical implementation",
+      "list": [
+        "Power BI Project (PBIP) with TMDL model and PBIR report, generated by `_build/generate_pbip.py`.",
+        "Custom theme with a content-hashed file name so theme edits reload in Desktop.",
+        "Interactive web replica on GitHub Pages, rebuilt by `build_web.py` from the same CSV."
+      ]
+    },
+    {
+      "id": "limitations", "title": "Limitations & assumptions",
+      "list": [
+        "These are associations in observational data, not proof of cause.",
+        "Some segments are small (California has 68 customers), so their rates are less stable.",
+        "Churn reasons exist only for churned customers, so they explain why leavers left, not why others stayed."
+      ]
+    }
+  ]
+}

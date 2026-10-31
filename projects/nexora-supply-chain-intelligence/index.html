@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexora Apparels: 20-Year Supply Chain Intelligence | Case Study by M K Junayed Parves</title>
+  <meta name="description" content="Power BI supply chain case study: 3M-row star schema, 215 DAX measures and DAX user-defined functions for a Bangladesh garment manufacturer. Data audit, OTIF, inventory and margin analysis. Synthetic data.">
+  <link rel="canonical" href="https://junayedparves.github.io/projects/nexora-supply-chain-intelligence/">
+  <meta name="author" content="M K Junayed Parves">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="M K Junayed Parves">
+  <meta property="og:title" content="Nexora Apparels: 20-Year Supply Chain Intelligence | Case Study by M K Junayed Parves">
+  <meta property="og:description" content="Power BI supply chain case study: 3M-row star schema, 215 DAX measures and DAX user-defined functions for a Bangladesh garment manufacturer. Data audit, OTIF, inventory and margin analysis. Synthetic data.">
+  <meta property="og:url" content="https://junayedparves.github.io/projects/nexora-supply-chain-intelligence/">
+  <meta property="og:image" content="https://junayedparves.github.io/assets/images/projects/nexora/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nexora Apparels: 20-Year Supply Chain Intelligence | Case Study by M K Junayed Parves">
+  <meta name="twitter:description" content="Power BI supply chain case study: 3M-row star schema, 215 DAX measures and DAX user-defined functions for a Bangladesh garment manufacturer. Data audit, OTIF, inventory and margin analysis. Synthetic data.">
+  <meta name="twitter:image" content="https://junayedparves.github.io/assets/images/projects/nexora/cover.jpg">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/variables.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/base.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/components.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/pages.css?v=3.0.0">
+  <script defer src="/js/navigation.js?v=3.0.0"></script>
+  <script defer src="/js/project-filter.js?v=3.0.0"></script>
+  <script defer src="/js/main.js?v=3.0.0"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Nexora Apparels: 20-Year Supply Chain Intelligence","headline":"Nexora Apparels: 20-Year Supply Chain Intelligence","description":"Power BI supply chain case study: 3M-row star schema, 215 DAX measures and DAX user-defined functions for a Bangladesh garment manufacturer. Data audit, OTIF, inventory and margin analysis. Synthetic data.","url":"https://junayedparves.github.io/projects/nexora-supply-chain-intelligence/","image":"https://junayedparves.github.io/assets/images/projects/nexora/cover.jpg","author":{"@id":"https://junayedparves.github.io/#person"},"keywords":"Power BI, SQL, Python, Business Analytics, Power BI, DAX, TMDL, Python, BigQuery SQL","about":"Manufacturing (ready-made garments)","isBasedOn":"https://github.com/JunayedParves/nexora-rmg-supply-chain-powerbi"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://junayedparves.github.io/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://junayedparves.github.io/projects/"},{"@type":"ListItem","position":3,"name":"Nexora Apparels: 20-Year Supply Chain Intelligence","item":"https://junayedparves.github.io/projects/nexora-supply-chain-intelligence/"}]},{"@type":"Person","@id":"https://junayedparves.github.io/#person","name":"M K Junayed Parves","jobTitle":"Business Intelligence Analyst","description":"Data Analyst and Business Intelligence Analyst in Dhaka, Bangladesh. Power BI, SQL, DAX, Tableau and Python case studies in credit risk, retail, supply chain and financial analytics.","url":"https://junayedparves.github.io/","image":"https://junayedparves.github.io/assets/images/portrait.jpg","email":"mailto:jndparves@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},"worksFor":{"@type":"Organization","name":"Green Delta Insurance PLC"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Dhaka"},{"@type":"CollegeOrUniversity","name":"Dhaka College (University of Dhaka)"}],"knowsAbout":["Business Intelligence","Data Analysis","Business Analysis","Power BI","DAX","SQL","Tableau","Python","Data Visualization","Financial Analytics"],"sameAs":["https://www.linkedin.com/in/junayedparves","https://github.com/JunayedParves","https://public.tableau.com/app/profile/junayed.parves"]}]}</script>
+</head>
+<!-- This page is generated by scripts/build.js from data/*.json and content/.
+     Edit the content there (or in the Google Sheet), not in this file. -->
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="/" aria-label="M K Junayed Parves, home">
+        <span class="brand-mark" aria-hidden="true">JP</span>
+        <span class="brand-text"><span class="brand-name">M K Junayed Parves</span><span class="brand-role">Business Intelligence Analyst</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="visually-hidden">Menu</span><span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/#about">About</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#skills">Skills</a></li><li><a href="/#experience">Experience</a></li><li><a href="/#education">Education</a></li><li><a href="/#knowledge">Knowledge Hub</a></li><li><a href="/#contact">Contact</a></li>
+        <li><a class="btn btn-primary btn-small" href="/assets/resume.pdf" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Résumé</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+
+    <article>
+      <header class="page-header cs-hero">
+        <div class="container">
+          <ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Nexora Apparels</li></ol>
+          <div class="cs-hero-meta"><span class="category">Power BI · Supply Chain</span><span class="badge badge-synthetic">Synthetic data</span></div>
+          <h1 class="page-title">Nexora Apparels: 20-Year Supply Chain Intelligence</h1>
+          <p class="page-lead">Twenty years of a Bangladesh garment group told as one story: growth, delivery, cost and productivity, page by page.</p>
+          <div class="btn-row">
+            
+            <a class="btn btn-outline" href="https://github.com/JunayedParves/nexora-rmg-supply-chain-powerbi" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg> View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+          <ul class="facts"><li><span class="k">Domain</span><span class="v">Ready-made garments · supply chain</span></li><li><span class="k">Scale</span><span class="v">≈3.04M rows · 2006–2025 (synthetic)</span></li><li><span class="k">Model</span><span class="v">23 tables · 64 relationships · 215 measures</span></li><li><span class="k">Built with</span><span class="v">Power BI (PBIP/TMDL), DAX, Python</span></li></ul>
+          <div class="cs-cover"><img src="/assets/images/projects/nexora/cover.jpg" alt="Nexora Apparels executive command center in Power BI" width="1200" height="750" fetchpriority="high" decoding="async"></div>
+        </div>
+      </header>
+      <div class="section" style="padding-top:clamp(32px,5vw,56px)">
+        <div class="container cs-layout">
+          <nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#summary">Executive summary</a></li><li><a href="#problem">Business problem</a></li><li><a href="#objectives">Analytical objectives</a></li><li><a href="#data">Dataset</a></li><li><a href="#preparation">Data audit &amp; quality fixes</a></li><li><a href="#method">Data model &amp; storytelling engine</a></li><li><a href="#kpis">Key metrics</a></li><li><a href="#dashboard">The dashboard</a></li><li><a href="#findings">Key findings</a></li><li><a href="#recommendations">Decisions the dashboard supports</a></li><li><a href="#implementation">Technical implementation</a></li><li><a href="#limitations">Limitations &amp; assumptions</a></li><li><a href="#links">Repository &amp; live demo</a></li></ol></nav>
+          <div class="cs-content">
+          <section class="cs-section" id="summary" aria-labelledby="summary-h">
+            <h2 id="summary-h">Executive summary</h2>
+            <p>Nexora Apparels is a fictional garment group: 8 companies, 26 factories, 52 buyers and 180 suppliers. I rebuilt its management dashboard around Cole Nussbaumer Knaflic&#39;s <strong><em>Storytelling with Data</em></strong>. Every page answers one management question, and every chart title states the answer, recalculated live for whatever is filtered.</p>
+            <p><strong>Before telling any story, I audited the numbers.</strong> The inherited dashboard showed a 100% gross margin because cost of goods was silently blank. Ten measures were wrong and nine charts rendered nothing. A beautiful dashboard built on a wrong margin is worse than no dashboard.</p>
+            <div class="cs-callout warn">All data is <strong>synthetic</strong> (≈3.04M rows, calibrated to public BGMEA, Bangladesh Bank and BBS benchmarks). Nexora and its companies are fictional.</div>
+          </section>
+
+          <section class="cs-section" id="problem" aria-labelledby="problem-h">
+            <h2 id="problem-h">Business problem</h2>
+            <p>From the top, Nexora looks like a success: revenue grew 4.0×, from $236M in 2006 to $939M in 2025, at a steady ~50% operational gross margin. Leadership needed to know whether that headline hid problems in delivery, cost and productivity, and where to act first.</p>
+          </section>
+
+          <section class="cs-section" id="objectives" aria-labelledby="objectives-h">
+            <h2 id="objectives-h">Analytical objectives</h2>
+            <ul><li>Audit and correct the semantic model so every number reconciles to the cost ledger.</li><li>Answer one management question per page: growth, market, commercial, procurement, inventory, production, quality and finance.</li><li>Make each chart state its finding in the title, and keep that sentence true under any filter.</li><li>Point management to specific levers: companies, buyers, suppliers and cost lines.</li></ul>
+          </section>
+
+          <section class="cs-section" id="data" aria-labelledby="data-h">
+            <h2 id="data-h">Dataset</h2>
+            <p>22 Parquet tables (≈3.04M rows, 2006–2025): 10 conformed dimensions and 12 fact tables, including monthly snapshots for inventory, workforce, ESG and macro indicators. The data is reproducible from a seeded Python generator, and BigQuery DDL is included for a warehouse load.</p>
+          </section>
+
+          <section class="cs-section" id="preparation" aria-labelledby="preparation-h">
+            <h2 id="preparation-h">Data audit &amp; quality fixes</h2>
+            <ul><li>Fixed gross margin, which showed <strong>100%</strong> because COGS was blank. It now shows <strong>50.2%</strong>, reconciled to the cost ledger.</li><li>Corrected 10 wrong measures and repaired 9 charts that rendered nothing (for example, bars bound to a non-existent role).</li><li>Made inventory and headcount semi-additive, so stock is never summed across months, and annualised turnover and DIO.</li><li>Replaced a 7-slice donut and a dual-axis combo with sorted bars and indexed lines, so unlike units share one honest axis.</li></ul>
+          </section>
+
+          <section class="cs-section" id="method" aria-labelledby="method-h">
+            <h2 id="method-h">Data model &amp; storytelling engine</h2>
+            <ul><li><strong>Star schema:</strong> 23 tables, 64 relationships, <strong>215 measures</strong>, with inactive date roles for ship and arrival dates.</li><li><strong>Storytelling engine:</strong> 8 DAX user-defined functions (<code>Nexora.*</code>). Every title, KPI context line and highlight colour is one line of DAX calling a shared function.</li><li><strong>Colour logic computed by DAX:</strong> grey for context, navy for the point, orange for the problem, so the highlight moves with the data.</li><li><strong>Filter rules:</strong> year trends ignore the Year filter and company rankings ignore the Company filter, so a benchmark is always visible.</li><li><strong>Accessibility:</strong> WCAG-checked colours (text ≥ 7:1, marks ≥ 3:1) and alt text on every visual.</li></ul>
+          </section>
+
+          <section class="cs-section" id="kpis" aria-labelledby="kpis-h">
+            <h2 id="kpis-h">Key metrics</h2>
+            <div class="table-wrap"><table class="kpi-table"><thead><tr><th scope="col">Metric</th><th scope="col">Definition</th></tr></thead><tbody><tr><td>OTIF</td><td>Share of orders delivered on time and in full</td></tr><tr><td>Days of inventory on hand (DIO)</td><td>Annualised, from semi-additive month-end stock</td></tr><tr><td>Gross margin</td><td>Reconciled to the cost ledger after the COGS fix</td></tr><tr><td>Line efficiency</td><td>Output against standard minutes, by company</td></tr><tr><td>Defect rate</td><td>Defective pieces ÷ pieces inspected</td></tr><tr><td>Import share</td><td>Share of material spend sourced from abroad</td></tr><tr><td>Carbon per garment</td><td>kg CO₂e per piece</td></tr></tbody></table></div>
+          </section>
+
+          <section class="cs-section" id="dashboard" aria-labelledby="dashboard-h">
+            <h2 id="dashboard-h">The dashboard</h2>
+            <p>Every page uses the same layout: question → scoreboard → answer → evidence. KPI cards show a &quot;2025 vs 2006&quot; context line that turns orange only when the move is bad.</p>
+            <ul class="gallery">
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/01.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 1 · Executive Command Center: growing profitably while serving buyers reliably?" data-caption="1 · Executive Command Center: growing profitably while serving buyers reliably?" aria-label="Enlarge screenshot: 1 · Executive Command Center: growing profitably while serving buyers reliably?"><img src="/assets/images/projects/nexora/01.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 1 · Executive Command Center: growing profitably while serving buyers reliably?" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>1 · Executive Command Center: growing profitably while serving buyers reliably?</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/02.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 2 · Macro &amp; Market: keeping pace with the industry and cost inflation?" data-caption="2 · Macro &amp; Market: keeping pace with the industry and cost inflation?" aria-label="Enlarge screenshot: 2 · Macro &amp; Market: keeping pace with the industry and cost inflation?"><img src="/assets/images/projects/nexora/02.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 2 · Macro &amp; Market: keeping pace with the industry and cost inflation?" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>2 · Macro &amp; Market: keeping pace with the industry and cost inflation?</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/03.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 3 · Commercial: where revenue comes from and how concentrated it is" data-caption="3 · Commercial: where revenue comes from and how concentrated it is" aria-label="Enlarge screenshot: 3 · Commercial: where revenue comes from and how concentrated it is"><img src="/assets/images/projects/nexora/03.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 3 · Commercial: where revenue comes from and how concentrated it is" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>3 · Commercial: where revenue comes from and how concentrated it is</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/04.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 4 · Procurement: dependence and reliability of the supply base" data-caption="4 · Procurement: dependence and reliability of the supply base" aria-label="Enlarge screenshot: 4 · Procurement: dependence and reliability of the supply base"><img src="/assets/images/projects/nexora/04.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 4 · Procurement: dependence and reliability of the supply base" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>4 · Procurement: dependence and reliability of the supply base</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/05.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 5 · Inventory: is working capital tied up efficiently?" data-caption="5 · Inventory: is working capital tied up efficiently?" aria-label="Enlarge screenshot: 5 · Inventory: is working capital tied up efficiently?"><img src="/assets/images/projects/nexora/05.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 5 · Inventory: is working capital tied up efficiently?" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>5 · Inventory: is working capital tied up efficiently?</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/06.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 6 · Production: productivity versus labour cost" data-caption="6 · Production: productivity versus labour cost" aria-label="Enlarge screenshot: 6 · Production: productivity versus labour cost"><img src="/assets/images/projects/nexora/06.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 6 · Production: productivity versus labour cost" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>6 · Production: productivity versus labour cost</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/07.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 7 · Quality &amp; OTIF: where quality and delivery failures come from" data-caption="7 · Quality &amp; OTIF: where quality and delivery failures come from" aria-label="Enlarge screenshot: 7 · Quality &amp; OTIF: where quality and delivery failures come from"><img src="/assets/images/projects/nexora/07.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 7 · Quality &amp; OTIF: where quality and delivery failures come from" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>7 · Quality &amp; OTIF: where quality and delivery failures come from</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/08.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 8 · Finance &amp; ESG: cost drivers and decarbonisation" data-caption="8 · Finance &amp; ESG: cost drivers and decarbonisation" aria-label="Enlarge screenshot: 8 · Finance &amp; ESG: cost drivers and decarbonisation"><img src="/assets/images/projects/nexora/08.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: 8 · Finance &amp; ESG: cost drivers and decarbonisation" width="1600" height="897" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>8 · Finance &amp; ESG: cost drivers and decarbonisation</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nexora/00.jpg" data-alt="Nexora Apparels: 20-Year Supply Chain Intelligence: Before the audit: the inherited dashboard showed a 100% margin and empty charts" data-caption="Before the audit: the inherited dashboard showed a 100% margin and empty charts" aria-label="Enlarge screenshot: Before the audit: the inherited dashboard showed a 100% margin and empty charts"><img src="/assets/images/projects/nexora/00.jpg" alt="Nexora Apparels: 20-Year Supply Chain Intelligence: Before the audit: the inherited dashboard showed a 100% margin and empty charts" width="1327" height="743" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>Before the audit: the inherited dashboard showed a 100% margin and empty charts</figcaption>
+              </figure></li>
+            </ul>
+          </section>
+
+          <section class="cs-section" id="findings" aria-labelledby="findings-h">
+            <h2 id="findings-h">Key findings</h2>
+            <ol class="cs-findings"><li><strong>Growth hid a delivery crisis.</strong> On-time-in-full fell from 63% to 40%, and days of inventory rose from 16 to 56.</li><li><strong>Nexora lost share.</strong> It grew 4.0× against 4.7× for national RMG exports.</li><li><strong>Costs are structural, not seasonal.</strong> The minimum wage rose 7.5× while output per labour hour rose 1.1×; payroll grew 9.5× on 1.8× headcount.</li><li><strong>Import dependence has not moved in 20 years.</strong> 76% of materials are imported, 40% from China, and customs and inland congestion cause 40% of late shipment volume.</li><li><strong>Two buyers generate 41% of revenue,</strong> and traditional EU/UK/US markets still supply 92%.</li><li><strong>Specific companies are the levers.</strong> Dhaleswari trails on margin (26.6% vs 50.2%) and line efficiency (74.8% vs 87.6%); Surma has the highest defect rate (4.9% vs 3.7%).</li><li><strong>Procurement is the biggest margin lever:</strong> direct material is 78% of total cost. Carbon per garment fell 33% as solar reached about 20%.</li></ol>
+          </section>
+
+          <section class="cs-section" id="recommendations" aria-labelledby="recommendations-h">
+            <h2 id="recommendations-h">Decisions the dashboard supports</h2>
+            <p>The big idea: <strong>Nexora won the volume game. The next decade&#39;s margin will be won in the supply chain: delivery reliability, import dependence and productivity per worker.</strong> Each page ends in a decision:</p>
+            <ul><li>Where leadership attention goes this quarter: growth, or delivery recovery.</li><li>Whether productivity investment (automation, lean lines) is now overdue, starting with Dhaleswari.</li><li>Dual-sourcing and backward-linkage targets to cut lead time and import dependence.</li><li>A DIO target and a raw-material reorder policy.</li><li>Buyer-concentration risk appetite, and whether to court non-traditional markets.</li></ul>
+          </section>
+
+          <section class="cs-section" id="implementation" aria-labelledby="implementation-h">
+            <h2 id="implementation-h">Technical implementation</h2>
+            <ul><li>Power BI Project (PBIP) with a TMDL model and PBIR report, so every page, visual and measure is a reviewable text file.</li><li>Report pages, storytelling measures and interactions generated and validated by Node.js scripts.</li><li>Synthetic data generator in Python (pandas, pyarrow, DuckDB) with a fixed seed; BigQuery DDL for warehouse loading.</li><li>Requires a 2025+ Power BI Desktop build (DAX user-defined functions, compatibility level 1702).</li></ul>
+          </section>
+
+          <section class="cs-section" id="limitations" aria-labelledby="limitations-h">
+            <h2 id="limitations-h">Limitations &amp; assumptions</h2>
+            <ul><li>Synthetic data calibrated to public benchmarks: patterns are realistic, but no real company is described.</li><li>The dashboard is descriptive and diagnostic. It sizes where to look; it does not forecast or optimise.</li><li>Comparisons with national RMG exports use public aggregate benchmarks.</li></ul>
+          </section>
+
+          <section class="cs-section" id="links" aria-labelledby="links-h">
+            <h2 id="links-h">Repository & live demo</h2>
+            <p>Review the full project, documentation and screenshots on GitHub.</p>
+            <div class="cs-links"><a href="https://github.com/JunayedParves/nexora-rmg-supply-chain-powerbi" target="_blank" rel="noopener noreferrer">GitHub repository <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span>github.com/JunayedParves/nexora-rmg-supply-chain-powerbi</span></a></div>
+          </section>
+            <nav class="cs-nav" aria-label="More case studies">
+              <a href="/projects/takapay-credit-risk-analytics/"><span class="dir">← Previous</span><strong>TakaPay</strong></a>
+              <a class="next" href="/projects/nabanna-retail-decision-intelligence/"><span class="dir">Next →</span><strong>Nabanna Bazar</strong></a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">M K Junayed Parves</p>
+          <p>Data Analyst · Business Intelligence Analyst · Business Analyst<br>Dhaka, Bangladesh</p>
+        </div>
+        <div>
+          <p class="footer-title">Explore</p>
+          <ul class="footer-links">
+            <li><a href="/projects/">All projects</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/assets/resume.pdf" download>Download résumé</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Connect</p>
+          <ul class="footer-links">
+            <li><a href="mailto:jndparves@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/junayedparves" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/JunayedParves" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://public.tableau.com/app/profile/junayed.parves" target="_blank" rel="noopener noreferrer">Tableau Public</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 M K Junayed Parves</span>
+        <span class="mono">Last updated: 31 October 2026</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Enlarged screenshot">
+    <img src="" alt="">
+    <div class="lightbox-bar"><span class="lightbox-caption"></span><button class="lightbox-close" type="button">Close</button></div>
+  </dialog>
+</body>
+</html>

@@ -1,8 +1,8 @@
 /* =====================================================================
    config.js  —  THE ONLY SETTINGS FILE YOU NEED TO EDIT
    ---------------------------------------------------------------------
-   The website (js/script.js) AND the backup robot (scripts/sync.js)
-   both read this file, so your IDs live in exactly one place.
+   Read by the content robot (scripts/sync.js) and the site builder
+   (scripts/build.js), so your IDs live in exactly one place.
 
    After editing: save, commit and push. That's it.
    ===================================================================== */
@@ -28,8 +28,8 @@ var SITE_CONFIG = {
         ...edit#gid=123456789   ← that number is the gid for that tab.
         The very first tab is usually 0.
 
-     Leave publishedId empty ("") and the site simply uses the backup
-     files in /data/ instead. The site always works, even before setup.
+     Leave publishedId empty ("") and the site is built from the files
+     in /data/ (made from templates/*.csv). It always works, even before setup.
      ------------------------------------------------------------------ */
   sheet: {
     publishedId: "",          // e.g. "2PACX-1vABC...xyz"
@@ -50,14 +50,14 @@ var SITE_CONFIG = {
      Sign up at https://formspree.io → New form → copy the form ID.
      The form endpoint looks like https://formspree.io/f/xyzabcd
      → the ID is the last part: "xyzabcd".
-     Leave empty and the form falls back to opening the visitor's email app.
+     Leave empty and no form is shown: visitors use the Email button instead,
+     so there is never a form that doesn't send.
      ------------------------------------------------------------------ */
-  formspreeId: "",
+  formspreeId: ""
 
-  /* The project filter tabs, in the order they appear.
-     A tab only shows if at least one visible project uses that category.
-     The text must match the "category" column in the projects tab. */
-  projectCategories: ["Power BI", "Web App", "Tableau", "GitHub"]
+  /* Project filters are set in scripts/build.js (HOME_FILTERS and
+     PROJECT_FILTERS) and match the "tags" column of the projects tab.
+     A filter only appears when at least one project has that tag. */
 };
 
 /* ---- Plumbing (no need to touch) ----

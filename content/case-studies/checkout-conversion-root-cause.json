@@ -1,0 +1,119 @@
+{
+  "slug": "checkout-conversion-root-cause",
+  "subtitle": "An Excel root cause analysis that tested every explanation for a sudden checkout drop until one was left, and costed it.",
+  "seo_description": "Business analysis case study: Excel root cause analysis of an e-commerce checkout conversion drop using data-quality checks, two-proportion z-tests, segment analysis and a revenue impact bridge.",
+  "facts": [
+    ["Domain", "E-commerce checkout"],
+    ["Scale", "26,375 checkout sessions · June 2026"],
+    ["Analytics", "Diagnostic · statistical testing"],
+    ["Built with", "Excel (live formulas), Python cross-check"]
+  ],
+  "gallery": [
+    { "src": "01.jpg", "caption": "Dashboard: headline, key numbers, five charts and the action plan" },
+    { "src": "02.jpg", "caption": "Executive summary: the answer first, then what, why, cost and next steps" },
+    { "src": "03.jpg", "caption": "Segments: before-versus-after completion for 30 segments with z-tests" }
+  ],
+  "sections": [
+    {
+      "id": "summary", "title": "Executive summary",
+      "paragraphs": [
+        "Checkout completion fell sharply in June 2026 and revenue fell with it. The product team suspected an ongoing **PayPal integration issue**. I built a single Excel workbook that answers four questions in order: is the data clean enough to trust, when did the decline start, which segments cause it, and how much revenue it has cost.",
+        "**The answer: PayQuick, a new payment option, is the cause. PayPal is not.** PayQuick went live at 00:03 on 18 June, the same minute the decline began, and 95% of PayQuick checkouts time out at order authorisation."
+      ],
+      "callout": "The dataset is a **practice case dataset** of a fictional online store. Every figure in the workbook is a live formula, cross-checked by a separate Python analysis.",
+      "callout_type": "warn"
+    },
+    {
+      "id": "problem", "title": "Business problem",
+      "paragraphs": [
+        "A drop in checkout completion is expensive every day it continues, and fixing the wrong cause wastes engineering time. The business needed a defensible root cause, a cost estimate and a plan, quickly."
+      ]
+    },
+    {
+      "id": "objectives", "title": "Analytical objectives",
+      "list": [
+        "Confirm the data is trustworthy before analysing it.",
+        "Find the break date statistically rather than by eye.",
+        "Test every plausible hypothesis (PayPal, device or browser, traffic mix, a coupon campaign, the new payment option) and rule each in or out.",
+        "Estimate the revenue lost, and the cost of every further day without a fix."
+      ]
+    },
+    {
+      "id": "data", "title": "Dataset",
+      "paragraphs": [
+        "26,375 checkout sessions from June 2026, with payment method, device, OS, browser, region, traffic source, coupon, checkout stage reached, error codes and order value."
+      ]
+    },
+    {
+      "id": "preparation", "title": "Data cleaning & validation",
+      "paragraphs": ["The **1_Cleaning** sheet runs 13 live data-quality checks before any analysis: duplicates, blanks, invalid values, contradictions between fields and outliers. The cleaned sessions sit in an Excel table that every other sheet reads from."]
+    },
+    {
+      "id": "method", "title": "Analytical methodology",
+      "list": [
+        "**Break date:** daily metrics plus a scan of every possible break date using a **two-proportion z-test**; the date is selected by formula (`INDEX`/`MATCH` on the z-score scan).",
+        "**Segments:** before-versus-after completion for 30 segments with z-tests, the result with PayQuick removed, and where each payment method's sessions stop in checkout.",
+        "**Revenue impact:** three independent methods (session-level estimate, top-down and outlier-capped) plus a revenue bridge.",
+        "**Cross-check:** `tollgate_rca.py` repeats the whole analysis in Python; every Excel number matches."
+      ],
+      "table": {
+        "head": ["Hypothesis", "Verdict", "Evidence"],
+        "rows": [
+          ["PayPal integration issue", "Ruled out", "PayPal completion 69.6% → 68.8% (p = 0.45), zero timeouts"],
+          ["A device, browser, OS or region broke", "Ruled out", "Every segment fell by a similar 7–12 points"],
+          ["Traffic mix shifted", "Ruled out", "No traffic source moved more than 1 point in share"],
+          ["SUMMER10 coupon campaign", "Ruled out", "Ran 10–21 June; doesn't match the start or duration of the drop"],
+          ["PayQuick fails at authorisation", "Root cause", "95% timeout rate; all timeouts are PayQuick; removing it erases the drop"]
+        ]
+      }
+    },
+    {
+      "id": "kpis", "title": "Key metrics",
+      "kpis": [
+        ["Checkout completion", "Completed orders ÷ sessions that reached checkout"],
+        ["Timeout rate", "Sessions ending in PAYMENT_AUTH_TIMEOUT ÷ sessions using the method"],
+        ["Lost revenue", "Expected minus actual completed revenue since the break date"],
+        ["Cost per 30 days", "Daily loss run-rate × 30"]
+      ]
+    },
+    { "id": "dashboard", "title": "The workbook", "gallery": true,
+      "paragraphs": ["Seven sheets: Dashboard, Executive Summary, 1_Cleaning, 2_Break_Date, 3_Segments, 4_Revenue and Data. Chart titles state their conclusion, and summary sentences are built with `TEXT()` so they update with the data."] },
+    {
+      "id": "findings", "title": "Key findings",
+      "findings": [
+        "**The decline began at 00:03 on 18 June,** the minute PayQuick went live.",
+        "**95% of PayQuick checkouts time out** at order authorisation (`PAYMENT_AUTH_TIMEOUT`), and every timeout is a PayQuick session.",
+        "**Completion fell from 68.7% to 59.1%.** With PayQuick sessions excluded it is 68.8%, unchanged.",
+        "**PayPal was ruled out:** 69.6% → 68.8%, not significant (p = 0.45), with zero timeouts.",
+        "**Estimated loss: $70,943 in 13 days,** about $164K every 30 days if unfixed."
+      ]
+    },
+    {
+      "id": "recommendations", "title": "Recommendations",
+      "list": [
+        "Hide PayQuick at checkout today.",
+        "Fix the authorisation timeout with the vendor.",
+        "Relaunch to 5% of traffic first, with alerts on completion by payment method.",
+        "Email the 1,595 customers it turned away ($104K in carts)."
+      ]
+    },
+    {
+      "id": "implementation", "title": "Technical implementation",
+      "list": [
+        "`COUNTIFS` and `SUMIFS` for every metric, driven by a single break-date cell.",
+        "Two-proportion z-tests with `SQRT` and `NORMSDIST`; `SUMPRODUCT` for consistency checks and the outlier-capped estimate.",
+        "`MINIFS`, `MAXIFS`, `PERCENTILE` and `QUARTILE` for outlier detection.",
+        "Native charts, including a waterfall built from stacked columns; a colour convention for inputs, links and formulas.",
+        "Python (pandas, NumPy, openpyxl) to clean the data, cross-check the analysis and build the workbook."
+      ]
+    },
+    {
+      "id": "limitations", "title": "Limitations & assumptions",
+      "list": [
+        "The data is a practice case, not a real store's sessions.",
+        "Revenue loss is an estimate; three methods are shown so the range is visible.",
+        "Statistical tests show association in observational data; the timing, error codes and removal test together make the causal case."
+      ]
+    }
+  ]
+}

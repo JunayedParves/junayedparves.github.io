@@ -12,16 +12,40 @@
     "value": "Business Intelligence Analyst"
   },
   {
-    "key": "headline",
-    "value": "Hi, I'm *Junayed*. | I turn data into decisions."
+    "key": "target_roles",
+    "value": "Data Analyst | Business Intelligence Analyst | Business Analyst"
   },
   {
-    "key": "bio",
-    "value": "Business Intelligence Analyst with 4+ years of experience designing Power BI dashboards, writing complex SQL queries and delivering strategic reporting across insurance, e-commerce and F&B operations."
+    "key": "headline",
+    "value": "Turning Data Into *Business Intelligence & Decisions.*"
+  },
+  {
+    "key": "hero_description",
+    "value": "I combine analytical thinking, technical expertise and business understanding to transform complex data into actionable insights, intelligent dashboards and strategic business decisions."
+  },
+  {
+    "key": "capabilities",
+    "value": "SQL | Power BI & DAX | Power Query | Tableau | Python | Excel"
+  },
+  {
+    "key": "current_role",
+    "value": "Senior Analyst"
+  },
+  {
+    "key": "current_org",
+    "value": "Green Delta Insurance PLC"
+  },
+  {
+    "key": "location",
+    "value": "Dhaka, Bangladesh"
   },
   {
     "key": "photo_url",
     "value": "assets/images/portrait.jpg"
+  },
+  {
+    "key": "photo_alt",
+    "value": "Portrait of M K Junayed Parves"
   },
   {
     "key": "resume_url",
@@ -40,8 +64,20 @@
     "value": "https://github.com/JunayedParves"
   },
   {
-    "key": "location",
-    "value": "Dhaka, Bangladesh"
+    "key": "tableau",
+    "value": "https://public.tableau.com/app/profile/junayed.parves"
+  },
+  {
+    "key": "availability",
+    "value": "Open to Data Analyst, Business Intelligence Analyst and Business Analyst roles."
+  },
+  {
+    "key": "seo_title",
+    "value": "M K Junayed Parves | Data Analyst & Business Intelligence Analyst, Bangladesh"
+  },
+  {
+    "key": "seo_description",
+    "value": "Data Analyst and Business Intelligence Analyst in Dhaka, Bangladesh. Power BI, SQL, DAX, Tableau and Python case studies in credit risk, retail, supply chain and financial analytics."
   },
   {
     "key": "stat1_value",
@@ -49,47 +85,111 @@
   },
   {
     "key": "stat1_label",
-    "value": "Years experience"
+    "value": "Years in BI & analytics"
+  },
+  {
+    "key": "stat1_detail",
+    "value": "Reporting, dashboards and analysis since 2020"
   },
   {
     "key": "stat2_value",
-    "value": "Insurance | E-Commerce | F&B Operations"
+    "value": "5"
   },
   {
     "key": "stat2_label",
-    "value": "Focus industries"
+    "value": "Organisations"
+  },
+  {
+    "key": "stat2_detail",
+    "value": "From data processing to senior analyst"
   },
   {
     "key": "stat3_value",
-    "value": "Dhaka"
+    "value": "4"
   },
   {
     "key": "stat3_label",
-    "value": "Based in"
+    "value": "Industries"
   },
   {
-    "key": "last_updated",
-    "value": "2026-09-30"
+    "key": "stat3_detail",
+    "value": "Insurance, financial services, e-commerce and F&B"
   },
   {
-    "key": "about_label",
-    "value": "About me"
+    "key": "stat4_value",
+    "value": "{case_studies}"
+  },
+  {
+    "key": "stat4_label",
+    "value": "Portfolio case studies"
+  },
+  {
+    "key": "stat4_detail",
+    "value": "Documented end to end, each with a data note"
+  },
+  {
+    "key": "industries",
+    "value": "Insurance | Financial services | E-commerce | F&B operations"
+  },
+  {
+    "key": "role1_title",
+    "value": "Data Analyst"
+  },
+  {
+    "key": "role1_text",
+    "value": "Clean, validate and analyse data with SQL, Python and Excel, from hypothesis tests that isolate a root cause to models that rank risk."
+  },
+  {
+    "key": "role2_title",
+    "value": "Business Intelligence Analyst"
+  },
+  {
+    "key": "role2_text",
+    "value": "Design star-schema models, DAX measures and Power BI reports that business units use for daily decisions."
+  },
+  {
+    "key": "role3_title",
+    "value": "Business Analyst"
+  },
+  {
+    "key": "role3_text",
+    "value": "Turn business questions into KPIs, requirements and prioritised, costed recommendations that management can act on."
+  },
+  {
+    "key": "snapshot_label",
+    "value": "Professional snapshot"
+  },
+  {
+    "key": "snapshot_title",
+    "value": "Business-focused analytics, from raw data to decisions"
+  },
+  {
+    "key": "snapshot_intro",
+    "value": "Four-plus years across insurance, financial services, e-commerce and F&B, building the reporting, dashboards and analysis that managers use to decide."
+  },
+  {
+    "key": "projects_label",
+    "value": "Selected work"
+  },
+  {
+    "key": "projects_title",
+    "value": "Featured case studies"
+  },
+  {
+    "key": "projects_intro",
+    "value": "Each project starts with a business question and ends with a recommendation. Data is labelled synthetic, practice or public: none of it is employer data."
   },
   {
     "key": "skills_label",
-    "value": "Skills & tools"
+    "value": "Technical expertise"
   },
   {
     "key": "skills_title",
-    "value": "My analytics toolkit"
+    "value": "Tools and methods I use"
   },
   {
     "key": "skills_intro",
-    "value": "How I use these tools together: SQL to extract and clean the data, Power BI and Excel to model and report it."
-  },
-  {
-    "key": "skills_chips_label",
-    "value": "Also working with:"
+    "value": "Grouped by what they are used for. Everything listed is used in my work or in the case studies above."
   },
   {
     "key": "experience_label",
@@ -97,7 +197,7 @@
   },
   {
     "key": "experience_title",
-    "value": "Where I've worked"
+    "value": "Professional experience"
   },
   {
     "key": "experience_intro",
@@ -113,78 +213,50 @@
   },
   {
     "key": "education_intro",
-    "value": ""
+    "value": "Statistics, accounting and business IT: the foundation behind the analysis."
   },
   {
-    "key": "projects_label",
-    "value": "Project showcase"
+    "key": "knowledge_label",
+    "value": "Knowledge hub"
   },
   {
-    "key": "projects_title",
-    "value": "Selected work"
+    "key": "knowledge_title",
+    "value": "What I read, listen to and learn from"
   },
   {
-    "key": "projects_intro",
-    "value": ""
-  },
-  {
-    "key": "books_label",
-    "value": "Bookshelf"
-  },
-  {
-    "key": "books_title",
-    "value": "Books I've read & reviewed"
-  },
-  {
-    "key": "books_intro",
-    "value": "My learning library: the books shaping how I analyse data, communicate insights and make decisions."
-  },
-  {
-    "key": "podcasts_label",
-    "value": "In my ears"
-  },
-  {
-    "key": "podcasts_title",
-    "value": "Podcasts I listen to"
-  },
-  {
-    "key": "podcasts_intro",
-    "value": ""
-  },
-  {
-    "key": "following_label",
-    "value": "Staying current"
-  },
-  {
-    "key": "following_title",
-    "value": "People & organizations I follow"
-  },
-  {
-    "key": "following_intro",
-    "value": "My learning journey in data has been shaped by educators, practitioners and learning platforms that make complex ideas practical. These are the people and organizations I regularly learn from to strengthen my technical skills, business thinking and approach to analytics."
-  },
-  {
-    "key": "following_people_title",
-    "value": "People I learn from"
-  },
-  {
-    "key": "following_platforms_title",
-    "value": "Platforms I learn from"
+    "key": "knowledge_intro",
+    "value": "The books, podcasts, people and platforms that shape how I analyse data and communicate insight."
   },
   {
     "key": "contact_label",
-    "value": "Résumé & contact"
+    "value": "Contact"
   },
   {
     "key": "contact_title",
-    "value": "Let's work together"
+    "value": "Let's talk about your data and reporting needs"
   },
   {
     "key": "contact_intro",
-    "value": ""
+    "value": "The fastest way to reach me is email or LinkedIn. My résumé has the full detail."
   },
   {
     "key": "resume_note",
-    "value": "Two pages, PDF. Last updated Sep 2026."
+    "value": "Two pages, PDF"
+  },
+  {
+    "key": "books_visible",
+    "value": "5"
+  },
+  {
+    "key": "podcasts_visible",
+    "value": "5"
+  },
+  {
+    "key": "following_visible",
+    "value": "5"
+  },
+  {
+    "key": "last_updated",
+    "value": "2026-10-31"
   }
 ]

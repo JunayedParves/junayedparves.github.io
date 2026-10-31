@@ -6,8 +6,7 @@
    day. It:
      1. downloads each tab of the published Google Sheet as CSV
      2. converts it to JSON and saves it as data/<tab>.json
-     3. updates the <title>/description/share tags in index.html from the
-        "profile" tab (between the SEO:START and SEO:END comments)
+     3. rebuilds the website pages from it (scripts/build.js)
    If anything fails, NOTHING is written, so a Google hiccup can never
    wipe out your backup.
 
@@ -81,46 +80,6 @@ async function getCsv(tab) {
   return text;
 }
 
-/* ---------- Rewrite the SEO block in index.html ---------- */
-function escAttr(s) {
-  return String(s || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
-
-function updateSeo(profileRows) {
-  const p = {};
-  profileRows.forEach(r => { if (r.key) p[r.key.toLowerCase()] = r.value || ""; });
-  if (!p.name) return false;
-
-  const site = String(CONFIG.siteUrl || "").replace(/\/?$/, "/");
-  const title = p.name + (p.role ? " · " + p.role : "");
-  let description = p.bio || title;
-  if (description.length > 160) description = description.slice(0, 157).replace(/\s+\S*$/, "") + "…";
-
-  const block = [
-    "<!-- SEO:START",
-    "       This block is rewritten automatically by scripts/sync.js from the",
-    '       "profile" tab of your Google Sheet (name, role, bio). You can edit it',
-    "       by hand too, but the next sync will overwrite it. -->",
-    `  <title>${escAttr(title)}</title>`,
-    `  <meta name="description" content="${escAttr(description)}">`,
-    `  <link rel="canonical" href="${escAttr(site)}">`,
-    '  <meta property="og:type" content="website">',
-    `  <meta property="og:url" content="${escAttr(site)}">`,
-    `  <meta property="og:title" content="${escAttr(title)}">`,
-    `  <meta property="og:description" content="${escAttr(description)}">`,
-    `  <meta property="og:image" content="${escAttr(site)}assets/images/og-image.jpg">`,
-    '  <meta name="twitter:card" content="summary_large_image">',
-    "  <!-- SEO:END -->"
-  ].join("\n");
-
-  const file = path.join(ROOT, "index.html");
-  const html = fs.readFileSync(file, "utf8");
-  const updated = html.replace(/<!-- SEO:START[\s\S]*?<!-- SEO:END -->/, block);
-  if (updated === html) return false;
-  fs.writeFileSync(file, updated, "utf8");
-  return true;
-}
-
 /* ---------- Main ---------- */
 async function main() {
   // Sheet not set up yet → nothing to do (don't fail the daily Action)
@@ -145,8 +104,8 @@ async function main() {
   }
   console.log("Saved data/*.json");
 
-  // 3. Keep the link-preview tags in index.html in sync with the profile tab
-  if (updateSeo(results.profile)) console.log("Updated SEO tags in index.html");
+  // 3. Rebuild the website pages (index.html, projects/, sitemap.xml) from the new data
+  require("./build.js");
 }
 
 main().catch(err => {

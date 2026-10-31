@@ -39,6 +39,16 @@ jobs:
         with:
           ref: main
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Rebuild the HTML from data/ and content/ so the published pages always
+      # match the latest content, even if someone forgot to run the build locally.
+      - name: Build the pages
+        run: node scripts/build.js
+
       - name: Set up Pages
         uses: actions/configure-pages@v5
 

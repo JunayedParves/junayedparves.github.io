@@ -2,41 +2,45 @@
   {
     "order": "1",
     "type": "degree",
-    "title": "Postgraduate Diploma, Business IT",
-    "institution": "Bangladesh University of Engineering and Technology (BUET)",
-    "years": "2026 — 2027",
-    "detail": "In progress",
-    "logo_url": "assets/images/logos/buet.png",
+    "title": "MBA, Accounting & Information Systems",
+    "institution": "University of Dhaka",
+    "years": "2021",
+    "detail": "",
+    "status": "Completed",
+    "logo_url": "assets/images/logos/university-of-dhaka.png",
     "show": "TRUE"
   },
   {
     "order": "2",
     "type": "degree",
-    "title": "ACCA Qualification",
-    "institution": "Association of Chartered Certified Accountants",
-    "years": "2025",
-    "detail": "In progress",
-    "logo_url": "assets/images/logos/acca.png",
+    "title": "BSc in Statistics",
+    "institution": "Dhaka College (University of Dhaka)",
+    "years": "2015",
+    "detail": "",
+    "status": "Completed",
+    "logo_url": "assets/images/logos/dhaka-college.png",
     "show": "TRUE"
   },
   {
     "order": "3",
     "type": "degree",
-    "title": "MBA, Accounting & Information Systems",
-    "institution": "University of Dhaka",
-    "years": "2021",
+    "title": "Postgraduate Diploma, Business IT",
+    "institution": "Bangladesh University of Engineering and Technology (BUET)",
+    "years": "2026 – 2027",
     "detail": "",
-    "logo_url": "assets/images/logos/university-of-dhaka.png",
+    "status": "In progress",
+    "logo_url": "assets/images/logos/buet.png",
     "show": "TRUE"
   },
   {
     "order": "4",
     "type": "degree",
-    "title": "BSc in Statistics",
-    "institution": "Dhaka College (University of Dhaka)",
-    "years": "2015",
+    "title": "ACCA Qualification",
+    "institution": "Association of Chartered Certified Accountants",
+    "years": "Since 2025",
     "detail": "",
-    "logo_url": "assets/images/logos/dhaka-college.png",
+    "status": "In progress",
+    "logo_url": "assets/images/logos/acca.png",
     "show": "TRUE"
   },
   {
@@ -46,6 +50,7 @@
     "institution": "Coursera",
     "years": "",
     "detail": "",
+    "status": "Completed",
     "logo_url": "",
     "show": "TRUE"
   },
@@ -56,6 +61,7 @@
     "institution": "Maven Analytics",
     "years": "",
     "detail": "",
+    "status": "Completed",
     "logo_url": "",
     "show": "TRUE"
   },
@@ -66,6 +72,7 @@
     "institution": "DataCamp",
     "years": "",
     "detail": "",
+    "status": "Completed",
     "logo_url": "",
     "show": "TRUE"
   },
@@ -76,6 +83,7 @@
     "institution": "Microsoft & LinkedIn Learning",
     "years": "",
     "detail": "",
+    "status": "Completed",
     "logo_url": "",
     "show": "TRUE"
   },
@@ -86,6 +94,7 @@
     "institution": "",
     "years": "",
     "detail": "",
+    "status": "Completed",
     "logo_url": "",
     "show": "TRUE"
   }

@@ -2,47 +2,65 @@ key,value
 name,M K Junayed Parves
 initials,JP
 role,Business Intelligence Analyst
-headline,"Hi, I'm *Junayed*. | I turn data into decisions."
-bio,"Business Intelligence Analyst with 4+ years of experience designing Power BI dashboards, writing complex SQL queries and delivering strategic reporting across insurance, e-commerce and F&B operations."
+target_roles,Data Analyst | Business Intelligence Analyst | Business Analyst
+headline,Turning Data Into *Business Intelligence & Decisions.*
+hero_description,"I combine analytical thinking, technical expertise and business understanding to transform complex data into actionable insights, intelligent dashboards and strategic business decisions."
+capabilities,SQL | Power BI & DAX | Power Query | Tableau | Python | Excel
+current_role,Senior Analyst
+current_org,Green Delta Insurance PLC
+location,"Dhaka, Bangladesh"
 photo_url,assets/images/portrait.jpg
+photo_alt,Portrait of M K Junayed Parves
 resume_url,assets/resume.pdf
 email,jndparves@gmail.com
 linkedin,https://www.linkedin.com/in/junayedparves
 github,https://github.com/JunayedParves
-location,"Dhaka, Bangladesh"
+tableau,https://public.tableau.com/app/profile/junayed.parves
+availability,"Open to Data Analyst, Business Intelligence Analyst and Business Analyst roles."
+seo_title,"M K Junayed Parves | Data Analyst & Business Intelligence Analyst, Bangladesh"
+seo_description,"Data Analyst and Business Intelligence Analyst in Dhaka, Bangladesh. Power BI, SQL, DAX, Tableau and Python case studies in credit risk, retail, supply chain and financial analytics."
 stat1_value,4+
-stat1_label,Years experience
-stat2_value,Insurance | E-Commerce | F&B Operations
-stat2_label,Focus industries
-stat3_value,Dhaka
-stat3_label,Based in
-last_updated,2026-09-30
-about_label,About me
-skills_label,Skills & tools
-skills_title,My analytics toolkit
-skills_intro,"How I use these tools together: SQL to extract and clean the data, Power BI and Excel to model and report it."
-skills_chips_label,Also working with:
+stat1_label,Years in BI & analytics
+stat1_detail,"Reporting, dashboards and analysis since 2020"
+stat2_value,5
+stat2_label,Organisations
+stat2_detail,From data processing to senior analyst
+stat3_value,4
+stat3_label,Industries
+stat3_detail,"Insurance, financial services, e-commerce and F&B"
+stat4_value,{case_studies}
+stat4_label,Portfolio case studies
+stat4_detail,"Documented end to end, each with a data note"
+industries,Insurance | Financial services | E-commerce | F&B operations
+role1_title,Data Analyst
+role1_text,"Clean, validate and analyse data with SQL, Python and Excel, from hypothesis tests that isolate a root cause to models that rank risk."
+role2_title,Business Intelligence Analyst
+role2_text,"Design star-schema models, DAX measures and Power BI reports that business units use for daily decisions."
+role3_title,Business Analyst
+role3_text,"Turn business questions into KPIs, requirements and prioritised, costed recommendations that management can act on."
+snapshot_label,Professional snapshot
+snapshot_title,"Business-focused analytics, from raw data to decisions"
+snapshot_intro,"Four-plus years across insurance, financial services, e-commerce and F&B, building the reporting, dashboards and analysis that managers use to decide."
+projects_label,Selected work
+projects_title,Featured case studies
+projects_intro,"Each project starts with a business question and ends with a recommendation. Data is labelled synthetic, practice or public: none of it is employer data."
+skills_label,Technical expertise
+skills_title,Tools and methods I use
+skills_intro,Grouped by what they are used for. Everything listed is used in my work or in the case studies above.
 experience_label,Experience
-experience_title,Where I've worked
+experience_title,Professional experience
 experience_intro,Most recent first.
 education_label,Education
 education_title,Education & certifications
-education_intro,
-projects_label,Project showcase
-projects_title,Selected work
-projects_intro,
-books_label,Bookshelf
-books_title,Books I've read & reviewed
-books_intro,"My learning library: the books shaping how I analyse data, communicate insights and make decisions."
-podcasts_label,In my ears
-podcasts_title,Podcasts I listen to
-podcasts_intro,
-following_label,Staying current
-following_title,People & organizations I follow
-following_intro,"My learning journey in data has been shaped by educators, practitioners and learning platforms that make complex ideas practical. These are the people and organizations I regularly learn from to strengthen my technical skills, business thinking and approach to analytics."
-following_people_title,People I learn from
-following_platforms_title,Platforms I learn from
-contact_label,Résumé & contact
-contact_title,Let's work together
-contact_intro,
-resume_note,"Two pages, PDF. Last updated Sep 2026."
+education_intro,"Statistics, accounting and business IT: the foundation behind the analysis."
+knowledge_label,Knowledge hub
+knowledge_title,"What I read, listen to and learn from"
+knowledge_intro,"The books, podcasts, people and platforms that shape how I analyse data and communicate insight."
+contact_label,Contact
+contact_title,Let's talk about your data and reporting needs
+contact_intro,The fastest way to reach me is email or LinkedIn. My résumé has the full detail.
+resume_note,"Two pages, PDF"
+books_visible,5
+podcasts_visible,5
+following_visible,5
+last_updated,2026-10-31
