@@ -1,0 +1,127 @@
+{
+  "slug": "nexora-supply-chain-intelligence",
+  "subtitle": "Twenty years of a Bangladesh garment group told as one story: growth, delivery, cost and productivity, page by page.",
+  "seo_description": "Power BI supply chain case study: 3M-row star schema, 215 DAX measures and DAX user-defined functions for a Bangladesh garment manufacturer. Data audit, OTIF, inventory and margin analysis. Synthetic data.",
+  "facts": [
+    ["Domain", "Ready-made garments · supply chain"],
+    ["Scale", "≈3.04M rows · 2006–2025 (synthetic)"],
+    ["Model", "23 tables · 64 relationships · 215 measures"],
+    ["Built with", "Power BI (PBIP/TMDL), DAX, Python"]
+  ],
+  "gallery": [
+    { "src": "01.jpg", "caption": "1 · Executive Command Center: growing profitably while serving buyers reliably?" },
+    { "src": "02.jpg", "caption": "2 · Macro & Market: keeping pace with the industry and cost inflation?" },
+    { "src": "03.jpg", "caption": "3 · Commercial: where revenue comes from and how concentrated it is" },
+    { "src": "04.jpg", "caption": "4 · Procurement: dependence and reliability of the supply base" },
+    { "src": "05.jpg", "caption": "5 · Inventory: is working capital tied up efficiently?" },
+    { "src": "06.jpg", "caption": "6 · Production: productivity versus labour cost" },
+    { "src": "07.jpg", "caption": "7 · Quality & OTIF: where quality and delivery failures come from" },
+    { "src": "08.jpg", "caption": "8 · Finance & ESG: cost drivers and decarbonisation" },
+    { "src": "00.jpg", "caption": "Before the audit: the inherited dashboard showed a 100% margin and empty charts" }
+  ],
+  "sections": [
+    {
+      "id": "summary", "title": "Executive summary",
+      "paragraphs": [
+        "Nexora Apparels is a fictional garment group: 8 companies, 26 factories, 52 buyers and 180 suppliers. I rebuilt its management dashboard around Cole Nussbaumer Knaflic's ***Storytelling with Data***. Every page answers one management question, and every chart title states the answer, recalculated live for whatever is filtered.",
+        "**Before telling any story, I audited the numbers.** The inherited dashboard showed a 100% gross margin because cost of goods was silently blank. Ten measures were wrong and nine charts rendered nothing. A beautiful dashboard built on a wrong margin is worse than no dashboard."
+      ],
+      "callout": "All data is **synthetic** (≈3.04M rows, calibrated to public BGMEA, Bangladesh Bank and BBS benchmarks). Nexora and its companies are fictional.",
+      "callout_type": "warn"
+    },
+    {
+      "id": "problem", "title": "Business problem",
+      "paragraphs": [
+        "From the top, Nexora looks like a success: revenue grew 4.0×, from $236M in 2006 to $939M in 2025, at a steady ~50% operational gross margin. Leadership needed to know whether that headline hid problems in delivery, cost and productivity, and where to act first."
+      ]
+    },
+    {
+      "id": "objectives", "title": "Analytical objectives",
+      "list": [
+        "Audit and correct the semantic model so every number reconciles to the cost ledger.",
+        "Answer one management question per page: growth, market, commercial, procurement, inventory, production, quality and finance.",
+        "Make each chart state its finding in the title, and keep that sentence true under any filter.",
+        "Point management to specific levers: companies, buyers, suppliers and cost lines."
+      ]
+    },
+    {
+      "id": "data", "title": "Dataset",
+      "paragraphs": [
+        "22 Parquet tables (≈3.04M rows, 2006–2025): 10 conformed dimensions and 12 fact tables, including monthly snapshots for inventory, workforce, ESG and macro indicators. The data is reproducible from a seeded Python generator, and BigQuery DDL is included for a warehouse load."
+      ]
+    },
+    {
+      "id": "preparation", "title": "Data audit & quality fixes",
+      "list": [
+        "Fixed gross margin, which showed **100%** because COGS was blank. It now shows **50.2%**, reconciled to the cost ledger.",
+        "Corrected 10 wrong measures and repaired 9 charts that rendered nothing (for example, bars bound to a non-existent role).",
+        "Made inventory and headcount semi-additive, so stock is never summed across months, and annualised turnover and DIO.",
+        "Replaced a 7-slice donut and a dual-axis combo with sorted bars and indexed lines, so unlike units share one honest axis."
+      ]
+    },
+    {
+      "id": "method", "title": "Data model & storytelling engine",
+      "list": [
+        "**Star schema:** 23 tables, 64 relationships, **215 measures**, with inactive date roles for ship and arrival dates.",
+        "**Storytelling engine:** 8 DAX user-defined functions (`Nexora.*`). Every title, KPI context line and highlight colour is one line of DAX calling a shared function.",
+        "**Colour logic computed by DAX:** grey for context, navy for the point, orange for the problem, so the highlight moves with the data.",
+        "**Filter rules:** year trends ignore the Year filter and company rankings ignore the Company filter, so a benchmark is always visible.",
+        "**Accessibility:** WCAG-checked colours (text ≥ 7:1, marks ≥ 3:1) and alt text on every visual."
+      ]
+    },
+    {
+      "id": "kpis", "title": "Key metrics",
+      "kpis": [
+        ["OTIF", "Share of orders delivered on time and in full"],
+        ["Days of inventory on hand (DIO)", "Annualised, from semi-additive month-end stock"],
+        ["Gross margin", "Reconciled to the cost ledger after the COGS fix"],
+        ["Line efficiency", "Output against standard minutes, by company"],
+        ["Defect rate", "Defective pieces ÷ pieces inspected"],
+        ["Import share", "Share of material spend sourced from abroad"],
+        ["Carbon per garment", "kg CO₂e per piece"]
+      ]
+    },
+    { "id": "dashboard", "title": "The dashboard", "gallery": true,
+      "paragraphs": ["Every page uses the same layout: question → scoreboard → answer → evidence. KPI cards show a \"2025 vs 2006\" context line that turns orange only when the move is bad."] },
+    {
+      "id": "findings", "title": "Key findings",
+      "findings": [
+        "**Growth hid a delivery crisis.** On-time-in-full fell from 63% to 40%, and days of inventory rose from 16 to 56.",
+        "**Nexora lost share.** It grew 4.0× against 4.7× for national RMG exports.",
+        "**Costs are structural, not seasonal.** The minimum wage rose 7.5× while output per labour hour rose 1.1×; payroll grew 9.5× on 1.8× headcount.",
+        "**Import dependence has not moved in 20 years.** 76% of materials are imported, 40% from China, and customs and inland congestion cause 40% of late shipment volume.",
+        "**Two buyers generate 41% of revenue,** and traditional EU/UK/US markets still supply 92%.",
+        "**Specific companies are the levers.** Dhaleswari trails on margin (26.6% vs 50.2%) and line efficiency (74.8% vs 87.6%); Surma has the highest defect rate (4.9% vs 3.7%).",
+        "**Procurement is the biggest margin lever:** direct material is 78% of total cost. Carbon per garment fell 33% as solar reached about 20%."
+      ]
+    },
+    {
+      "id": "recommendations", "title": "Decisions the dashboard supports",
+      "paragraphs": ["The big idea: **Nexora won the volume game. The next decade's margin will be won in the supply chain: delivery reliability, import dependence and productivity per worker.** Each page ends in a decision:"],
+      "list": [
+        "Where leadership attention goes this quarter: growth, or delivery recovery.",
+        "Whether productivity investment (automation, lean lines) is now overdue, starting with Dhaleswari.",
+        "Dual-sourcing and backward-linkage targets to cut lead time and import dependence.",
+        "A DIO target and a raw-material reorder policy.",
+        "Buyer-concentration risk appetite, and whether to court non-traditional markets."
+      ]
+    },
+    {
+      "id": "implementation", "title": "Technical implementation",
+      "list": [
+        "Power BI Project (PBIP) with a TMDL model and PBIR report, so every page, visual and measure is a reviewable text file.",
+        "Report pages, storytelling measures and interactions generated and validated by Node.js scripts.",
+        "Synthetic data generator in Python (pandas, pyarrow, DuckDB) with a fixed seed; BigQuery DDL for warehouse loading.",
+        "Requires a 2025+ Power BI Desktop build (DAX user-defined functions, compatibility level 1702)."
+      ]
+    },
+    {
+      "id": "limitations", "title": "Limitations & assumptions",
+      "list": [
+        "Synthetic data calibrated to public benchmarks: patterns are realistic, but no real company is described.",
+        "The dashboard is descriptive and diagnostic. It sizes where to look; it does not forecast or optimise.",
+        "Comparisons with national RMG exports use public aggregate benchmarks."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "slug": "kinun-campaign-profitability",
+  "subtitle": "A board-level Power BI dashboard that asks whether a 54-hour mega-sale actually makes money, and what to change before the next one.",
+  "seo_description": "E-commerce campaign analytics case study in Power BI: star schema with 183 DAX measures on BigQuery, contribution margin, promotion mechanics, ROAS by channel and peak-load operations. Synthetic data.",
+  "facts": [
+    ["Domain", "E-commerce · consumer electronics"],
+    ["Scale", "150,987 orders · 2022–2025 (synthetic)"],
+    ["Model", "8 fact + 10 dimension tables · 183 measures"],
+    ["Built with", "Power BI (PBIP), DAX, Power Query, BigQuery"]
+  ],
+  "gallery": [
+    { "src": "01.jpg", "caption": "1 · Executive Summary: growth is strong, but 11.11 buys volume at the expense of margin" },
+    { "src": "02.jpg", "caption": "2 · 11.11 Command Center: the biggest growth engine and the biggest margin leak" },
+    { "src": "03.jpg", "caption": "3 · Marketing & Channels: owned channels and CRM out-earn paid social" },
+    { "src": "04.jpg", "caption": "4 · Product & Margin: smartphones carry the top line and lose money in 11.11" },
+    { "src": "05.jpg", "caption": "5 · Customers & Operations: operations break under peak load" },
+    { "src": "06.jpg", "caption": "6 · Strategic Priorities: five moves to make 11.11 profitable, not just bigger" }
+  ],
+  "sections": [
+    {
+      "id": "summary", "title": "Executive summary",
+      "paragraphs": [
+        "Kinun is a Bangladesh consumer-electronics e-commerce platform. Its 54-hour **11.11** mega-sale (10 Nov 18:00 to 12 Nov 23:59) multiplies daily sales about **4×**. I built a BCG-style Power BI dashboard on four years of trading that follows the consulting **Situation → Complication → Resolution** storyline.",
+        "**The story in one sentence:** 11.11 multiplies daily sales 4×, but at an 11% discount it earns a 0.7% contribution margin and loses money after ad spend. The next 11.11 should grow on margin, not discount."
+      ],
+      "callout": "All figures come from a **synthetic portfolio dataset** that simulates a realistic e-commerce business. They are not real Kinun results.",
+      "callout_type": "warn"
+    },
+    {
+      "id": "problem", "title": "Business problem",
+      "paragraphs": [
+        "The campaign is celebrated for volume. Leadership needed to know whether it creates value after discounts, ad spend and operational strain, which products and promotions destroy margin, and what to change before the next launch."
+      ]
+    },
+    {
+      "id": "objectives", "title": "Analytical objectives",
+      "list": [
+        "Measure the campaign lift against an October baseline, and its profitability after discount and ad spend.",
+        "Find the categories, SKUs and promotion mechanics that lose money.",
+        "Evaluate channel efficiency (ROAS) and the funnel.",
+        "Assess delivery, payment and cancellation performance under peak load.",
+        "Measure borrowed demand and the lifetime value of campaign-acquired customers."
+      ]
+    },
+    {
+      "id": "data", "title": "Dataset",
+      "paragraphs": [
+        "18 tables in a Google BigQuery dataset (`kinun_dw`) covering orders, order lines, payments, deliveries, returns, inventory, marketing spend and the campaign calendar, 2022–2025. 150,987 orders placed (6.8% cancelled, 2.9% refused at the door)."
+      ]
+    },
+    {
+      "id": "method", "title": "Data model & methodology",
+      "list": [
+        "**Star schema:** 8 fact tables and 10 dimensions, single-direction relationships from dimensions to facts, **no fact-to-fact joins**.",
+        "**Role-playing dates:** `DimDate` is the marked date table; payment, return, dispatch, delivery and promised dates are inactive relationships switched on with `USERELATIONSHIP`.",
+        "**183 measures** in display folders: Sales, Profitability, Orders & Customers, Marketing Funnel, 11.11 Campaign, Payments, Delivery, Returns, Inventory, Time Intelligence, Dashboard Text and Strategic Priorities.",
+        "**Clean definitions:** GMV (all placed demand) is kept separate from delivered net sales and contribution margin; attributed marketing revenue is never mixed with transactional revenue; inventory is semi-additive; cohort measures use full customer history.",
+        "**Dynamic action titles:** headlines, subtitles and chart titles are DAX measures that rewrite themselves with every filter."
+      ]
+    },
+    {
+      "id": "kpis", "title": "Key metrics",
+      "kpis": [
+        ["Net sales (delivered)", "৳6.20B across 2022–2025, 21.3% CAGR"],
+        ["Contribution margin", "৳624M, 10.1% of net sales"],
+        ["Campaign lift", "Daily sales in the 11.11 window ÷ October baseline"],
+        ["Discount rate", "Discount ÷ gross sales"],
+        ["ROAS", "Attributed revenue ÷ media spend, by channel"],
+        ["Late delivery, payment failure, cancellation rates", "Operational health under peak load"]
+      ]
+    },
+    { "id": "dashboard", "title": "The dashboard", "gallery": true,
+      "paragraphs": ["Six pages plus a hidden category drill-through, with synced filters, scoped filtering (year-comparison visuals deliberately ignore the Year filter, and say so), a side menu and \"See the evidence\" buttons linking each recommendation to its proof."] },
+    {
+      "id": "findings", "title": "Key findings",
+      "findings": [
+        "**Margin collapses.** 11.11 earns a 0.7% contribution margin against 10.8% in normal trading, as discounts run at 11.0% versus 1.2%. After ad spend the event loses ৳0.75M.",
+        "**The best-selling category loses money.** Smartphones are 51% of event sales at a −2.1% margin, while Accessories hold 21.8%.",
+        "**54 margin-trap SKUs** sell at a 15.6% discount during the event and post a −5.3% margin.",
+        "**3 of 5 promotion mechanics lose money;** only the Hero Flash Drop is margin-positive (2.6%).",
+        "**Operations break under peak load.** Late deliveries rise from 30% to 68%, payment failures reach 11.3%, and cancellations rise from 6.6% to 11.2%.",
+        "**Part of the spike is borrowed demand.** Daily sales after the event run 34% below the October baseline, and 11.11 customers spend 24% less over their lifetime.",
+        "**The media mix is inefficient.** CRM returns 387× and Paid Search 81×, while Paid Social (58×) absorbs 58% of spend."
+      ]
+    },
+    {
+      "id": "recommendations", "title": "Recommendations: five moves for the next 11.11",
+      "table": {
+        "head": ["Move", "Owner", "Value at stake*"],
+        "rows": [
+          ["Cap discounts on margin-trap SKUs and exclude them from sitewide vouchers", "Category Directors", "৳1.7M contribution margin"],
+          ["Re-weight promotion funding to margin-positive mechanics", "Head of Campaigns", "৳0.4M contribution margin"],
+          ["Shift 20% of Paid Social budget into Search and CRM", "CMO", "৳113.6M attributed revenue"],
+          ["Pre-book payment-gateway and courier capacity for launch night and evening peaks", "COO, Head of Payments", "৳8.8M GMV kept"],
+          ["Convert deal-seekers with a 60-day post-event CRM journey", "Head of CRM", "৳97.7M lifetime value gap"]
+        ]
+      },
+      "after": "*Indicative estimates calculated live in the model. They overlap, so they should not be added together."
+    },
+    {
+      "id": "implementation", "title": "Technical implementation",
+      "list": [
+        "Power BI Project (PBIP) with TMDL model and PBIR report: every page, visual, measure and relationship is plain text reviewed in Git.",
+        "Google BigQuery source with a project-ID parameter; credentials stay in Power BI's local encrypted store and are never committed.",
+        "Custom BCG-style theme and logo registered as report resources."
+      ]
+    },
+    {
+      "id": "limitations", "title": "Limitations & assumptions",
+      "list": [
+        "Synthetic data: the numbers illustrate the analysis, not Kinun's real performance.",
+        "Recommendation values are indicative, overlapping estimates.",
+        "Attributed marketing revenue depends on the attribution model and is reported separately from transactional revenue."
+      ]
+    }
+  ]
+}

@@ -1,16 +1,28 @@
-order,name,detail,icon_url,type,show
-1,Excel,"Pivot tables, Power Query, VLOOKUP",assets/images/icons/excel-logo.png,tile,TRUE
-2,Power BI,Dashboard design & deployment,assets/images/icons/powerbi-logo.png,tile,TRUE
-3,SQL,"SQL Server, MySQL, complex queries",assets/images/icons/sql-logo.png,tile,TRUE
-4,Tableau,"Dashboards, visualization",assets/images/icons/tableau-logo.png,tile,TRUE
-5,Python,"pandas, NumPy",assets/images/icons/python-logo.png,tile,TRUE
-6,Statistics,Trend & root-cause analysis,assets/images/icons/statistics.svg,tile,TRUE
-10,Google Looker Studio,,,chip,TRUE
-11,Data cleaning & validation,,,chip,TRUE
-12,Data warehousing,,,chip,TRUE
-13,KPI development,,,chip,TRUE
-14,Report automation,,,chip,TRUE
-15,Data governance,,,chip,TRUE
-16,Stakeholder management,,,chip,TRUE
-17,Microsoft 365,,,chip,TRUE
-18,Google Workspace,,,chip,TRUE
+order,group,name,detail,icon_url,show
+1,Tools,Power BI,,assets/images/icons/powerbi-logo.png,TRUE
+2,Tools,SQL,,assets/images/icons/sql-logo.png,TRUE
+3,Tools,Excel,,assets/images/icons/excel-logo.png,TRUE
+4,Tools,Tableau,,assets/images/icons/tableau-logo.png,TRUE
+5,Tools,Python,,assets/images/icons/python-logo.png,TRUE
+10,Data Analysis,SQL,"SQL Server and MySQL: extraction, cleaning and validation queries",,TRUE
+11,Data Analysis,Python,pandas and NumPy for analysis pipelines and validation scripts,,TRUE
+12,Data Analysis,Excel,"Power Query, PivotTables and advanced formulas",,TRUE
+13,Data Analysis,Data cleaning,"Duplicate, blank, outlier and consistency checks",,TRUE
+14,Data Analysis,Statistical analysis,Hypothesis tests and regression; BSc in Statistics,,TRUE
+15,Data Analysis,Forecasting & predictive models,"Holt-Winters forecasts, logistic regression with out-of-time validation",,TRUE
+20,Business Intelligence,Power BI,"Reports, drill-through and what-if parameters",,TRUE
+21,Business Intelligence,DAX,"Time intelligence, dynamic titles, user-defined functions",,TRUE
+22,Business Intelligence,Power Query,M transformations and parameterised sources,,TRUE
+23,Business Intelligence,Tableau,Six dashboards published on Tableau Public,,TRUE
+24,Business Intelligence,Looker Studio,Self-service reporting,,TRUE
+30,Data Management,Data modelling,"Star schemas, role-playing dates, semi-additive measures",,TRUE
+31,Data Management,Data validation,Reconciling every figure to its source before it is reported,,TRUE
+32,Data Management,Data warehousing,Google BigQuery and SQL Server sources,,TRUE
+33,Data Management,Reporting automation,Recurring reports automated end to end,,TRUE
+34,Data Management,BI as code,"Power BI projects (PBIP, TMDL) under Git version control",,TRUE
+40,Business Analytics,KPI development,"Defining, documenting and monitoring business KPIs",,TRUE
+41,Business Analytics,Financial analysis,"Margin, EBITDA and working capital; MBA in AIS, ACCA in progress",,TRUE
+42,Business Analytics,Performance monitoring,"Branch, product and channel scorecards",,TRUE
+43,Business Analytics,Trend analysis,"Growth, seasonality and cohort trends",,TRUE
+44,Business Analytics,Root cause analysis,Testing hypotheses until one explanation is left,,TRUE
+45,Business Analytics,Stakeholder reporting,Requirements gathering and plain-language recommendations,,TRUE

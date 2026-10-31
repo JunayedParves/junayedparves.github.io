@@ -1,0 +1,136 @@
+{
+  "slug": "wellcare-pharma-performance",
+  "subtitle": "A consulting-style Power BI report and a Python forecast for a 24-store pharmacy chain: where the growth comes from, what it costs, and what to do next.",
+  "seo_description": "Pharmacy retail analytics case study: Power BI report on BigQuery data reconciled line by line, 46 DAX measures, same-store growth, margin, working capital and a Holt-Winters sales forecast in Python.",
+  "facts": [
+    ["Domain", "Pharmacy retail · 24 stores in Dhaka"],
+    ["Scale", "525,906 sales lines · FY2022–FY2025"],
+    ["Analytics", "Descriptive · diagnostic · forecasting"],
+    ["Built with", "Power BI, DAX, Google BigQuery, Python"]
+  ],
+  "gallery": [
+    { "src": "01.jpg", "caption": "1 · Executive summary: is the business on track?" },
+    { "src": "02.jpg", "caption": "2 · Growth: new stores, not existing ones" },
+    { "src": "03.jpg", "caption": "3 · Profitability: flat gross margin, rising EBITDA through operating leverage" },
+    { "src": "04.jpg", "caption": "4 · Inventory & procurement: stock cover and supplier fill rate" },
+    { "src": "05.jpg", "caption": "5 · Customers & stores: key-account concentration and lapsed loyal customers" },
+    { "src": "06.jpg", "caption": "6 · Action plan: six actions with owners and measures" },
+    { "src": "web.jpg", "caption": "Companion web dashboard (Python): growth, profit drivers and a six-month forecast" }
+  ],
+  "sections": [
+    {
+      "id": "summary", "title": "Executive summary",
+      "paragraphs": [
+        "WellCare Pharma grew from **1 store to 24** in four years, and net sales rose about **24×**, from BDT 29.8m in FY2022 to BDT 708.0m in FY2025. Leadership had the data in Google BigQuery, but no single view that said in plain language whether the expansion was healthy.",
+        "I built a six-page Power BI report that a managing director can read in five minutes, in the style of a board deck, and a companion Python analysis with a six-month sales forecast. Every page leads with its conclusion, every number is checked against the source, and every page ends with what management should do."
+      ],
+      "callout": "Sales, store, customer and product data come from a **BigQuery practice dataset**. The inventory and procurement tables were **generated in Python (synthetic)** to demonstrate those pages, and they reconcile to the sales and finance data. No real company is described.",
+      "callout_type": "warn"
+    },
+    {
+      "id": "problem", "title": "Business problem",
+      "paragraphs": [
+        "Fast roll-out can hide weak fundamentals. Management needed to know whether growth came from existing stores getting better or only from new openings, whether growth was making money, how much cash was tied up in stock, and how dependent the business was on a few customers."
+      ]
+    },
+    {
+      "id": "objectives", "title": "Analytical objectives",
+      "list": [
+        "Separate network growth from same-store (like-for-like) growth.",
+        "Explain profitability with a margin bridge (mix versus rate) and operating leverage.",
+        "Size working capital in stock and the cash a tighter stock policy would release.",
+        "Identify customer concentration and lapsed loyal customers.",
+        "Forecast mature-store sales for the next six months."
+      ]
+    },
+    {
+      "id": "data", "title": "Dataset",
+      "table": {
+        "head": ["Source", "Tables", "Notes"],
+        "rows": [
+          ["Google BigQuery (practice dataset)", "Sales line items, store monthly finance, customers, employees, outlets, products, suppliers", "525,906 sales lines, 24 stores, 315 products, about 25,000 customers"],
+          ["Generated in Python (synthetic)", "Inventory snapshots and movements, purchases, batches, returns, targets, supplier prices, cost history", "Built to reconcile to the sales and finance tables"]
+        ]
+      }
+    },
+    {
+      "id": "preparation", "title": "Data preparation & validation",
+      "list": [
+        "Assessed every table, relationship and column before building, and listed which KPIs the data could support.",
+        "Fixed ratio columns (margin %, NPS, coordinates) that were set to sum, which would have made totals wrong.",
+        "Added a marked date table with the business's **March–February fiscal year**.",
+        "Linked sales directly to stores instead of through the employee table.",
+        "Treated one customer ID holding 31% of sales as a separate key account rather than averaging it into retail.",
+        "Kept health and HR fields (chronic-condition tags, salaries, ratings) out of the report.",
+        "Reconciled 525,906 lines with no duplicate keys: net = gross − discount, gross = quantity × MRP and gross profit = net − COGS, with zero exceptions. All 413 store-months match the finance table exactly."
+      ]
+    },
+    {
+      "id": "method", "title": "Data model & methodology",
+      "list": [
+        "**Star schema:** 8 dimension and 8 fact tables, one marked fiscal-year date table, inactive relationships used through `USERELATIONSHIP`.",
+        "**46 DAX measures:** sales, margin, EBITDA, year-on-year growth, key-account share, stock cover, write-offs, fill rate, lead time and target attainment.",
+        "**Every narrative figure re-checked** with a DAX query against the model.",
+        "**Forecast (Python):** damped Holt-Winters on mature-store daily sales (trend plus 12-month seasonality), scaled by each store's ramp factor, backtested on the previous six months.",
+        "**Correlations:** Pearson coefficients across the 24 stores, treated as signals to test, not proof of cause."
+      ]
+    },
+    {
+      "id": "kpis", "title": "Key metrics",
+      "kpis": [
+        ["Same-store growth", "Sales growth of stores open in both periods"],
+        ["Gross margin", "(Net sales − COGS) ÷ net sales"],
+        ["EBITDA margin", "Store EBITDA ÷ net sales"],
+        ["Key-account share", "Key account sales ÷ net sales"],
+        ["Stock cover (days)", "Inventory value ÷ average daily COGS"],
+        ["Supplier fill rate", "Units received ÷ units ordered"]
+      ]
+    },
+    { "id": "dashboard", "title": "The report", "gallery": true,
+      "paragraphs": ["Action titles, numbered exhibits, a source line on every page and a navy \"So what for management\" box that links to the numbered actions on page 6."] },
+    {
+      "id": "findings", "title": "Key findings",
+      "findings": [
+        "**The growth is roll-out, not stores getting better.** Sales per store-month rose only 7.7% in FY2025 while total sales rose 124%; the two oldest stores slowed from +19.1% to +10.7%.",
+        "**Profit comes from scale, not margin.** Gross margin has sat at about 21.9% for four years; EBITDA margin rose from 1.2% to 8.1% only because rent and salaries became a smaller share of sales.",
+        "**The business leans on one customer.** A single key account bought BDT 215.6m in FY2025, 30.5% of net sales.",
+        "**Rx Chronic Care is the biggest category at the lowest margin:** 36.5% of sales at 18.7%.",
+        "**Cash sits in stock.** BDT 94.4m of stock covers about 53 days against 5-day supplier lead times.",
+        "**New stores need about nine months** to reach 90% of mature sales per day, so they should be judged against the ramp curve.",
+        "**Forecast:** mature-store sales for March–August 2026 of ৳47.4 Cr (range ৳44.7–50.1 Cr), with a 2.9% backtest error."
+      ]
+    },
+    {
+      "id": "recommendations", "title": "Recommendations",
+      "table": {
+        "head": ["Action", "Why", "Value at stake"],
+        "rows": [
+          ["Renegotiate Rx Chronic Care supplier terms", "Largest category at the lowest margin", "About BDT 2.6m gross profit a year per +1pp of margin"],
+          ["Set ramp targets for new stores", "2025 stores earn 2–8% EBITDA vs 7–10% for older stores", "Faster ramp lifts network EBITDA"],
+          ["Win back lapsed loyal customers", "5,222 customers with 5+ purchases lapsed 90+ days", "About BDT 9m if 10% return"],
+          ["Reduce key-account concentration", "One account is 30.5% of net sales", "Almost a third of revenue at risk"],
+          ["Diagnose slowing same-store growth", "Oldest stores slowed from +19.1% to +10.7%", "Separates maturity from cannibalisation"],
+          ["Release cash tied up in stock", "53 days of cover vs 5-day lead times", "About BDT 14m by cutting to 45 days"]
+        ]
+      },
+      "after": "The 10% win-back rate and the 45-day cover target are planning assumptions used to size the opportunity, not forecasts."
+    },
+    {
+      "id": "implementation", "title": "Technical implementation",
+      "list": [
+        "Power BI Project (PBIP): TMDL model and PBIR report generated by script, with a custom theme and logo.",
+        "Google BigQuery source; generated operational tables loaded from CSV.",
+        "Python analysis (`prepare_data.py`, `build_dashboard.py`) producing a self-contained HTML dashboard, with a pytest smoke test.",
+        "Live companion dashboard on GitHub Pages."
+      ]
+    },
+    {
+      "id": "limitations", "title": "Limitations & assumptions",
+      "list": [
+        "Inventory and procurement figures come from generated tables and show how the analysis works, not real stock records.",
+        "With 24 stores, correlations above about |0.40| are meaningful signals, not proof of cause.",
+        "The forecast assumes no new store openings."
+      ]
+    }
+  ]
+}

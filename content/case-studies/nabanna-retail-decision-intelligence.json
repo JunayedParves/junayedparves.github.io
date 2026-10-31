@@ -1,0 +1,129 @@
+{
+  "slug": "nabanna-retail-decision-intelligence",
+  "subtitle": "A Power BI decision-support system that tells a supermarket's management what is happening, why, what is likely next, what to do, and what it is worth.",
+  "seo_description": "Retail analytics case study in Power BI: inventory, pricing, promotions, RFM customer segments, supplier scorecards and 8 what-if levers for a Dhaka supermarket chain. Synthetic data.",
+  "facts": [
+    ["Domain", "Grocery retail · 4 branches in Dhaka"],
+    ["Scale", "16 tables · ~482k records · Apr–Sep 2026 (synthetic)"],
+    ["Analytics", "Diagnostic · predictive · prescriptive"],
+    ["Built with", "Power BI (PBIP), DAX, Python"]
+  ],
+  "gallery": [
+    { "src": "01.jpg", "caption": "1 · Executive Decision Centre: what to prioritise this week" },
+    { "src": "02.jpg", "caption": "2 · Sales Growth & Opportunity: where to grow profitable sales" },
+    { "src": "03.jpg", "caption": "3 · Profit & Pricing: what a discount really costs" },
+    { "src": "04.jpg", "caption": "4 · Customer Retention: who to win back, and is it worth it" },
+    { "src": "05.jpg", "caption": "5 · Inventory Decision Centre: reorder, freeze or clear" },
+    { "src": "06.jpg", "caption": "6 · Procurement: which suppliers earn more business" },
+    { "src": "07.jpg", "caption": "7 · Branch Performance: which branch needs help, and what kind" },
+    { "src": "08.jpg", "caption": "8 · Management Action Tracker: what was decided, and is it working" },
+    { "src": "09.jpg", "caption": "9 · Methodology & Model Validation: how far to trust each number" }
+  ],
+  "sections": [
+    {
+      "id": "summary", "title": "Executive summary",
+      "paragraphs": [
+        "Nabanna Bazar is a fictional neighbourhood supermarket chain with four branches in Mirpur and Kafrul, Dhaka. From the top it looks healthy: **BDT 33.1M revenue, 101% of target and a 15.9% gross margin**. I built a Power BI system that looks underneath that headline and ends where every management meeting should end: with a decision recorded in an Action Tracker.",
+        "Every number is labelled **OBSERVED** (recorded transactions), **MODEL** (an engine estimate) or **SCENARIO/SIM** (what-if), so a leader always knows how far to trust it."
+      ],
+      "callout": "All data is **synthetic**. Nothing shown as a benefit has been realised; benefit figures are model estimates with conservative and optimistic ranges.",
+      "callout_type": "warn"
+    },
+    {
+      "id": "problem", "title": "Business problem",
+      "paragraphs": [
+        "Sales were on target, yet profit felt thin. Leadership needed to know where money was leaking (stock, wastage, promotions, suppliers or branches), what to do about it this week, and how much each action is worth."
+      ]
+    },
+    {
+      "id": "objectives", "title": "Analytical objectives",
+      "list": [
+        "Diagnose margin leakage across inventory, wastage, pricing and promotions.",
+        "Rank customers, products, suppliers and branches by the value of acting on them.",
+        "Let managers test decisions live with what-if levers (discount %, stock coverage, campaign budget, supplier price weight).",
+        "Produce a costed, prioritised action register with an owner, success KPI and review date for every action."
+      ]
+    },
+    {
+      "id": "data", "title": "Dataset",
+      "paragraphs": [
+        "16 CSV tables with about 482,000 records covering sales, stock, purchasing, returns, promotions and targets for April–September 2026. A decision engine refreshed from the same data produces recommendations, scores, forecasts and the action register."
+      ]
+    },
+    {
+      "id": "preparation", "title": "Data quality findings",
+      "list": [
+        "Perishable stock records showed far more stock than shelf life allows (BDT 7.8M of perishable stock that cannot physically exist), so the dashboard recommends a physical count before any decision on perishables.",
+        "Prices never changed during the period, so true price sensitivity cannot be measured. The volume response is a range taken from past promotions and shown as three scenarios.",
+        "Gross profit appears to cover only about 22% of payroll and store costs. The dashboard flags this for a cost master-data check before anyone acts on it."
+      ]
+    },
+    {
+      "id": "method", "title": "Analytical methodology",
+      "list": [
+        "**Diagnostic:** department and margin mix, weekday × hour heatmap, promotion gross profit against each promotion's own pre-period baseline.",
+        "**Customer analytics:** RFM segments, cohort retention and a churn score validated as a ranking (not a probability).",
+        "**Inventory policy:** days of cover, ageing, a replenishment watchlist, a stop-purchasing list and transfer economics.",
+        "**Supplier scoring:** reliability against price, with the cheapest supplier never recommended if delivery or quality is below the median.",
+        "**Prescriptive layer:** 60 ranked recommendations as P1 (act now), P2 (this month) and P3 (plan), with base, conservative and optimistic benefit scenarios.",
+        "**Validation:** each model is tested on months it had not seen, shown on the Methodology page."
+      ]
+    },
+    {
+      "id": "kpis", "title": "Key metrics",
+      "kpis": [
+        ["Revenue vs target", "Branch and chain attainment"],
+        ["Gross margin", "By department and product"],
+        ["Days of inventory", "Stock on hand ÷ average daily cost of sales"],
+        ["Write-offs", "Damaged and expired stock, BDT and % of gross profit"],
+        ["Promotion GP uplift", "Gross profit during a promotion vs its pre-period baseline"],
+        ["Supplier on-time rate", "Deliveries received on or before the promised date"],
+        ["Estimated net benefit", "MODEL estimate per action, by scenario"]
+      ]
+    },
+    { "id": "dashboard", "title": "The dashboard", "gallery": true,
+      "paragraphs": ["Nine pages plus a product drill-through. Every page reads top to bottom: question, answer, evidence, action. Gold slicers are live questions a manager can ask in a meeting."] },
+    {
+      "id": "findings", "title": "Key findings",
+      "findings": [
+        "**Sales are fine; the money is leaking elsewhere.** The chain carries **226 days of inventory** and wrote off **BDT 1.59M** of damaged and expired stock, 30% of six-month gross profit.",
+        "**Promotions destroy profit.** All 20 promotions earned less gross profit than the weeks before them. At a 10% discount, volume must rise about +159% to keep gross profit; past promotions suggest about +9%.",
+        "**Grocery drives 29% of revenue at only 9% margin,** while Fashion & Lifestyle earns 32%.",
+        "**Purchasing ignores sales.** 222 SKU-branch positions with more than 180 days of cover are still being purchased; stopping them releases about BDT 6.7M of cash within six months.",
+        "**Customers are worth winning back.** 1,113 At-Risk and Hibernating customers hold BDT 3.9M of six-month value.",
+        "**Suppliers:** on-time delivery is 77%, four suppliers need a formal review, and like-for-like switching saves about BDT 160,000 over six months.",
+        "**Kafrul Community** has the most room to improve: 333 days of inventory, 10% wastage and 97.6% of target."
+      ]
+    },
+    {
+      "id": "recommendations", "title": "Recommendations",
+      "list": [
+        "Approve a purchase freeze on positions with more than 180 days of cover, and order a physical count of perishables.",
+        "Cut the promotion budget by 40% and fund only controlled tests with a holdout branch.",
+        "Clear dead stock with targeted markdowns and a stop-buy, and introduce FEFO (first-expired, first-out) to control wastage.",
+        "Put four suppliers on formal review and move like-for-like volume to equally reliable suppliers.",
+        "Run a retention campaign in priority order: a BDT 20,000 campaign is expected to return about BDT 26,000 in gross profit (base case)."
+      ],
+      "after": "In total, 60 ranked actions (12 of them P1) are estimated at **BDT 2.33M** net benefit over six months plus **BDT 2.84M** of cash released from stock. These are model estimates with conservative and optimistic ranges, not realised results."
+    },
+    {
+      "id": "implementation", "title": "Technical implementation",
+      "list": [
+        "Power BI Project (PBIP) with a TMDL semantic model: 9 pages, a product drill-through and a brand theme.",
+        "8 what-if levers (discount %, price change %, target coverage days, safety stock, overstock threshold, campaign budget, price weight, growth target).",
+        "Python decision engine for scores, forecasts and the recommendation register, refreshed from the same data.",
+        "Action Tracker: managers record decisions in a CSV log that Power BI reads on refresh."
+      ]
+    },
+    {
+      "id": "limitations", "title": "Limitations & assumptions",
+      "list": [
+        "Synthetic data: findings demonstrate the method, not a real retailer.",
+        "No price changes in the period, so elasticity is a range from promotions, not a measured value.",
+        "Campaign response rates are assumptions; there is no campaign history.",
+        "The churn score ranks customers well but is not a probability.",
+        "Recommendations are a snapshot as of 30 September; benefits are estimates, and working capital released is one-time cash, never added to profit."
+      ]
+    }
+  ]
+}

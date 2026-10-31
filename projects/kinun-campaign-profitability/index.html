@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kinun 11.11: Campaign Profitability | Case Study by M K Junayed Parves</title>
+  <meta name="description" content="E-commerce campaign analytics case study in Power BI: star schema with 183 DAX measures on BigQuery, contribution margin, promotion mechanics, ROAS by channel and peak-load operations. Synthetic data.">
+  <link rel="canonical" href="https://junayedparves.github.io/projects/kinun-campaign-profitability/">
+  <meta name="author" content="M K Junayed Parves">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="M K Junayed Parves">
+  <meta property="og:title" content="Kinun 11.11: Campaign Profitability | Case Study by M K Junayed Parves">
+  <meta property="og:description" content="E-commerce campaign analytics case study in Power BI: star schema with 183 DAX measures on BigQuery, contribution margin, promotion mechanics, ROAS by channel and peak-load operations. Synthetic data.">
+  <meta property="og:url" content="https://junayedparves.github.io/projects/kinun-campaign-profitability/">
+  <meta property="og:image" content="https://junayedparves.github.io/assets/images/projects/kinun/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kinun 11.11: Campaign Profitability | Case Study by M K Junayed Parves">
+  <meta name="twitter:description" content="E-commerce campaign analytics case study in Power BI: star schema with 183 DAX measures on BigQuery, contribution margin, promotion mechanics, ROAS by channel and peak-load operations. Synthetic data.">
+  <meta name="twitter:image" content="https://junayedparves.github.io/assets/images/projects/kinun/cover.jpg">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/variables.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/base.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/components.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/pages.css?v=3.0.0">
+  <script defer src="/js/navigation.js?v=3.0.0"></script>
+  <script defer src="/js/project-filter.js?v=3.0.0"></script>
+  <script defer src="/js/main.js?v=3.0.0"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Kinun 11.11: Campaign Profitability","headline":"Kinun 11.11: Campaign Profitability","description":"E-commerce campaign analytics case study in Power BI: star schema with 183 DAX measures on BigQuery, contribution margin, promotion mechanics, ROAS by channel and peak-load operations. Synthetic data.","url":"https://junayedparves.github.io/projects/kinun-campaign-profitability/","image":"https://junayedparves.github.io/assets/images/projects/kinun/cover.jpg","author":{"@id":"https://junayedparves.github.io/#person"},"keywords":"Power BI, Business Analytics, Power BI, DAX, Power Query, Google BigQuery","about":"E-commerce (consumer electronics)","isBasedOn":"https://github.com/JunayedParves/kinun-1111-campaign-powerbi"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://junayedparves.github.io/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://junayedparves.github.io/projects/"},{"@type":"ListItem","position":3,"name":"Kinun 11.11: Campaign Profitability","item":"https://junayedparves.github.io/projects/kinun-campaign-profitability/"}]},{"@type":"Person","@id":"https://junayedparves.github.io/#person","name":"M K Junayed Parves","jobTitle":"Business Intelligence Analyst","description":"Data Analyst and Business Intelligence Analyst in Dhaka, Bangladesh. Power BI, SQL, DAX, Tableau and Python case studies in credit risk, retail, supply chain and financial analytics.","url":"https://junayedparves.github.io/","image":"https://junayedparves.github.io/assets/images/portrait.jpg","email":"mailto:jndparves@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},"worksFor":{"@type":"Organization","name":"Green Delta Insurance PLC"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Dhaka"},{"@type":"CollegeOrUniversity","name":"Dhaka College (University of Dhaka)"}],"knowsAbout":["Business Intelligence","Data Analysis","Business Analysis","Power BI","DAX","SQL","Tableau","Python","Data Visualization","Financial Analytics"],"sameAs":["https://www.linkedin.com/in/junayedparves","https://github.com/JunayedParves","https://public.tableau.com/app/profile/junayed.parves"]}]}</script>
+</head>
+<!-- This page is generated by scripts/build.js from data/*.json and content/.
+     Edit the content there (or in the Google Sheet), not in this file. -->
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="/" aria-label="M K Junayed Parves, home">
+        <span class="brand-mark" aria-hidden="true">JP</span>
+        <span class="brand-text"><span class="brand-name">M K Junayed Parves</span><span class="brand-role">Business Intelligence Analyst</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="visually-hidden">Menu</span><span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/#about">About</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#skills">Skills</a></li><li><a href="/#experience">Experience</a></li><li><a href="/#education">Education</a></li><li><a href="/#knowledge">Knowledge Hub</a></li><li><a href="/#contact">Contact</a></li>
+        <li><a class="btn btn-primary btn-small" href="/assets/resume.pdf" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Résumé</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+
+    <article>
+      <header class="page-header cs-hero">
+        <div class="container">
+          <ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Kinun 11.11</li></ol>
+          <div class="cs-hero-meta"><span class="category">Power BI · E-commerce</span><span class="badge badge-synthetic">Synthetic data</span></div>
+          <h1 class="page-title">Kinun 11.11: Campaign Profitability</h1>
+          <p class="page-lead">A board-level Power BI dashboard that asks whether a 54-hour mega-sale actually makes money, and what to change before the next one.</p>
+          <div class="btn-row">
+            
+            <a class="btn btn-outline" href="https://github.com/JunayedParves/kinun-1111-campaign-powerbi" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg> View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+          <ul class="facts"><li><span class="k">Domain</span><span class="v">E-commerce · consumer electronics</span></li><li><span class="k">Scale</span><span class="v">150,987 orders · 2022–2025 (synthetic)</span></li><li><span class="k">Model</span><span class="v">8 fact + 10 dimension tables · 183 measures</span></li><li><span class="k">Built with</span><span class="v">Power BI (PBIP), DAX, Power Query, BigQuery</span></li></ul>
+          <div class="cs-cover"><img src="/assets/images/projects/kinun/cover.jpg" alt="Kinun 11.11 executive summary page in Power BI" width="1200" height="750" fetchpriority="high" decoding="async"></div>
+        </div>
+      </header>
+      <div class="section" style="padding-top:clamp(32px,5vw,56px)">
+        <div class="container cs-layout">
+          <nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#summary">Executive summary</a></li><li><a href="#problem">Business problem</a></li><li><a href="#objectives">Analytical objectives</a></li><li><a href="#data">Dataset</a></li><li><a href="#method">Data model &amp; methodology</a></li><li><a href="#kpis">Key metrics</a></li><li><a href="#dashboard">The dashboard</a></li><li><a href="#findings">Key findings</a></li><li><a href="#recommendations">Recommendations</a></li><li><a href="#implementation">Technical implementation</a></li><li><a href="#limitations">Limitations &amp; assumptions</a></li><li><a href="#links">Repository &amp; live demo</a></li></ol></nav>
+          <div class="cs-content">
+          <section class="cs-section" id="summary" aria-labelledby="summary-h">
+            <h2 id="summary-h">Executive summary</h2>
+            <p>Kinun is a Bangladesh consumer-electronics e-commerce platform. Its 54-hour <strong>11.11</strong> mega-sale (10 Nov 18:00 to 12 Nov 23:59) multiplies daily sales about <strong>4×</strong>. I built a BCG-style Power BI dashboard on four years of trading that follows the consulting <strong>Situation → Complication → Resolution</strong> storyline.</p>
+            <p><strong>The story in one sentence:</strong> 11.11 multiplies daily sales 4×, but at an 11% discount it earns a 0.7% contribution margin and loses money after ad spend. The next 11.11 should grow on margin, not discount.</p>
+            <div class="cs-callout warn">All figures come from a <strong>synthetic portfolio dataset</strong> that simulates a realistic e-commerce business. They are not real Kinun results.</div>
+          </section>
+
+          <section class="cs-section" id="problem" aria-labelledby="problem-h">
+            <h2 id="problem-h">Business problem</h2>
+            <p>The campaign is celebrated for volume. Leadership needed to know whether it creates value after discounts, ad spend and operational strain, which products and promotions destroy margin, and what to change before the next launch.</p>
+          </section>
+
+          <section class="cs-section" id="objectives" aria-labelledby="objectives-h">
+            <h2 id="objectives-h">Analytical objectives</h2>
+            <ul><li>Measure the campaign lift against an October baseline, and its profitability after discount and ad spend.</li><li>Find the categories, SKUs and promotion mechanics that lose money.</li><li>Evaluate channel efficiency (ROAS) and the funnel.</li><li>Assess delivery, payment and cancellation performance under peak load.</li><li>Measure borrowed demand and the lifetime value of campaign-acquired customers.</li></ul>
+          </section>
+
+          <section class="cs-section" id="data" aria-labelledby="data-h">
+            <h2 id="data-h">Dataset</h2>
+            <p>18 tables in a Google BigQuery dataset (<code>kinun_dw</code>) covering orders, order lines, payments, deliveries, returns, inventory, marketing spend and the campaign calendar, 2022–2025. 150,987 orders placed (6.8% cancelled, 2.9% refused at the door).</p>
+          </section>
+
+          <section class="cs-section" id="method" aria-labelledby="method-h">
+            <h2 id="method-h">Data model &amp; methodology</h2>
+            <ul><li><strong>Star schema:</strong> 8 fact tables and 10 dimensions, single-direction relationships from dimensions to facts, <strong>no fact-to-fact joins</strong>.</li><li><strong>Role-playing dates:</strong> <code>DimDate</code> is the marked date table; payment, return, dispatch, delivery and promised dates are inactive relationships switched on with <code>USERELATIONSHIP</code>.</li><li><strong>183 measures</strong> in display folders: Sales, Profitability, Orders &amp; Customers, Marketing Funnel, 11.11 Campaign, Payments, Delivery, Returns, Inventory, Time Intelligence, Dashboard Text and Strategic Priorities.</li><li><strong>Clean definitions:</strong> GMV (all placed demand) is kept separate from delivered net sales and contribution margin; attributed marketing revenue is never mixed with transactional revenue; inventory is semi-additive; cohort measures use full customer history.</li><li><strong>Dynamic action titles:</strong> headlines, subtitles and chart titles are DAX measures that rewrite themselves with every filter.</li></ul>
+          </section>
+
+          <section class="cs-section" id="kpis" aria-labelledby="kpis-h">
+            <h2 id="kpis-h">Key metrics</h2>
+            <div class="table-wrap"><table class="kpi-table"><thead><tr><th scope="col">Metric</th><th scope="col">Definition</th></tr></thead><tbody><tr><td>Net sales (delivered)</td><td>৳6.20B across 2022–2025, 21.3% CAGR</td></tr><tr><td>Contribution margin</td><td>৳624M, 10.1% of net sales</td></tr><tr><td>Campaign lift</td><td>Daily sales in the 11.11 window ÷ October baseline</td></tr><tr><td>Discount rate</td><td>Discount ÷ gross sales</td></tr><tr><td>ROAS</td><td>Attributed revenue ÷ media spend, by channel</td></tr><tr><td>Late delivery, payment failure, cancellation rates</td><td>Operational health under peak load</td></tr></tbody></table></div>
+          </section>
+
+          <section class="cs-section" id="dashboard" aria-labelledby="dashboard-h">
+            <h2 id="dashboard-h">The dashboard</h2>
+            <p>Six pages plus a hidden category drill-through, with synced filters, scoped filtering (year-comparison visuals deliberately ignore the Year filter, and say so), a side menu and &quot;See the evidence&quot; buttons linking each recommendation to its proof.</p>
+            <ul class="gallery">
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/kinun/01.jpg" data-alt="Kinun 11.11: Campaign Profitability: 1 · Executive Summary: growth is strong, but 11.11 buys volume at the expense of margin" data-caption="1 · Executive Summary: growth is strong, but 11.11 buys volume at the expense of margin" aria-label="Enlarge screenshot: 1 · Executive Summary: growth is strong, but 11.11 buys volume at the expense of margin"><img src="/assets/images/projects/kinun/01.jpg" alt="Kinun 11.11: Campaign Profitability: 1 · Executive Summary: growth is strong, but 11.11 buys volume at the expense of margin" width="1117" height="561" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>1 · Executive Summary: growth is strong, but 11.11 buys volume at the expense of margin</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/kinun/02.jpg" data-alt="Kinun 11.11: Campaign Profitability: 2 · 11.11 Command Center: the biggest growth engine and the biggest margin leak" data-caption="2 · 11.11 Command Center: the biggest growth engine and the biggest margin leak" aria-label="Enlarge screenshot: 2 · 11.11 Command Center: the biggest growth engine and the biggest margin leak"><img src="/assets/images/projects/kinun/02.jpg" alt="Kinun 11.11: Campaign Profitability: 2 · 11.11 Command Center: the biggest growth engine and the biggest margin leak" width="1117" height="561" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>2 · 11.11 Command Center: the biggest growth engine and the biggest margin leak</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/kinun/03.jpg" data-alt="Kinun 11.11: Campaign Profitability: 3 · Marketing &amp; Channels: owned channels and CRM out-earn paid social" data-caption="3 · Marketing &amp; Channels: owned channels and CRM out-earn paid social" aria-label="Enlarge screenshot: 3 · Marketing &amp; Channels: owned channels and CRM out-earn paid social"><img src="/assets/images/projects/kinun/03.jpg" alt="Kinun 11.11: Campaign Profitability: 3 · Marketing &amp; Channels: owned channels and CRM out-earn paid social" width="1117" height="561" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>3 · Marketing &amp; Channels: owned channels and CRM out-earn paid social</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/kinun/04.jpg" data-alt="Kinun 11.11: Campaign Profitability: 4 · Product &amp; Margin: smartphones carry the top line and lose money in 11.11" data-caption="4 · Product &amp; Margin: smartphones carry the top line and lose money in 11.11" aria-label="Enlarge screenshot: 4 · Product &amp; Margin: smartphones carry the top line and lose money in 11.11"><img src="/assets/images/projects/kinun/04.jpg" alt="Kinun 11.11: Campaign Profitability: 4 · Product &amp; Margin: smartphones carry the top line and lose money in 11.11" width="1117" height="561" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>4 · Product &amp; Margin: smartphones carry the top line and lose money in 11.11</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/kinun/05.jpg" data-alt="Kinun 11.11: Campaign Profitability: 5 · Customers &amp; Operations: operations break under peak load" data-caption="5 · Customers &amp; Operations: operations break under peak load" aria-label="Enlarge screenshot: 5 · Customers &amp; Operations: operations break under peak load"><img src="/assets/images/projects/kinun/05.jpg" alt="Kinun 11.11: Campaign Profitability: 5 · Customers &amp; Operations: operations break under peak load" width="1117" height="561" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>5 · Customers &amp; Operations: operations break under peak load</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/kinun/06.jpg" data-alt="Kinun 11.11: Campaign Profitability: 6 · Strategic Priorities: five moves to make 11.11 profitable, not just bigger" data-caption="6 · Strategic Priorities: five moves to make 11.11 profitable, not just bigger" aria-label="Enlarge screenshot: 6 · Strategic Priorities: five moves to make 11.11 profitable, not just bigger"><img src="/assets/images/projects/kinun/06.jpg" alt="Kinun 11.11: Campaign Profitability: 6 · Strategic Priorities: five moves to make 11.11 profitable, not just bigger" width="1117" height="561" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>6 · Strategic Priorities: five moves to make 11.11 profitable, not just bigger</figcaption>
+              </figure></li>
+            </ul>
+          </section>
+
+          <section class="cs-section" id="findings" aria-labelledby="findings-h">
+            <h2 id="findings-h">Key findings</h2>
+            <ol class="cs-findings"><li><strong>Margin collapses.</strong> 11.11 earns a 0.7% contribution margin against 10.8% in normal trading, as discounts run at 11.0% versus 1.2%. After ad spend the event loses ৳0.75M.</li><li><strong>The best-selling category loses money.</strong> Smartphones are 51% of event sales at a −2.1% margin, while Accessories hold 21.8%.</li><li><strong>54 margin-trap SKUs</strong> sell at a 15.6% discount during the event and post a −5.3% margin.</li><li><strong>3 of 5 promotion mechanics lose money;</strong> only the Hero Flash Drop is margin-positive (2.6%).</li><li><strong>Operations break under peak load.</strong> Late deliveries rise from 30% to 68%, payment failures reach 11.3%, and cancellations rise from 6.6% to 11.2%.</li><li><strong>Part of the spike is borrowed demand.</strong> Daily sales after the event run 34% below the October baseline, and 11.11 customers spend 24% less over their lifetime.</li><li><strong>The media mix is inefficient.</strong> CRM returns 387× and Paid Search 81×, while Paid Social (58×) absorbs 58% of spend.</li></ol>
+          </section>
+
+          <section class="cs-section" id="recommendations" aria-labelledby="recommendations-h">
+            <h2 id="recommendations-h">Recommendations: five moves for the next 11.11</h2>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th scope="col">Move</th><th scope="col">Owner</th><th scope="col">Value at stake*</th></tr></thead><tbody><tr><td>Cap discounts on margin-trap SKUs and exclude them from sitewide vouchers</td><td>Category Directors</td><td>৳1.7M contribution margin</td></tr><tr><td>Re-weight promotion funding to margin-positive mechanics</td><td>Head of Campaigns</td><td>৳0.4M contribution margin</td></tr><tr><td>Shift 20% of Paid Social budget into Search and CRM</td><td>CMO</td><td>৳113.6M attributed revenue</td></tr><tr><td>Pre-book payment-gateway and courier capacity for launch night and evening peaks</td><td>COO, Head of Payments</td><td>৳8.8M GMV kept</td></tr><tr><td>Convert deal-seekers with a 60-day post-event CRM journey</td><td>Head of CRM</td><td>৳97.7M lifetime value gap</td></tr></tbody></table></div>
+            <p style="margin-top:14px">*Indicative estimates calculated live in the model. They overlap, so they should not be added together.</p>
+          </section>
+
+          <section class="cs-section" id="implementation" aria-labelledby="implementation-h">
+            <h2 id="implementation-h">Technical implementation</h2>
+            <ul><li>Power BI Project (PBIP) with TMDL model and PBIR report: every page, visual, measure and relationship is plain text reviewed in Git.</li><li>Google BigQuery source with a project-ID parameter; credentials stay in Power BI&#39;s local encrypted store and are never committed.</li><li>Custom BCG-style theme and logo registered as report resources.</li></ul>
+          </section>
+
+          <section class="cs-section" id="limitations" aria-labelledby="limitations-h">
+            <h2 id="limitations-h">Limitations &amp; assumptions</h2>
+            <ul><li>Synthetic data: the numbers illustrate the analysis, not Kinun&#39;s real performance.</li><li>Recommendation values are indicative, overlapping estimates.</li><li>Attributed marketing revenue depends on the attribution model and is reported separately from transactional revenue.</li></ul>
+          </section>
+
+          <section class="cs-section" id="links" aria-labelledby="links-h">
+            <h2 id="links-h">Repository & live demo</h2>
+            <p>Review the full project, documentation and screenshots on GitHub.</p>
+            <div class="cs-links"><a href="https://github.com/JunayedParves/kinun-1111-campaign-powerbi" target="_blank" rel="noopener noreferrer">GitHub repository <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span>github.com/JunayedParves/kinun-1111-campaign-powerbi</span></a></div>
+          </section>
+            <nav class="cs-nav" aria-label="More case studies">
+              <a href="/projects/checkout-conversion-root-cause/"><span class="dir">← Previous</span><strong>Project Tollgate</strong></a>
+              <a class="next" href="/projects/databel-customer-churn/"><span class="dir">Next →</span><strong>Databel</strong></a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">M K Junayed Parves</p>
+          <p>Data Analyst · Business Intelligence Analyst · Business Analyst<br>Dhaka, Bangladesh</p>
+        </div>
+        <div>
+          <p class="footer-title">Explore</p>
+          <ul class="footer-links">
+            <li><a href="/projects/">All projects</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/assets/resume.pdf" download>Download résumé</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Connect</p>
+          <ul class="footer-links">
+            <li><a href="mailto:jndparves@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/junayedparves" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/JunayedParves" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://public.tableau.com/app/profile/junayed.parves" target="_blank" rel="noopener noreferrer">Tableau Public</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 M K Junayed Parves</span>
+        <span class="mono">Last updated: 31 October 2026</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Enlarged screenshot">
+    <img src="" alt="">
+    <div class="lightbox-bar"><span class="lightbox-caption"></span><button class="lightbox-close" type="button">Close</button></div>
+  </dialog>
+</body>
+</html>

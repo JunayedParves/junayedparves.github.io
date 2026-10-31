@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nabanna Bazar: Retail Decision Intelligence | Case Study by M K Junayed Parves</title>
+  <meta name="description" content="Retail analytics case study in Power BI: inventory, pricing, promotions, RFM customer segments, supplier scorecards and 8 what-if levers for a Dhaka supermarket chain. Synthetic data.">
+  <link rel="canonical" href="https://junayedparves.github.io/projects/nabanna-retail-decision-intelligence/">
+  <meta name="author" content="M K Junayed Parves">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="M K Junayed Parves">
+  <meta property="og:title" content="Nabanna Bazar: Retail Decision Intelligence | Case Study by M K Junayed Parves">
+  <meta property="og:description" content="Retail analytics case study in Power BI: inventory, pricing, promotions, RFM customer segments, supplier scorecards and 8 what-if levers for a Dhaka supermarket chain. Synthetic data.">
+  <meta property="og:url" content="https://junayedparves.github.io/projects/nabanna-retail-decision-intelligence/">
+  <meta property="og:image" content="https://junayedparves.github.io/assets/images/projects/nabanna/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nabanna Bazar: Retail Decision Intelligence | Case Study by M K Junayed Parves">
+  <meta name="twitter:description" content="Retail analytics case study in Power BI: inventory, pricing, promotions, RFM customer segments, supplier scorecards and 8 what-if levers for a Dhaka supermarket chain. Synthetic data.">
+  <meta name="twitter:image" content="https://junayedparves.github.io/assets/images/projects/nabanna/cover.jpg">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/variables.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/base.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/components.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/pages.css?v=3.0.0">
+  <script defer src="/js/navigation.js?v=3.0.0"></script>
+  <script defer src="/js/project-filter.js?v=3.0.0"></script>
+  <script defer src="/js/main.js?v=3.0.0"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"Nabanna Bazar: Retail Decision Intelligence","headline":"Nabanna Bazar: Retail Decision Intelligence","description":"Retail analytics case study in Power BI: inventory, pricing, promotions, RFM customer segments, supplier scorecards and 8 what-if levers for a Dhaka supermarket chain. Synthetic data.","url":"https://junayedparves.github.io/projects/nabanna-retail-decision-intelligence/","image":"https://junayedparves.github.io/assets/images/projects/nabanna/cover.jpg","author":{"@id":"https://junayedparves.github.io/#person"},"keywords":"Power BI, Python, Predictive Analytics, Business Analytics, Power BI, DAX, What-if parameters, Python","about":"Retail (supermarket chain)","isBasedOn":"https://github.com/JunayedParves/nabanna-bazar-retail-intelligence"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://junayedparves.github.io/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://junayedparves.github.io/projects/"},{"@type":"ListItem","position":3,"name":"Nabanna Bazar: Retail Decision Intelligence","item":"https://junayedparves.github.io/projects/nabanna-retail-decision-intelligence/"}]},{"@type":"Person","@id":"https://junayedparves.github.io/#person","name":"M K Junayed Parves","jobTitle":"Business Intelligence Analyst","description":"Data Analyst and Business Intelligence Analyst in Dhaka, Bangladesh. Power BI, SQL, DAX, Tableau and Python case studies in credit risk, retail, supply chain and financial analytics.","url":"https://junayedparves.github.io/","image":"https://junayedparves.github.io/assets/images/portrait.jpg","email":"mailto:jndparves@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},"worksFor":{"@type":"Organization","name":"Green Delta Insurance PLC"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Dhaka"},{"@type":"CollegeOrUniversity","name":"Dhaka College (University of Dhaka)"}],"knowsAbout":["Business Intelligence","Data Analysis","Business Analysis","Power BI","DAX","SQL","Tableau","Python","Data Visualization","Financial Analytics"],"sameAs":["https://www.linkedin.com/in/junayedparves","https://github.com/JunayedParves","https://public.tableau.com/app/profile/junayed.parves"]}]}</script>
+</head>
+<!-- This page is generated by scripts/build.js from data/*.json and content/.
+     Edit the content there (or in the Google Sheet), not in this file. -->
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="/" aria-label="M K Junayed Parves, home">
+        <span class="brand-mark" aria-hidden="true">JP</span>
+        <span class="brand-text"><span class="brand-name">M K Junayed Parves</span><span class="brand-role">Business Intelligence Analyst</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="visually-hidden">Menu</span><span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/#about">About</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#skills">Skills</a></li><li><a href="/#experience">Experience</a></li><li><a href="/#education">Education</a></li><li><a href="/#knowledge">Knowledge Hub</a></li><li><a href="/#contact">Contact</a></li>
+        <li><a class="btn btn-primary btn-small" href="/assets/resume.pdf" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Résumé</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+
+    <article>
+      <header class="page-header cs-hero">
+        <div class="container">
+          <ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Nabanna Bazar</li></ol>
+          <div class="cs-hero-meta"><span class="category">Power BI · Retail</span><span class="badge badge-synthetic">Synthetic data</span></div>
+          <h1 class="page-title">Nabanna Bazar: Retail Decision Intelligence</h1>
+          <p class="page-lead">A Power BI decision-support system that tells a supermarket&#39;s management what is happening, why, what is likely next, what to do, and what it is worth.</p>
+          <div class="btn-row">
+            
+            <a class="btn btn-outline" href="https://github.com/JunayedParves/nabanna-bazar-retail-intelligence" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg> View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+          <ul class="facts"><li><span class="k">Domain</span><span class="v">Grocery retail · 4 branches in Dhaka</span></li><li><span class="k">Scale</span><span class="v">16 tables · ~482k records · Apr–Sep 2026 (synthetic)</span></li><li><span class="k">Analytics</span><span class="v">Diagnostic · predictive · prescriptive</span></li><li><span class="k">Built with</span><span class="v">Power BI (PBIP), DAX, Python</span></li></ul>
+          <div class="cs-cover"><img src="/assets/images/projects/nabanna/cover.jpg" alt="Nabanna Bazar executive decision centre in Power BI" width="1200" height="750" fetchpriority="high" decoding="async"></div>
+        </div>
+      </header>
+      <div class="section" style="padding-top:clamp(32px,5vw,56px)">
+        <div class="container cs-layout">
+          <nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#summary">Executive summary</a></li><li><a href="#problem">Business problem</a></li><li><a href="#objectives">Analytical objectives</a></li><li><a href="#data">Dataset</a></li><li><a href="#preparation">Data quality findings</a></li><li><a href="#method">Analytical methodology</a></li><li><a href="#kpis">Key metrics</a></li><li><a href="#dashboard">The dashboard</a></li><li><a href="#findings">Key findings</a></li><li><a href="#recommendations">Recommendations</a></li><li><a href="#implementation">Technical implementation</a></li><li><a href="#limitations">Limitations &amp; assumptions</a></li><li><a href="#links">Repository &amp; live demo</a></li></ol></nav>
+          <div class="cs-content">
+          <section class="cs-section" id="summary" aria-labelledby="summary-h">
+            <h2 id="summary-h">Executive summary</h2>
+            <p>Nabanna Bazar is a fictional neighbourhood supermarket chain with four branches in Mirpur and Kafrul, Dhaka. From the top it looks healthy: <strong>BDT 33.1M revenue, 101% of target and a 15.9% gross margin</strong>. I built a Power BI system that looks underneath that headline and ends where every management meeting should end: with a decision recorded in an Action Tracker.</p>
+            <p>Every number is labelled <strong>OBSERVED</strong> (recorded transactions), <strong>MODEL</strong> (an engine estimate) or <strong>SCENARIO/SIM</strong> (what-if), so a leader always knows how far to trust it.</p>
+            <div class="cs-callout warn">All data is <strong>synthetic</strong>. Nothing shown as a benefit has been realised; benefit figures are model estimates with conservative and optimistic ranges.</div>
+          </section>
+
+          <section class="cs-section" id="problem" aria-labelledby="problem-h">
+            <h2 id="problem-h">Business problem</h2>
+            <p>Sales were on target, yet profit felt thin. Leadership needed to know where money was leaking (stock, wastage, promotions, suppliers or branches), what to do about it this week, and how much each action is worth.</p>
+          </section>
+
+          <section class="cs-section" id="objectives" aria-labelledby="objectives-h">
+            <h2 id="objectives-h">Analytical objectives</h2>
+            <ul><li>Diagnose margin leakage across inventory, wastage, pricing and promotions.</li><li>Rank customers, products, suppliers and branches by the value of acting on them.</li><li>Let managers test decisions live with what-if levers (discount %, stock coverage, campaign budget, supplier price weight).</li><li>Produce a costed, prioritised action register with an owner, success KPI and review date for every action.</li></ul>
+          </section>
+
+          <section class="cs-section" id="data" aria-labelledby="data-h">
+            <h2 id="data-h">Dataset</h2>
+            <p>16 CSV tables with about 482,000 records covering sales, stock, purchasing, returns, promotions and targets for April–September 2026. A decision engine refreshed from the same data produces recommendations, scores, forecasts and the action register.</p>
+          </section>
+
+          <section class="cs-section" id="preparation" aria-labelledby="preparation-h">
+            <h2 id="preparation-h">Data quality findings</h2>
+            <ul><li>Perishable stock records showed far more stock than shelf life allows (BDT 7.8M of perishable stock that cannot physically exist), so the dashboard recommends a physical count before any decision on perishables.</li><li>Prices never changed during the period, so true price sensitivity cannot be measured. The volume response is a range taken from past promotions and shown as three scenarios.</li><li>Gross profit appears to cover only about 22% of payroll and store costs. The dashboard flags this for a cost master-data check before anyone acts on it.</li></ul>
+          </section>
+
+          <section class="cs-section" id="method" aria-labelledby="method-h">
+            <h2 id="method-h">Analytical methodology</h2>
+            <ul><li><strong>Diagnostic:</strong> department and margin mix, weekday × hour heatmap, promotion gross profit against each promotion&#39;s own pre-period baseline.</li><li><strong>Customer analytics:</strong> RFM segments, cohort retention and a churn score validated as a ranking (not a probability).</li><li><strong>Inventory policy:</strong> days of cover, ageing, a replenishment watchlist, a stop-purchasing list and transfer economics.</li><li><strong>Supplier scoring:</strong> reliability against price, with the cheapest supplier never recommended if delivery or quality is below the median.</li><li><strong>Prescriptive layer:</strong> 60 ranked recommendations as P1 (act now), P2 (this month) and P3 (plan), with base, conservative and optimistic benefit scenarios.</li><li><strong>Validation:</strong> each model is tested on months it had not seen, shown on the Methodology page.</li></ul>
+          </section>
+
+          <section class="cs-section" id="kpis" aria-labelledby="kpis-h">
+            <h2 id="kpis-h">Key metrics</h2>
+            <div class="table-wrap"><table class="kpi-table"><thead><tr><th scope="col">Metric</th><th scope="col">Definition</th></tr></thead><tbody><tr><td>Revenue vs target</td><td>Branch and chain attainment</td></tr><tr><td>Gross margin</td><td>By department and product</td></tr><tr><td>Days of inventory</td><td>Stock on hand ÷ average daily cost of sales</td></tr><tr><td>Write-offs</td><td>Damaged and expired stock, BDT and % of gross profit</td></tr><tr><td>Promotion GP uplift</td><td>Gross profit during a promotion vs its pre-period baseline</td></tr><tr><td>Supplier on-time rate</td><td>Deliveries received on or before the promised date</td></tr><tr><td>Estimated net benefit</td><td>MODEL estimate per action, by scenario</td></tr></tbody></table></div>
+          </section>
+
+          <section class="cs-section" id="dashboard" aria-labelledby="dashboard-h">
+            <h2 id="dashboard-h">The dashboard</h2>
+            <p>Nine pages plus a product drill-through. Every page reads top to bottom: question, answer, evidence, action. Gold slicers are live questions a manager can ask in a meeting.</p>
+            <ul class="gallery">
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/01.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 1 · Executive Decision Centre: what to prioritise this week" data-caption="1 · Executive Decision Centre: what to prioritise this week" aria-label="Enlarge screenshot: 1 · Executive Decision Centre: what to prioritise this week"><img src="/assets/images/projects/nabanna/01.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 1 · Executive Decision Centre: what to prioritise this week" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>1 · Executive Decision Centre: what to prioritise this week</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/02.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 2 · Sales Growth &amp; Opportunity: where to grow profitable sales" data-caption="2 · Sales Growth &amp; Opportunity: where to grow profitable sales" aria-label="Enlarge screenshot: 2 · Sales Growth &amp; Opportunity: where to grow profitable sales"><img src="/assets/images/projects/nabanna/02.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 2 · Sales Growth &amp; Opportunity: where to grow profitable sales" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>2 · Sales Growth &amp; Opportunity: where to grow profitable sales</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/03.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 3 · Profit &amp; Pricing: what a discount really costs" data-caption="3 · Profit &amp; Pricing: what a discount really costs" aria-label="Enlarge screenshot: 3 · Profit &amp; Pricing: what a discount really costs"><img src="/assets/images/projects/nabanna/03.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 3 · Profit &amp; Pricing: what a discount really costs" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>3 · Profit &amp; Pricing: what a discount really costs</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/04.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 4 · Customer Retention: who to win back, and is it worth it" data-caption="4 · Customer Retention: who to win back, and is it worth it" aria-label="Enlarge screenshot: 4 · Customer Retention: who to win back, and is it worth it"><img src="/assets/images/projects/nabanna/04.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 4 · Customer Retention: who to win back, and is it worth it" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>4 · Customer Retention: who to win back, and is it worth it</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/05.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 5 · Inventory Decision Centre: reorder, freeze or clear" data-caption="5 · Inventory Decision Centre: reorder, freeze or clear" aria-label="Enlarge screenshot: 5 · Inventory Decision Centre: reorder, freeze or clear"><img src="/assets/images/projects/nabanna/05.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 5 · Inventory Decision Centre: reorder, freeze or clear" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>5 · Inventory Decision Centre: reorder, freeze or clear</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/06.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 6 · Procurement: which suppliers earn more business" data-caption="6 · Procurement: which suppliers earn more business" aria-label="Enlarge screenshot: 6 · Procurement: which suppliers earn more business"><img src="/assets/images/projects/nabanna/06.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 6 · Procurement: which suppliers earn more business" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>6 · Procurement: which suppliers earn more business</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/07.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 7 · Branch Performance: which branch needs help, and what kind" data-caption="7 · Branch Performance: which branch needs help, and what kind" aria-label="Enlarge screenshot: 7 · Branch Performance: which branch needs help, and what kind"><img src="/assets/images/projects/nabanna/07.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 7 · Branch Performance: which branch needs help, and what kind" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>7 · Branch Performance: which branch needs help, and what kind</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/08.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 8 · Management Action Tracker: what was decided, and is it working" data-caption="8 · Management Action Tracker: what was decided, and is it working" aria-label="Enlarge screenshot: 8 · Management Action Tracker: what was decided, and is it working"><img src="/assets/images/projects/nabanna/08.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 8 · Management Action Tracker: what was decided, and is it working" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>8 · Management Action Tracker: what was decided, and is it working</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/nabanna/09.jpg" data-alt="Nabanna Bazar: Retail Decision Intelligence: 9 · Methodology &amp; Model Validation: how far to trust each number" data-caption="9 · Methodology &amp; Model Validation: how far to trust each number" aria-label="Enlarge screenshot: 9 · Methodology &amp; Model Validation: how far to trust each number"><img src="/assets/images/projects/nabanna/09.jpg" alt="Nabanna Bazar: Retail Decision Intelligence: 9 · Methodology &amp; Model Validation: how far to trust each number" width="1600" height="900" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>9 · Methodology &amp; Model Validation: how far to trust each number</figcaption>
+              </figure></li>
+            </ul>
+          </section>
+
+          <section class="cs-section" id="findings" aria-labelledby="findings-h">
+            <h2 id="findings-h">Key findings</h2>
+            <ol class="cs-findings"><li><strong>Sales are fine; the money is leaking elsewhere.</strong> The chain carries <strong>226 days of inventory</strong> and wrote off <strong>BDT 1.59M</strong> of damaged and expired stock, 30% of six-month gross profit.</li><li><strong>Promotions destroy profit.</strong> All 20 promotions earned less gross profit than the weeks before them. At a 10% discount, volume must rise about +159% to keep gross profit; past promotions suggest about +9%.</li><li><strong>Grocery drives 29% of revenue at only 9% margin,</strong> while Fashion &amp; Lifestyle earns 32%.</li><li><strong>Purchasing ignores sales.</strong> 222 SKU-branch positions with more than 180 days of cover are still being purchased; stopping them releases about BDT 6.7M of cash within six months.</li><li><strong>Customers are worth winning back.</strong> 1,113 At-Risk and Hibernating customers hold BDT 3.9M of six-month value.</li><li><strong>Suppliers:</strong> on-time delivery is 77%, four suppliers need a formal review, and like-for-like switching saves about BDT 160,000 over six months.</li><li><strong>Kafrul Community</strong> has the most room to improve: 333 days of inventory, 10% wastage and 97.6% of target.</li></ol>
+          </section>
+
+          <section class="cs-section" id="recommendations" aria-labelledby="recommendations-h">
+            <h2 id="recommendations-h">Recommendations</h2>
+            <ul><li>Approve a purchase freeze on positions with more than 180 days of cover, and order a physical count of perishables.</li><li>Cut the promotion budget by 40% and fund only controlled tests with a holdout branch.</li><li>Clear dead stock with targeted markdowns and a stop-buy, and introduce FEFO (first-expired, first-out) to control wastage.</li><li>Put four suppliers on formal review and move like-for-like volume to equally reliable suppliers.</li><li>Run a retention campaign in priority order: a BDT 20,000 campaign is expected to return about BDT 26,000 in gross profit (base case).</li></ul>
+            <p style="margin-top:14px">In total, 60 ranked actions (12 of them P1) are estimated at <strong>BDT 2.33M</strong> net benefit over six months plus <strong>BDT 2.84M</strong> of cash released from stock. These are model estimates with conservative and optimistic ranges, not realised results.</p>
+          </section>
+
+          <section class="cs-section" id="implementation" aria-labelledby="implementation-h">
+            <h2 id="implementation-h">Technical implementation</h2>
+            <ul><li>Power BI Project (PBIP) with a TMDL semantic model: 9 pages, a product drill-through and a brand theme.</li><li>8 what-if levers (discount %, price change %, target coverage days, safety stock, overstock threshold, campaign budget, price weight, growth target).</li><li>Python decision engine for scores, forecasts and the recommendation register, refreshed from the same data.</li><li>Action Tracker: managers record decisions in a CSV log that Power BI reads on refresh.</li></ul>
+          </section>
+
+          <section class="cs-section" id="limitations" aria-labelledby="limitations-h">
+            <h2 id="limitations-h">Limitations &amp; assumptions</h2>
+            <ul><li>Synthetic data: findings demonstrate the method, not a real retailer.</li><li>No price changes in the period, so elasticity is a range from promotions, not a measured value.</li><li>Campaign response rates are assumptions; there is no campaign history.</li><li>The churn score ranks customers well but is not a probability.</li><li>Recommendations are a snapshot as of 30 September; benefits are estimates, and working capital released is one-time cash, never added to profit.</li></ul>
+          </section>
+
+          <section class="cs-section" id="links" aria-labelledby="links-h">
+            <h2 id="links-h">Repository & live demo</h2>
+            <p>Review the full project, documentation and screenshots on GitHub.</p>
+            <div class="cs-links"><a href="https://github.com/JunayedParves/nabanna-bazar-retail-intelligence" target="_blank" rel="noopener noreferrer">GitHub repository <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span>github.com/JunayedParves/nabanna-bazar-retail-intelligence</span></a></div>
+          </section>
+            <nav class="cs-nav" aria-label="More case studies">
+              <a href="/projects/nexora-supply-chain-intelligence/"><span class="dir">← Previous</span><strong>Nexora Apparels</strong></a>
+              <a class="next" href="/projects/wellcare-pharma-performance/"><span class="dir">Next →</span><strong>WellCare Pharma</strong></a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">M K Junayed Parves</p>
+          <p>Data Analyst · Business Intelligence Analyst · Business Analyst<br>Dhaka, Bangladesh</p>
+        </div>
+        <div>
+          <p class="footer-title">Explore</p>
+          <ul class="footer-links">
+            <li><a href="/projects/">All projects</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/assets/resume.pdf" download>Download résumé</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Connect</p>
+          <ul class="footer-links">
+            <li><a href="mailto:jndparves@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/junayedparves" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/JunayedParves" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://public.tableau.com/app/profile/junayed.parves" target="_blank" rel="noopener noreferrer">Tableau Public</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 M K Junayed Parves</span>
+        <span class="mono">Last updated: 31 October 2026</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Enlarged screenshot">
+    <img src="" alt="">
+    <div class="lightbox-bar"><span class="lightbox-caption"></span><button class="lightbox-close" type="button">Close</button></div>
+  </dialog>
+</body>
+</html>

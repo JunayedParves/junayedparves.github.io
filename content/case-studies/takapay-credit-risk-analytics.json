@@ -1,0 +1,266 @@
+{
+  "slug": "takapay-credit-risk-analytics",
+  "subtitle": "A story-led web dashboard that takes a lender's management from what happened, to why, to what is likely next and what to do.",
+  "seo_description": "Credit risk analytics case study: digital lending dashboard with PAR, NPL, vintage analysis, collections and out-of-time-validated default models in Python. Synthetic MFS data.",
+  "facts": [
+    [
+      "Domain",
+      "Digital lending · credit risk"
+    ],
+    [
+      "Scale",
+      "221,928 loans · ৳4.88B disbursed (synthetic)"
+    ],
+    [
+      "Analytics",
+      "Descriptive · diagnostic · predictive · prescriptive"
+    ],
+    [
+      "Built with",
+      "Python, pandas, NumPy, d3.js"
+    ]
+  ],
+  "gallery": [
+    {
+      "src": "story.jpg",
+      "caption": "Story tab: seven chapters, each built around one finding"
+    },
+    {
+      "src": "overview.jpg",
+      "caption": "Overview: nine headline KPIs with year-on-year change"
+    },
+    {
+      "src": "geography.jpg",
+      "caption": "Geography: division map and growth-versus-risk quadrants"
+    },
+    {
+      "src": "customers.jpg",
+      "caption": "Customers: occupation risk matrix and repayment segments"
+    },
+    {
+      "src": "predictive.jpg",
+      "caption": "Predictive risk: probability-of-default outputs and exposure by risk segment"
+    },
+    {
+      "src": "vintage.jpg",
+      "caption": "Vintages: default matrix by origination cohort and months on book"
+    },
+    {
+      "src": "collections.jpg",
+      "caption": "Repayment & collections: scheduled versus collected, efficiency and ageing"
+    },
+    {
+      "src": "actions.jpg",
+      "caption": "Action centre: recommendations with evidence, owner and expected impact"
+    }
+  ],
+  "sections": [
+    {
+      "id": "summary",
+      "title": "Executive summary",
+      "paragraphs": [
+        "TakaPay is a mobile financial services (MFS) provider in Bangladesh with a fast-growing digital loan book. I built an interactive web dashboard that answers four questions in order: **what happened, why, what is likely next, and what management should do**.",
+        "It opens with a seven-chapter **Story** tab, where each chapter makes one finding, shows its chart, states the \"so what\" and links to the analysis behind it. Ten analysis tabs follow for executives, credit risk, collections and regional teams. Every sentence on the page is recomputed from the data and follows the division filter."
+      ],
+      "callout": "All customer, loan and agent records are **synthetic**. No real person or real MFS company is represented, and none of the figures describe real business performance.",
+      "callout_type": "warn"
+    },
+    {
+      "id": "problem",
+      "title": "Business problem",
+      "paragraphs": [
+        "Disbursement grew from ৳78M in 2021 to ৳2.0B in January–October 2026, a 26× increase. On headline ratios, credit quality looks better than ever: PAR 30 has fallen to 3.26% from 11.26% a year earlier, and the NPL ratio is 1.24%.",
+        "The risk is that rapid growth flatters those ratios. A book full of new loans has not had time to go bad, so management needs to know whether quality is genuinely improving, where the risk sits, and which loans to act on now."
+      ]
+    },
+    {
+      "id": "objectives",
+      "title": "Analytical objectives",
+      "list": [
+        "Measure growth and portfolio quality on consistent definitions (GLP, PAR, NPL, collection efficiency).",
+        "Separate genuine quality changes from the effect of a young book, using vintage (cohort) analysis.",
+        "Locate risk by geography, customer segment and product.",
+        "Predict which open loans are most likely to default or become delinquent soon.",
+        "Turn the evidence into prioritised, rule-based recommendations."
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Dataset",
+      "paragraphs": [
+        "Nine related tables in Parquet (about 59 MB), modelled on a mobile-money lending operation. A Python pipeline aggregates them into about 2.3 MB of JSON that the dashboard loads."
+      ],
+      "table": {
+        "head": [
+          "Table",
+          "What it holds"
+        ],
+        "rows": [
+          [
+            "Customers",
+            "Age, occupation, gender, income, education, tenure, location"
+          ],
+          [
+            "Geography",
+            "Division → district → upazila hierarchy"
+          ],
+          [
+            "Products",
+            "Loan products and terms"
+          ],
+          [
+            "Applications",
+            "Funnel, decisions and rejection reasons"
+          ],
+          [
+            "Disbursements",
+            "221,928 loans, ৳4.88B in total"
+          ],
+          [
+            "Repayment schedule",
+            "Every instalment due"
+          ],
+          [
+            "Collections",
+            "Payments by channel and stage"
+          ],
+          [
+            "Monthly snapshots",
+            "Month-end portfolio state"
+          ],
+          [
+            "Dates",
+            "Calendar dimension"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "preparation",
+      "title": "Data preparation & quality checks",
+      "list": [
+        "Rebuilt the month-end gross loan portfolio point-in-time from the instalment history, rather than trusting a stored balance.",
+        "Excluded written-off loans from GLP and handled them separately in loss metrics.",
+        "Found a data issue: instalments due after 31 July 2026 carry a placeholder 15% partial payment. Collection metrics therefore stop at July 2026 instead of reporting a false collapse.",
+        "Added a **Methodology** tab that reconciles the dashboard against the source tables."
+      ]
+    },
+    {
+      "id": "method",
+      "title": "Methodology & models",
+      "paragraphs": [
+        "Descriptive and diagnostic analysis covers growth, mix, geography, customer segments, the application funnel, roll rates and vintages. For the predictive layer I fitted two **L2-regularised logistic regressions** in Python (NumPy) and validated them **out of time**: every test record is later than every training record, the same way a model would be used in production."
+      ],
+      "table": {
+        "head": [
+          "Model",
+          "Predicts",
+          "Test ROC-AUC",
+          "PR-AUC",
+          "Precision / recall at alert"
+        ],
+        "rows": [
+          [
+            "Probability of default",
+            "90+ DPD or write-off within 12 months of disbursement",
+            "0.693",
+            "0.078",
+            "8.8% / 32.5%"
+          ],
+          [
+            "Early warning",
+            "Next instalment late or missed within 30 days",
+            "0.854",
+            "0.580",
+            "27.1% / 62.3%"
+          ]
+        ]
+      },
+      "after": "Feature importance is the mean absolute SHAP value. For a linear model this is exact, but it describes the model, not cause and effect. A rule-based engine then turns the evidence into prioritised actions on the Action centre tab."
+    },
+    {
+      "id": "kpis",
+      "title": "Key metrics",
+      "kpis": [
+        [
+          "Gross loan portfolio (GLP)",
+          "Outstanding principal on open loans at month-end, rebuilt from the instalment history; written-off loans excluded"
+        ],
+        [
+          "PAR X",
+          "Outstanding principal of loans X+ days past due ÷ GLP"
+        ],
+        [
+          "Gross NPL ratio",
+          "PAR 90"
+        ],
+        [
+          "Collection efficiency",
+          "Amount paid ÷ amount scheduled on instalments due in the period"
+        ],
+        [
+          "12-month default rate",
+          "Share of loans reaching 90+ DPD within a year, for loans made by October 2025"
+        ],
+        [
+          "Expected credit loss",
+          "PD × LGD × exposure, IFRS 9-style staging (LGD 65% for stages 1–2, 80% for stage 3)"
+        ]
+      ]
+    },
+    {
+      "id": "dashboard",
+      "title": "The dashboard",
+      "gallery": true,
+      "paragraphs": [
+        "Eleven tabs: Story, Overview, Geography, Customers, Products & origination, Repayment & collections, Predictive risk, Vintages, Profitability, Action centre and Methodology. Click any screenshot to enlarge it, or open the live dashboard."
+      ]
+    },
+    {
+      "id": "findings",
+      "title": "Key findings",
+      "findings": [
+        "**Growth:** disbursement grew from ৳78M (2021) to ৳2.0B (January–October 2026), 26×; ৳4.88B across 221,928 loans in total.",
+        "**Quality:** PAR 30 is 3.26% (11.26% a year ago) and the NPL ratio is 1.24%, but much of the fall comes from a very young book. At the same age (6 months on book), 2024 loans defaulted at 4.7% vs 2.8% for 2025.",
+        "**Where:** exposure is concentrated in a few divisions, and NPL varies widely by district.",
+        "**Who:** occupation separates repayment behaviour, and repeat borrowers default far less than first-time borrowers.",
+        "**Repayment:** collection efficiency is about 98%; losses are decided in the first 30 days past due.",
+        "**What's next:** the early-warning model ranks performing loans well (ROC-AUC 0.854), giving collections a prioritised watch list."
+      ]
+    },
+    {
+      "id": "implications",
+      "title": "Business implications",
+      "paragraphs": [
+        "The dashboard's Action centre ranks specific actions; the findings above imply the overall direction:"
+      ],
+      "list": [
+        "Judge credit quality on vintage curves, not on headline PAR, while the book is this young.",
+        "Act inside the first 30 days past due, where the data shows losses are decided, using the early-warning watch list to prioritise calls.",
+        "Use repeat-borrower history and occupation in credit policy, since both separate repayment behaviour.",
+        "Set geographic limits where district NPL is persistently high, rather than across whole divisions."
+      ]
+    },
+    {
+      "id": "implementation",
+      "title": "Technical implementation",
+      "list": [
+        "**Pipeline (Python):** `build.py` rebuilds the month-end portfolio from instalments and aggregates every breakdown; `models.py` trains and scores both models; `extras.py` writes the delinquency summary and validation checks.",
+        "**Front end:** a static site with no build step: d3.js v7 charts, a shared filter state and derived measures computed in the browser.",
+        "**Maps:** division boundaries from geoBoundaries (CC BY 4.0), simplified to SVG paths.",
+        "**Hosting:** GitHub Pages."
+      ]
+    },
+    {
+      "id": "limitations",
+      "title": "Limitations & assumptions",
+      "list": [
+        "The data is synthetic, so findings illustrate the method and must not be read as real MFS performance.",
+        "The probability-of-default model is modest (PR-AUC 0.078): useful for ranking, not for approving or rejecting individual loans.",
+        "SHAP importance explains the model, not causation.",
+        "Profitability figures (interest, fees, cost of funds, ECL) are analytical estimates.",
+        "Collection metrics stop at July 2026 because of the placeholder payments in the source."
+      ]
+    }
+  ]
+}

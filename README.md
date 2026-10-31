@@ -1,30 +1,36 @@
-# Junayed Parves — Data & BI Portfolio
+# M K Junayed Parves — Data & BI Analyst Portfolio
 
-A one-page portfolio website, hosted free on **GitHub Pages**, whose content you
-manage from a **Google Sheet** — no code editing needed to update it.
+The portfolio site at **https://junayedparves.github.io/**: a homepage, a projects page and
+one detailed case-study page per flagship project. It's hosted free on **GitHub Pages**, and the
+content is managed from a **Google Sheet**, so updating it needs no code.
 
-- Plain HTML, CSS and JavaScript. No framework and no build step.
-- Content comes from a published Google Sheet, with an automatic backup copy in `data/`.
-- A GitHub Action saves the Sheet into the repo every day, so every change is kept in git history.
-- Works on desktop, tablet and phone. Accessible and fast.
+- **Fast and crawlable:** plain HTML, CSS and a little vanilla JavaScript. Every page is
+  pre-built, so recruiters and search engines see the full content without running scripts.
+- **One content source:** the Sheet → `data/*.json` → the pages, rebuilt automatically.
+- **Full history:** every content and design change is saved in git, so any version can be restored.
+- **Accessible and responsive:** WCAG AA colour contrast, keyboard navigation, reduced-motion support,
+  and layouts for desktop, tablet and phone.
+
+> Why the projects were chosen, how they were scored and what is still missing:
+> see [PORTFOLIO_AUDIT.md](PORTFOLIO_AUDIT.md).
 
 ---
 
 ## Contents
 
-1. [How it works (the big picture)](#how-it-works)
+1. [How it works](#how-it-works)
 2. [What's in this folder](#whats-in-this-folder)
 3. [Test the site on your computer](#test-the-site-on-your-computer)
-4. [Step 1 — Create the GitHub repo and turn on GitHub Pages](#step-1--create-the-github-repo-and-turn-on-github-pages)
-5. [Step 2 — Create the Google Sheet and publish it](#step-2--create-the-google-sheet-and-publish-it)
-6. [Step 3 — Paste the IDs into config.js](#step-3--paste-the-ids-into-configjs)
-7. [Step 4 — Update your content](#step-4--update-your-content)
-8. [Step 5 — Replace your photo and résumé](#step-5--replace-your-photo-and-résumé)
-9. [Step 6 — Set up the contact form (Formspree)](#step-6--set-up-the-contact-form-formspree)
-10. [Step 7 — Connect a custom domain (later)](#step-7--connect-a-custom-domain-later)
-11. [Automatic backups and content history](#automatic-backups-and-content-history)
-12. [Releasing a new version (code/design changes)](#releasing-a-new-version-codedesign-changes)
-13. [Rolling back](#rolling-back)
+4. [Update your content](#update-your-content)
+5. [Add a new project or case study](#add-a-new-project-or-case-study)
+6. [Connect the Google Sheet (one-time)](#connect-the-google-sheet-one-time)
+7. [Replace your photo or résumé](#replace-your-photo-or-résumé)
+8. [Turn on the contact form (optional)](#turn-on-the-contact-form-optional)
+9. [Connect a custom domain (later)](#connect-a-custom-domain-later)
+10. [Deployment](#deployment)
+11. [Releasing a new version (code/design changes)](#releasing-a-new-version-codedesign-changes)
+12. [Rolling back](#rolling-back)
+13. [SEO and accessibility notes](#seo-and-accessibility-notes)
 14. [Alternative: manage content in Excel instead](#alternative-manage-content-in-excel-instead)
 15. [Sheet reference (every tab and column)](#sheet-reference)
 16. [Troubleshooting](#troubleshooting)
@@ -34,19 +40,21 @@ manage from a **Google Sheet** — no code editing needed to update it.
 ## How it works
 
 ```
- Google Sheet (you edit here)
-        │  "Publish to web" as CSV
-        ▼
- Visitor opens the site ──► js/script.js downloads each tab ──► draws the page
-                                   │
-                                   └─ if Google fails ──► uses data/<tab>.json (backup)
-
- Every day at 08:00 Dhaka time:
- GitHub Action ──► downloads the Sheet ──► saves data/*.json ──► commits (only if changed) ──► redeploys
+ Google Sheet (you edit here)          content/case-studies/*.json (long-form case-study text)
+        │  published as CSV                         │
+        ▼                                           │
+ scripts/sync.js  ──►  data/*.json  ──────────────► scripts/build.js ──►  index.html
+ (daily at 08:00 Dhaka,                                               projects/index.html
+  or "Run workflow")                                                  projects/<slug>/index.html
+                                                                      sitemap.xml
+        └──────── commits the changes ──► GitHub Pages deploys the site (≈1 minute)
 ```
 
-The site reads the Sheet **live**, so edits show up without touching GitHub.
-The daily backup is your safety net and your content history.
+- **Short, structured content** (profile, skills, experience, education, project cards, books,
+  podcasts, people) lives in the **Google Sheet**.
+- **Long-form case studies** live in `content/case-studies/<slug>.json`. They are too long for
+  a spreadsheet cell.
+- `scripts/build.js` turns both into finished HTML pages. Nobody needs to edit HTML by hand.
 
 ---
 
@@ -54,515 +62,311 @@ The daily backup is your safety net and your content history.
 
 | Path | What it is | Do you edit it? |
 |---|---|---|
-| `index.html` | Page skeleton. No personal text: everything is filled in from data. | Rarely |
+| `index.html`, `projects/` | **Generated** pages | No: they are rebuilt from the content |
+| `sitemap.xml` | **Generated** list of pages for search engines | No |
 | `404.html` | "Page not found" page | Rarely |
-| `css/style.css` | All the styling. Colours and fonts are variables at the top. | For design changes |
-| `js/config.js` | **Your settings**: Sheet ID, tab gids, Formspree ID, site URL | **Yes, once** |
-| `js/script.js` | Loads the data and draws the sections | No |
-| `data/*.json` | Backup copy of each Sheet tab (written by the Action) | No, it's automatic |
-| `templates/*.csv` | Starter files to import into Google Sheets | Only once |
-| `scripts/sync.js` | Sheet → JSON converter used by the Action | No |
-| `assets/images/` | Photo, icons, share image, book covers… | When adding images |
+| `css/variables.css` | Colours, fonts, spacing (the design system) | To restyle |
+| `css/base.css`, `css/components.css`, `css/pages.css` | Layout, reusable components, page layouts + responsive rules | For design changes |
+| `js/navigation.js` | Mobile menu, current-section highlight | No |
+| `js/project-filter.js` | Project filter buttons | No |
+| `js/main.js` | Knowledge Hub tabs, "show more", screenshot lightbox, contact form | No |
+| `js/config.js` | **Settings:** site address, Google Sheet IDs, Formspree ID | Once |
+| `data/*.json` | Content copied from the Sheet (or from `templates/`) | No, it's automatic |
+| `templates/*.csv` | The content in spreadsheet form: import into Google Sheets, or edit directly | Until the Sheet is connected |
+| `content/case-studies/*.json` | Case-study write-ups | When writing a case study |
+| `scripts/sync.js` | Sheet → JSON, then runs the build | No |
+| `scripts/build.js`, `scripts/lib/` | The page builder and its HTML templates | For layout changes |
+| `assets/images/projects/<project>/` | `cover.jpg` (16:10) + numbered dashboard screenshots | When adding projects |
+| `assets/images/` (other folders) | Portrait, logos, icons, book/podcast/people images, share image | When adding images |
 | `assets/resume.pdf` | Your résumé | When it changes |
-| `.github/workflows/` | The two GitHub Actions (sync and deploy) | No |
-| `CHANGELOG.md` | List of code/design versions | When releasing |
-| `favicon.svg`, `sitemap.xml`, `robots.txt` | Browser icon and search-engine files | If your domain changes |
+| `.github/workflows/` | `sync-content.yml` (daily content sync) and `deploy.yml` (publish) | No |
+| `PORTFOLIO_AUDIT.md` | Project audit, scores and capability gaps | For reference |
+| `CHANGELOG.md` | Version history | When releasing |
 
-The design mockup, `Linkedin.html` and the original PDF/PNG stay on your computer only.
-They're listed in `.gitignore`, so they are never uploaded.
+Local-only files (the design mockup, original PDF/PNG, source logos) are listed in `.gitignore`
+and are never uploaded.
 
 ---
 
 ## Test the site on your computer
 
-> ⚠️ Double-clicking `index.html` **won't work**. Browsers block pages opened as files
-> from loading data. You need a tiny local web server. The easiest is VS Code + Live Server.
+The pages are already built, so **VS Code + Live Server** shows them straight away:
 
-1. Install **[Visual Studio Code](https://code.visualstudio.com/)** (free).
-2. Open VS Code → click the **Extensions** icon on the left (four little squares) →
-   search **"Live Server"** (by Ritwick Dey) → **Install**.
-3. **File → Open Folder…** → choose this project folder.
-4. In the file list on the left, right-click `index.html` → **"Open with Live Server"**.
-   Your browser opens at something like `http://127.0.0.1:5500/`.
-5. Every time you save a file, the page reloads by itself.
+1. Install **[Visual Studio Code](https://code.visualstudio.com/)** and the **Live Server** extension (by Ritwick Dey).
+2. **File → Open Folder…** → this project folder.
+3. Right-click `index.html` → **Open with Live Server**. The site opens at `http://127.0.0.1:5500/`.
 
-**Check it on a phone size:** in Chrome/Edge press `F12` → click the phone/tablet icon at
-the top-left of the panel (or `Ctrl+Shift+M`) → choose "iPhone 12 Pro" (390 px wide).
-
-**See where the data came from:** in the same `F12` panel open the **Console** tab.
-You'll see lines like `[portfolio] skills: loaded from Google Sheet` or `…from backup JSON`.
-
-*No VS Code?* If Python is installed, open a terminal in this folder and run the command below.
-Then visit `http://localhost:5500`.
-
-```bash
-python -m http.server 5500
-```
-
----
-
-## Step 1 — Create the GitHub repo and turn on GitHub Pages
-
-### 1a. Create the repository
-1. Sign in at [github.com](https://github.com) (your username is `junayedparves`).
-2. Top-right **＋** → **New repository**.
-3. **Repository name:** `junayedparves.github.io`
-   *(Using exactly `<username>.github.io` makes the site live at `https://junayedparves.github.io/`.
-   Any other name, e.g. `portfolio`, makes it live at `https://junayedparves.github.io/portfolio/`.
-   Then update `siteUrl` in `js/config.js`, `sitemap.xml`, `robots.txt`, and the `/` paths in `404.html`.)*
-4. Set it to **Public**, and **don't** tick "Add a README" (you already have one) → **Create repository**.
-
-### 1b. Upload the files
-Install [Git](https://git-scm.com/download/win) if you haven't already. Open a terminal in this project folder
-(in VS Code: **Terminal → New Terminal**) and run these one at a time:
-
-```bash
-git init -b main
-```
-
-```bash
-git add .
-```
-
-```bash
-git commit -m "v1.0.0: first launch"
-```
-
-```bash
-git remote add origin https://github.com/junayedparves/junayedparves.github.io.git
-```
-
-```bash
-git push -u origin main
-```
-
-*(Prefer clicking to typing? [GitHub Desktop](https://desktop.github.com/) does the same:
-**File → Add local repository** → pick this folder → **Publish repository**.)*
-
-### 1c. Turn on GitHub Pages
-1. On GitHub, open your repo → **Settings** (top tab, gear icon).
-2. In the left sidebar click **Pages**.
-3. Under **Build and deployment → Source**, pick **"GitHub Actions"** from the dropdown.
-   (Not "Deploy from a branch".)
-4. Click the **Actions** tab at the top. You'll see "Deploy to GitHub Pages" running with a yellow dot.
-   When it turns into a green tick (about 1 minute), your site is live at
-   **https://junayedparves.github.io/**. The green tick's page also shows the link.
-
-### 1d. Allow the backup Action to save
-**Settings → Actions → General** → scroll to **Workflow permissions** → choose
-**"Read and write permissions"** → **Save**.
-
-### 1e. Tag the first release
-
-```bash
-git tag -a v1.0.0 -m "First launch"
-```
-
-```bash
-git push origin v1.0.0
-```
-
----
-
-## Step 2 — Create the Google Sheet and publish it
-
-### 2a. Create the sheet with one tab per section
-1. Go to [sheets.new](https://sheets.new) to create a blank sheet. Name it e.g. *"Portfolio content"*.
-2. Import the first template: **File → Import → Upload** → drag in `templates/profile.csv`.
-   - **Import location:** "Replace current sheet" (for the first one only)
-   - **Separator type:** Detect automatically
-   - **Untick** "Convert text to numbers, dates, and formulas"
-   - → **Import data**
-3. At the bottom, double-click the tab name (`Sheet1`) and rename it to exactly **`profile`**.
-4. Repeat for every other template. This time choose **Import location: "Insert new sheet(s)"**.
-   Rename each tab to match its file name exactly, in lowercase:
-   `skills`, `experience`, `education`, `projects`, `books`, `podcasts`, `following`.
-
-You should now have **8 tabs** along the bottom. Each has a first row of column headers like
-`order | name | detail | …`. **Don't rename or delete the header row.**
-
-> 💡 **Tip — tick boxes for `show`:** select the `show` column (except the header) →
-> **Insert → Checkbox**. Ticked = shown on the site, unticked = hidden.
-
-### 2b. Publish to the web as CSV
-1. **File → Share → Publish to web**.
-2. In the first dropdown keep **"Entire document"**. In the second, choose **"Comma-separated values (.csv)"**.
-3. Click **Publish** → **OK**.
-4. Google shows a link like
-   `https://docs.google.com/spreadsheets/d/e/2PACX-1vQx…long…Zz/pub?output=csv`
-   Copy the part **between `/d/e/` and `/pub`**. It starts with `2PACX-`. This is your **published ID**.
-5. Make sure **"Automatically republish when changes are made"** is ticked
-   (under "Published content & settings" at the bottom of that window).
-
-> Publishing makes the Sheet's *contents* readable by anyone with the link. That's fine here,
-> because it's the same information shown on your public website. Don't put private notes in this Sheet.
-
-### 2c. Find each tab's "gid"
-Click each tab at the bottom and look at the address bar. It ends with `#gid=` followed by a number:
-`https://docs.google.com/spreadsheets/d/…/edit#gid=`**`1839204571`**.
-Write down the number for all 8 tabs. The first tab is usually `0`.
-
----
-
-## Step 3 — Paste the IDs into config.js
-
-Open `js/config.js` and fill in the published ID and the 8 gids:
-
-```js
-sheet: {
-  publishedId: "2PACX-1vQx...Zz",
-  gids: {
-    profile:    "0",
-    skills:     "1839204571",
-    experience: "20394857",
-    ...
-  }
-},
-```
-
-Save, then test locally with Live Server. The Console should now say `loaded from Google Sheet`.
-Then publish the change:
-
-```bash
-git add js/config.js
-```
-
-```bash
-git commit -m "config: connect Google Sheet"
-```
-
-```bash
-git push
-```
-
-Finally, create the first backup: on GitHub go to **Actions → "Sync content from Google Sheet" →
-Run workflow → Run workflow**.
-
----
-
-## Step 4 — Update your content
-
-**Edit the Sheet → wait a few minutes → refresh the site.** That's it.
-
-- Google refreshes the published CSV about every **5 minutes**, so changes aren't instant.
-- **Hide something** without deleting it: set `show` to `FALSE` (or untick the checkbox).
-- **Reorder:** change the numbers in `order`. Lower numbers come first; decimals like `1.5` are fine.
-- **Line breaks / bullets:** separate items with `|`. For example, in `experience → bullets`:
-  `Built X dashboards | Cut report time by 30% | Automated 3 workflows`.
-  The same trick works in `profile → headline` to split it over lines.
-- **Leave `end` empty** in `experience` to show "Present".
-- **A whole section disappears** when its tab has no visible rows (e.g. Podcasts). The menu link
-  goes too, and the alternating blue/navy backgrounds adjust themselves.
-- **Section headings** (like "My analytics toolkit") come from the `profile` tab:
-  `skills_title`, `skills_intro`, `skills_label`, and the same for `experience_`, `education_`,
-  `projects_`, `books_`, `podcasts_`, `following_` and `contact_`. Leave one empty to use the default.
-- **`last_updated`** (in `profile`) is shown in the footer. Use the format `2026-10-15`.
-
-### Adding images
-Any `*_url` column accepts either:
-- a **full link**: `https://example.com/cover.jpg`, or
-- a **file in this repo**: `assets/images/books/storytelling.jpg`
-
-To add a file: put it in the right folder under `assets/images/` (`projects/`, `books/`,
-`podcasts/`, `people/`), then commit and push. Keep images small: under ~300 KB each,
-and about 1200 px wide for project screenshots. [squoosh.app](https://squoosh.app) is a free way to shrink them.
-If an image is missing or its link breaks, the site shows a neat placeholder instead.
-
-> **Your starter content:** the templates are filled with your real details from your résumé and
-> LinkedIn page. Suggested items that still need your confirmation are included but **hidden** (`show = FALSE`):
-> most books, all podcasts, all people you follow, and three planned projects.
-> Tick the ones that are true for you and rewrite the review/"why" text in your own words.
-
----
-
-## Step 5 — Replace your photo and résumé
-
-**Photo:** replace `assets/images/portrait.jpg` with a new image, using the same file name.
-A 4:5 portrait works best (e.g. 800 × 1000 px), under ~200 KB. Or put the new file anywhere and
-change `photo_url` in the `profile` tab.
-
-**Résumé:** replace `assets/resume.pdf` with your new PDF, using the same file name. Then update
-`resume_note` in the `profile` tab (e.g. "Last updated Oct 2026").
-
-**Share image:** `assets/images/og-image.jpg` (1200 × 630) is the picture LinkedIn/WhatsApp show
-when someone shares your link. Replace it the same way if you want.
-
-Then commit and push:
-
-```bash
-git add assets
-```
-
-```bash
-git commit -m "content: new photo and résumé"
-```
-
-```bash
-git push
-```
-
----
-
-## Step 6 — Set up the contact form (Formspree)
-
-Until this is set up, the form opens the visitor's email app instead. That works, but it's less smooth.
-
-1. Sign up free at [formspree.io](https://formspree.io) with the email where you want messages to arrive.
-2. **+ New form** → name it "Portfolio" → **Create**.
-3. You'll see an endpoint like `https://formspree.io/f/xyzabcd`. Copy the last part (`xyzabcd`).
-4. Paste it in `js/config.js`:
-   ```js
-   formspreeId: "xyzabcd",
-   ```
-5. Commit and push. Then send yourself a test message from the live site.
-   The first time, Formspree emails you to confirm; click the link in that email.
-
-The free plan covers 50 messages a month. Spam bots are filtered by a hidden "honeypot" field.
-
----
-
-## Step 7 — Connect a custom domain (later)
-
-1. Buy a domain (e.g. from Namecheap, Cloudflare or Porkbun), such as `junayedparves.com`.
-2. At your domain provider, open the **DNS** settings and add:
-   - Four **A** records for `@` pointing to:
-     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - One **CNAME** record: name `www` → value `junayedparves.github.io`
-3. On GitHub: **Settings → Pages → Custom domain** → type `junayedparves.com` → **Save**.
-   Wait for the DNS check to pass (minutes to a few hours), then tick **Enforce HTTPS**.
-4. Update the address in: `js/config.js` (`siteUrl`), `sitemap.xml`, `robots.txt`. Commit and push.
-
----
-
-## Automatic backups and content history
-
-`.github/workflows/sync-content.yml` runs **every day at 02:00 UTC** (08:00 in Dhaka):
-
-1. downloads every tab as CSV → saves `data/<tab>.json`
-2. updates the `<title>`, description and share tags in `index.html` from your `profile` tab
-3. commits **only if something changed**, with the message `content: sync from Google Sheet 2026-10-15`
-4. triggers a redeploy
-
-**Run it now:** GitHub → **Actions** → "Sync content from Google Sheet" → **Run workflow**.
-
-**See what changed and when:** GitHub → your repo → click **Commits** (or open `data/experience.json`
-→ **History**). Each sync commit shows exactly which lines changed.
-
-If the Sheet can't be reached, the sync stops **without changing anything**, so your backup is never wiped.
-
-**Test the converter on your computer** (needs [Node.js](https://nodejs.org) 18+):
-
-```bash
-node scripts/sync.js
-```
-
-Or, before the Sheet exists, rebuild `data/` from the template CSVs:
+**After changing content** (`templates/*.csv` or `content/case-studies/*.json`), rebuild the pages.
+This needs [Node.js](https://nodejs.org) 18 or newer and nothing else:
 
 ```bash
 node scripts/sync.js --from-templates
 ```
 
+That command copies `templates/*.csv` into `data/` and rebuilds every page. If you only changed a
+case study or a file in `data/`, this is enough:
+
+```bash
+node scripts/build.js
+```
+
+**Check phone size:** press `F12` in Chrome or Edge → the device icon (`Ctrl+Shift+M`) → "iPhone 12 Pro" (390 px).
+
+*No VS Code?* Run `python -m http.server 5500` in this folder and open `http://localhost:5500`.
+
+---
+
+## Update your content
+
+**With the Google Sheet connected:**
+
+1. Edit the Sheet.
+2. On GitHub → **Actions** → **Sync content from Google Sheet** → **Run workflow**.
+   (Or do nothing: it runs automatically every day at 08:00 Dhaka time.)
+3. About two minutes later the site is updated. The change is also saved in git history.
+
+**Before the Sheet is connected:** edit `templates/*.csv` (Excel, Google Sheets or any text editor),
+run `node scripts/sync.js --from-templates`, then commit and push.
+
+Rules that apply to every tab:
+- **Hide something** without deleting it: set `show` to `FALSE`.
+- **Reorder:** change `order`. Lower numbers come first; decimals like `1.5` are fine.
+- **Lists inside one cell:** separate items with `|`, e.g. in `experience → bullets`:
+  `Built X dashboards | Cut report time by 30% | Automated 3 workflows`.
+- **Images:** any `*_url` column accepts a full link (`https://…`) or a repo path (`assets/images/…`).
+  Repo paths are better: they never break and they load faster.
+
+---
+
+## Add a new project or case study
+
+**A gallery project** (card only, linking to a demo, repo or Tableau Public):
+1. Save a screenshot as `assets/images/projects/<name>/cover.jpg` (or `.png`), ideally 1200 × 750.
+2. Add a row to the `projects` tab with `case_study = FALSE` (see the [column reference](#sheet-reference)).
+
+**A full case study:**
+1. Put screenshots in `assets/images/projects/<folder>/`: `cover.jpg` (1200 × 750, 16:10) plus
+   `01.jpg`, `02.jpg`… (max 1600 px wide). Keep each under ~250 KB; [squoosh.app](https://squoosh.app) can shrink them.
+2. Add a row to the `projects` tab with a `slug` (e.g. `insurance-kpi-analytics`), `case_study = TRUE`,
+   and `image_url = assets/images/projects/<folder>/cover.jpg`. Set `featured = TRUE` to show it on the homepage.
+3. Copy any file in `content/case-studies/` to `content/case-studies/<slug>.json`, set `"slug"`, and
+   rewrite the sections. Every section is optional; use only what fits the project. Section types:
+   `paragraphs`, `list`, `findings` (numbered cards), `kpis` (metric/definition table), `table`
+   (`head` + `rows`), `gallery: true` (shows the screenshots listed in `"gallery"`), `after` (text
+   after a table), `callout` (+ `"callout_type": "warn"` for data notes).
+4. Run `node scripts/build.js`. The page appears at `/projects/<slug>/`, and is added to the
+   projects page, the filters and the sitemap automatically.
+
+**House rules for case studies:** only use numbers from the project itself, label the data
+(`Synthetic data`, `Practice data` or `Public data`), and never include employer data.
+
+---
+
+## Connect the Google Sheet (one-time)
+
+1. **Create the Sheet:** [sheets.new](https://sheets.new) → **File → Import → Upload** →
+   `templates/profile.csv` → "Replace current sheet", untick "Convert text to numbers, dates, and
+   formulas" → rename the tab to **`profile`**. Repeat for every CSV in `templates/` with
+   "Insert new sheet(s)", naming each tab exactly as its file: `skills`, `experience`, `education`,
+   `projects`, `books`, `podcasts`, `following`.
+2. **Publish:** **File → Share → Publish to web** → "Entire document" + "Comma-separated values
+   (.csv)" → **Publish**. Copy the part of the link between `/d/e/` and `/pub` (it starts with `2PACX-`).
+   Keep "Automatically republish when changes are made" ticked.
+3. **Find each tab's gid:** click a tab and read the number after `#gid=` in the address bar.
+4. **Paste them into `js/config.js`** (`publishedId` and the 8 `gids`), then commit and push.
+5. **Run the first sync:** **Actions → Sync content from Google Sheet → Run workflow**.
+
+> Publishing makes the Sheet readable by anyone with the link. That's fine, because it holds
+> the same information as the public website, but keep private notes out of it.
+
+---
+
+## Replace your photo or résumé
+
+- **Photo:** replace `assets/images/portrait.jpg` with the same file name. 4:5 works best (800 × 1000 px).
+- **Résumé:** replace `assets/resume.pdf` with the same file name, and update `resume_note` in `profile`.
+- **Share image:** `assets/images/og-image.jpg` (1200 × 630) is shown when the site is shared on LinkedIn.
+
+Then commit and push. If LinkedIn still shows the old preview, use the
+[LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
+
+---
+
+## Turn on the contact form (optional)
+
+Without a Formspree ID **no form is shown**. Visitors use the Email button and contact links,
+so there is never a form that silently fails. To add one:
+
+1. Sign up free at [formspree.io](https://formspree.io) → **New form** → copy the ID from
+   `https://formspree.io/f/<ID>`.
+2. Put it in `js/config.js` → `formspreeId: "<ID>"`, then run `node scripts/build.js`, commit and push.
+3. Send yourself a test message; confirm the first one from Formspree's email.
+
+---
+
+## Connect a custom domain (later)
+
+1. Buy a domain. In its DNS, add four **A** records for `@` → `185.199.108.153`,
+   `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and a **CNAME** `www` → `junayedparves.github.io`.
+2. GitHub → **Settings → Pages → Custom domain** → enter it → **Save** → tick **Enforce HTTPS** when ready.
+3. Change `siteUrl` in `js/config.js` and the sitemap line in `robots.txt`, run `node scripts/build.js`,
+   then commit and push. Canonical URLs, share tags and the sitemap all follow `siteUrl`.
+
+---
+
+## Deployment
+
+- **Every push to `main`** runs `.github/workflows/deploy.yml`: it rebuilds the pages with
+  `node scripts/build.js` and publishes the repository to GitHub Pages (Settings → Pages →
+  Source must be **GitHub Actions**).
+- **Every day at 08:00 Dhaka time** (or on demand), `.github/workflows/sync-content.yml` copies
+  the Sheet into `data/`, rebuilds the pages, and commits *only if something changed*
+  (`content: sync from Google Sheet <date>`). The deploy runs right after.
+- Workflow permissions must be **Read and write** (Settings → Actions → General).
+
 ---
 
 ## Releasing a new version (code/design changes)
 
-Content edits go through the Sheet. **Code and design changes** (CSS, HTML, JS) follow this routine,
-so the live site is never half-changed and every version can be restored.
-
-Version numbers follow `vMAJOR.MINOR.PATCH` (see `CHANGELOG.md`):
-- **Patch** `v1.0.1`: small fix (a colour, a typo in code)
-- **Minor** `v1.1.0`: new feature or section
-- **Major** `v2.0.0`: redesign, or a change to the Sheet's columns
-
-### The routine
-
-**1. Start a branch from the latest main:**
+Content goes through the Sheet. **Design and code changes** follow this routine, so the live site
+is never half-changed. Versions follow `MAJOR.MINOR.PATCH` (see `CHANGELOG.md`): patch = small fix,
+minor = new feature, major = redesign or a change to the Sheet's columns.
 
 ```bash
 git checkout main
 ```
-
 ```bash
 git pull
 ```
-
 ```bash
-git checkout -b feature/dark-footer
+git checkout -b feature/my-change
 ```
 
-**2. Make your changes**, test with Live Server, and add a line under `## [Unreleased]` in `CHANGELOG.md`.
-
-**3. Commit and push the branch:**
+Make the change, run `node scripts/build.js`, test with Live Server, and add a line under
+`## [Unreleased]` in `CHANGELOG.md`. Then:
 
 ```bash
 git add .
 ```
-
 ```bash
-git commit -m "Make footer darker"
+git commit -m "Describe the change"
+```
+```bash
+git push -u origin feature/my-change
 ```
 
-```bash
-git push -u origin feature/dark-footer
-```
-
-**4. Open a Pull Request:** on GitHub a yellow banner appears → **Compare & pull request** →
-check the "Files changed" tab → **Create pull request**.
-
-**5. Merge:** click **Merge pull request** → **Confirm merge**. The deploy Action publishes the site automatically.
-
-**6. Tag the release:** first move the `[Unreleased]` notes in `CHANGELOG.md` under a new heading,
-e.g. `## [1.1.0] — 2026-11-02`, and commit that on main. Then:
+Open the pull request on GitHub (**Compare & pull request**), review **Files changed**, then
+**Merge pull request**. The site deploys automatically. Finally, move the changelog notes under
+a new version heading on `main` and tag it:
 
 ```bash
 git checkout main
 ```
-
 ```bash
 git pull
 ```
-
 ```bash
-git tag -a v1.1.0 -m "v1.1.0: darker footer"
+git tag -a v3.1.0 -m "v3.1.0: describe the release"
 ```
-
 ```bash
-git push origin v1.1.0
+git push origin v3.1.0
 ```
-
-**7. (Optional) GitHub Release:** repo → **Releases** → **Draft a new release** → choose tag `v1.1.0` →
-paste the changelog notes → **Publish release**.
 
 ---
 
 ## Rolling back
 
-### Undo one bad change (safest, keeps history)
-Find the commit on GitHub (**Commits** page) and copy its ID (e.g. `a1b2c3d`), then:
+**Undo one change** (keeps history): copy the commit ID from GitHub's **Commits** page, then:
 
 ```bash
-git revert a1b2c3d
+git revert <commit-id>
 ```
-
 ```bash
 git push
 ```
 
-This creates a new commit that exactly undoes the old one, and the site redeploys.
-Use the same method to undo a **content sync** commit. Remember to also fix the value in the Sheet,
-otherwise the next sync brings it back.
+For a content sync commit, also fix the value in the Sheet, or the next sync brings it back.
 
-### Go back to a whole earlier version (e.g. v1.0.0)
-Make main's files match the old version, as a new commit (nothing is lost):
+**Return to a whole earlier version** (e.g. `v2.2.0`, the last version before this redesign):
 
 ```bash
 git checkout main
 ```
-
 ```bash
-git restore --source v1.0.0 -- .
+git restore --source v2.2.0 -- .
 ```
-
 ```bash
-git commit -m "Roll back to v1.0.0"
+git commit -m "Roll back to v2.2.0"
 ```
-
 ```bash
 git push
 ```
 
-Include the content too, or not? The command above also restores `data/`. To keep today's content,
-run `git restore --source main -- data index.html` before committing.
+**Just look at an old version:** `git switch --detach v2.2.0`, open it with Live Server, then `git switch main`.
 
-### Just look at an old version locally
+---
 
-```bash
-git switch --detach v1.0.0
-```
+## SEO and accessibility notes
 
-Open it with Live Server. Return with `git switch main`.
-
-### Content-only rollback
-Open the file on GitHub (e.g. `data/projects.json`) → **History** → open the version you want →
-copy the values back into your Sheet.
+- Every page has a unique `<title>`, meta description, canonical URL, Open Graph and Twitter tags.
+- **Structured data:** a `Person` and `WebSite` on the homepage, a `CollectionPage` on the projects
+  page, and a `CreativeWork` + `BreadcrumbList` on each case study.
+- `sitemap.xml` is regenerated on every build, and `robots.txt` points to it.
+- One `<h1>` per page, a logical heading order, descriptive alt text on every screenshot,
+  `width`/`height` on images (no layout shift), and lazy loading below the fold.
+- Keyboard: a skip link, visible focus rings, arrow-key tabs, a lightbox that closes with `Esc`, and
+  a mobile menu that closes with `Esc`. Animations are switched off for visitors who prefer reduced motion.
 
 ---
 
 ## Alternative: manage content in Excel instead
 
-*(Explained only; this repo implements the Google Sheet option.)*
-
-If you'd rather keep content in an Excel file inside the repo:
-
-1. Create `data/content.xlsx` with the **same 8 sheets and the same column headers** as the templates
-   (in Excel: open each CSV and copy it into its own worksheet named `profile`, `skills`, …).
-2. Replace the download step in `scripts/sync.js` with an Excel reader. For example, using the free
-   [`xlsx` (SheetJS)](https://docs.sheetjs.com/) package:
-   ```js
-   const XLSX = require("xlsx");
-   const book = XLSX.readFile("data/content.xlsx");
-   for (const tab of TABS) {
-     const rows = XLSX.utils.sheet_to_json(book.Sheets[tab], { defval: "", raw: false });
-     fs.writeFileSync(`data/${tab}.json`, JSON.stringify(rows, null, 2) + "\n");
-   }
-   ```
-3. Change `sync-content.yml` to run **on push** when the Excel file changes, instead of daily:
-   ```yaml
-   on:
-     push:
-       paths: ["data/content.xlsx"]
-   ```
-   Also add a step `npm install xlsx` before `node scripts/sync.js`.
-4. Leave `publishedId` empty in `config.js` so the site reads `data/*.json` directly.
-
-Your workflow would then be: edit the Excel file → commit and push → the Action converts it to JSON → the site updates.
-The trade-off: every content edit needs a git push, whereas with Google Sheets you just type and refresh.
+*(Explained only; this repo uses the Google Sheet.)*
+Keep `data/content.xlsx` with the same tabs and headers as `templates/`, read it in `scripts/sync.js`
+with the free [SheetJS `xlsx`](https://docs.sheetjs.com/) package
+(`XLSX.utils.sheet_to_json(book.Sheets[tab], { defval: "", raw: false })`), and change
+`sync-content.yml` to run on `push` when `data/content.xlsx` changes (adding `npm install xlsx`).
+Every content edit then becomes: edit Excel → commit → push.
 
 ---
 
 ## Sheet reference
 
-Every tab except `profile`: **`order`** = position (lower first). **`show`** = `TRUE`/`FALSE`
-(blank counts as TRUE).
+Every tab except `profile`: **`order`** = position (lower first); **`show`** = `TRUE`/`FALSE` (blank = TRUE).
 
-### `profile` — key | value
+### `profile` (key | value)
 
-| key | Example / meaning |
+| key | Meaning |
 |---|---|
-| `name` | M K Junayed Parves |
-| `initials` | JP (the logo badge; optional, otherwise made from your name) |
-| `role` | Business Intelligence Analyst (used in the browser tab title and share preview) |
-| `headline` | `Hi, I'm *Junayed*. \| I turn data into decisions.` (`\|` = new, smaller line; `*word*` = violet highlight) |
-| `bio` | 2–3 sentences under the headline |
-| `photo_url` | assets/images/portrait.jpg |
-| `resume_url` | assets/resume.pdf |
-| `email`, `linkedin`, `github`, `location` | Contact details shown in the violet résumé card |
-| `stat1_value` / `stat1_label` … `stat3_…` | The three quick stats (e.g. `4+` / `Years experience`). Use `\|` in a value for several lines, e.g. `Insurance \| E-Commerce \| F&B Operations`. The icon is picked from the label; set `stat1_icon` (calendar, briefcase, pin, chart, spark) to choose one |
-| `last_updated` | 2026-09-30 (shown in the footer) |
-| `<section>_label` | Small violet chip above the heading, e.g. `skills_label` = "Skills & tools" |
-| `<section>_title` | Big heading, e.g. `projects_title` = "Selected work" |
-| `<section>_intro` | One-line intro next to or under the heading (optional) |
-| `skills_chips_label` | Text before the skill chips ("Also working with:") |
-| `resume_note` | Text in the violet résumé card |
-| `books_visible`, `podcasts_visible`, `following_visible` | How many items show before the "Read more" button (default 5 = one row on desktop) |
-
-`<section>` is one of: `about` (label only), `skills`, `experience`, `education`, `projects`,
-`books`, `podcasts`, `following`, `contact`.
+| `name`, `initials`, `role` | Name, logo initials, main job title |
+| `target_roles` | Roles shown in the hero, separated by `\|` |
+| `headline` | Hero heading; wrap words in `*…*` to colour them |
+| `hero_description`, `capabilities` | Hero text and the capability tags (`\|`-separated) |
+| `current_role`, `current_org`, `location` | The "Currently" card on the photo |
+| `photo_url`, `photo_alt`, `resume_url`, `resume_note` | Portrait, its alt text, résumé file and note |
+| `email`, `linkedin`, `github`, `tableau` | Contact and profile links |
+| `availability` | One sentence in the contact section |
+| `seo_title`, `seo_description` | Homepage `<title>` and meta description (≤ 160 characters) |
+| `stat1_value` … `stat4_detail` | Snapshot cards. `{case_studies}` in a value is replaced by the real count |
+| `industries` | Industry chips, `\|`-separated |
+| `role1_title`/`role1_text` … `role3_…` | The three "roles I fit" cards |
+| `<section>_label`, `<section>_title`, `<section>_intro` | Headings for `snapshot`, `projects`, `skills`, `experience`, `education`, `knowledge`, `contact` |
+| `books_visible`, `podcasts_visible`, `following_visible` | Items shown before "Show more" (default 5) |
+| `last_updated` | Footer date and sitemap date (`YYYY-MM-DD`) |
 
 ### Other tabs
 
 | Tab | Columns | Notes |
 |---|---|---|
-| `skills` | order, name, detail, icon_url, type, show | `type` = `tile` (big card with icon) or `chip` (small pill). Icons are in `assets/images/icons/` |
-| `experience` | order, title, company, city, start, end, bullets, logo_url, show | `bullets` separated by `\|`. Empty `end` = "Present". `logo_url` (optional) = company logo, e.g. `assets/images/logos/metlife.png` |
-| `education` | order, type, title, institution, years, detail, logo_url, show | `type` = `degree` (card) or `certification` (chip). `logo_url` (optional) = institution logo, shown on degree cards |
-| `projects` | order, title, category, description, image_url, link_url, link_label, show | `category` = Power BI, Web App, Tableau or GitHub (must match exactly). Filter tabs appear only for categories in use |
-| `books` | order, title, author, cover_url, category, summary, takeaway, status, rating, show | `summary` ≈ 40–70 words. `takeaway` = one sentence (shown in a violet "Key takeaway" box). Optional: `status` (e.g. Read / Reading / Want to Read), `rating` 1–5 (stars). Covers live in `assets/images/books/` |
-| `podcasts` | order, name, host, cover_url, why, link_url, category, show | `category` (optional) shows as a small violet label, e.g. "Data Visualization & Storytelling" |
-| `following` | order, group, name, role_org, avatar_url, image_alt, description, why, tags, link_label, link_url, image_credit, show | `group` = `people` (round photo) or `platforms` (square logo). `role_org` = the type line. `tags` separated by `\|`. `link_label` = link text (e.g. "YouTube channel"). Optional: `image_alt` (overrides the automatic alt text), `image_credit` = `Photo: Name, licence \| https://source` for photos that need attribution. Group headings come from `following_people_title` / `following_platforms_title` in `profile` |
+| `skills` | order, group, name, detail, icon_url, show | `group` = `Tools` (logo strip; needs `icon_url`) or a category card: `Data Analysis`, `Business Intelligence`, `Data Management`, `Business Analytics` (new names create new cards) |
+| `experience` | order, title, company, city, start, end, bullets, tools, impact, logo_url, show | `bullets` and `tools` use `\|`; empty `end` = "Present"; `impact` = one line, only verified results |
+| `education` | order, type, title, institution, years, detail, status, logo_url, show | `type` = `degree` or `certification`; `status` = `Completed` or `In progress` |
+| `projects` | order, slug, title, category, tags, industry, summary, problem, outcome, tools, image_url, image_alt, data_note, repo_url, demo_url, link_url, link_label, featured, case_study, show | `tags` drive the filters (Power BI, SQL, Python, Tableau, Excel, Business Analytics, Predictive Analytics, Web App); `data_note` = Synthetic data / Practice data / Public data; `case_study = TRUE` needs `content/case-studies/<slug>.json` |
+| `books` | order, title, author, cover_url, category, summary, takeaway, status, rating, show | Shown in the Knowledge Hub |
+| `podcasts` | order, name, host, cover_url, why, link_url, category, show | Shown in the Knowledge Hub |
+| `following` | order, group, name, role_org, avatar_url, image_alt, description, why, tags, link_label, link_url, image_credit, show | `group` = `people` or `platforms`; `image_credit` = `Photo: Name, licence \| https://source` |
 
-**Adding a column** doesn't break anything; the site simply ignores it.
-**Renaming a column** does: keep the header names exactly as above.
+**Adding a column** is harmless (it's ignored). **Renaming a column** breaks that field, so keep the headers exactly as above.
 
 ---
 
@@ -570,12 +374,10 @@ Every tab except `profile`: **`order`** = position (lower first). **`show`** = `
 
 | Problem | Fix |
 |---|---|
-| Page shows grey boxes forever / nothing loads locally | You opened `index.html` directly. Use Live Server (see above). |
-| Console says "Google Sheet failed … Using backup" | Check the `publishedId` and gids in `config.js`, and that the Sheet is still published (File → Share → Publish to web). |
-| My Sheet edit isn't showing | Wait ~5 minutes (Google's cache), then hard-refresh with `Ctrl+F5`. |
-| A section vanished | Its tab has no rows with `show` = TRUE, or the tab name is misspelled. |
-| A project doesn't appear under a filter | Its `category` must match a filter name exactly, e.g. `Power BI` not `PowerBI`. |
-| Sync Action fails with "permission denied" / 403 | Settings → Actions → General → Workflow permissions → **Read and write**. |
-| Sync Action says "got a web page instead of CSV" | The Sheet isn't published to the web, or a gid is wrong. |
-| Site isn't updating after a push | Check the **Actions** tab for a red ✗ and open it to read the error. Settings → Pages → Source must be "GitHub Actions". |
-| LinkedIn shows an old preview | Paste your URL into the [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/) to refresh it. |
+| A Sheet edit isn't on the site | Run **Actions → Sync content from Google Sheet → Run workflow**, or wait for the daily run. Google caches published CSVs for ~5 minutes. |
+| Local change not showing | Run `node scripts/build.js` (or `node scripts/sync.js --from-templates` after editing a CSV), then `Ctrl+F5`. |
+| A case study is missing | Its row needs `case_study = TRUE`, `show = TRUE`, and a matching `content/case-studies/<slug>.json`. The build prints a warning otherwise. |
+| A project isn't under a filter | Its `tags` must contain the filter name exactly, e.g. `Power BI`. |
+| Sync fails with "got a web page instead of CSV" | The Sheet isn't published, or a gid is wrong. |
+| Sync fails with 403 | Settings → Actions → General → Workflow permissions → **Read and write**. |
+| Site not updating after a push | Open the **Actions** tab for a red ✗; Settings → Pages → Source must be **GitHub Actions**. |

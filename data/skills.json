@@ -1,122 +1,218 @@
 [
   {
     "order": "1",
-    "name": "Excel",
-    "detail": "Pivot tables, Power Query, VLOOKUP",
-    "icon_url": "assets/images/icons/excel-logo.png",
-    "type": "tile",
+    "group": "Tools",
+    "name": "Power BI",
+    "detail": "",
+    "icon_url": "assets/images/icons/powerbi-logo.png",
     "show": "TRUE"
   },
   {
     "order": "2",
-    "name": "Power BI",
-    "detail": "Dashboard design & deployment",
-    "icon_url": "assets/images/icons/powerbi-logo.png",
-    "type": "tile",
+    "group": "Tools",
+    "name": "SQL",
+    "detail": "",
+    "icon_url": "assets/images/icons/sql-logo.png",
     "show": "TRUE"
   },
   {
     "order": "3",
-    "name": "SQL",
-    "detail": "SQL Server, MySQL, complex queries",
-    "icon_url": "assets/images/icons/sql-logo.png",
-    "type": "tile",
+    "group": "Tools",
+    "name": "Excel",
+    "detail": "",
+    "icon_url": "assets/images/icons/excel-logo.png",
     "show": "TRUE"
   },
   {
     "order": "4",
+    "group": "Tools",
     "name": "Tableau",
-    "detail": "Dashboards, visualization",
+    "detail": "",
     "icon_url": "assets/images/icons/tableau-logo.png",
-    "type": "tile",
     "show": "TRUE"
   },
   {
     "order": "5",
+    "group": "Tools",
     "name": "Python",
-    "detail": "pandas, NumPy",
+    "detail": "",
     "icon_url": "assets/images/icons/python-logo.png",
-    "type": "tile",
-    "show": "TRUE"
-  },
-  {
-    "order": "6",
-    "name": "Statistics",
-    "detail": "Trend & root-cause analysis",
-    "icon_url": "assets/images/icons/statistics.svg",
-    "type": "tile",
     "show": "TRUE"
   },
   {
     "order": "10",
-    "name": "Google Looker Studio",
-    "detail": "",
+    "group": "Data Analysis",
+    "name": "SQL",
+    "detail": "SQL Server and MySQL: extraction, cleaning and validation queries",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
     "order": "11",
-    "name": "Data cleaning & validation",
-    "detail": "",
+    "group": "Data Analysis",
+    "name": "Python",
+    "detail": "pandas and NumPy for analysis pipelines and validation scripts",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
     "order": "12",
-    "name": "Data warehousing",
-    "detail": "",
+    "group": "Data Analysis",
+    "name": "Excel",
+    "detail": "Power Query, PivotTables and advanced formulas",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
     "order": "13",
-    "name": "KPI development",
-    "detail": "",
+    "group": "Data Analysis",
+    "name": "Data cleaning",
+    "detail": "Duplicate, blank, outlier and consistency checks",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
     "order": "14",
-    "name": "Report automation",
-    "detail": "",
+    "group": "Data Analysis",
+    "name": "Statistical analysis",
+    "detail": "Hypothesis tests and regression; BSc in Statistics",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
     "order": "15",
-    "name": "Data governance",
-    "detail": "",
+    "group": "Data Analysis",
+    "name": "Forecasting & predictive models",
+    "detail": "Holt-Winters forecasts, logistic regression with out-of-time validation",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
-    "order": "16",
-    "name": "Stakeholder management",
-    "detail": "",
+    "order": "20",
+    "group": "Business Intelligence",
+    "name": "Power BI",
+    "detail": "Reports, drill-through and what-if parameters",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
-    "order": "17",
-    "name": "Microsoft 365",
-    "detail": "",
+    "order": "21",
+    "group": "Business Intelligence",
+    "name": "DAX",
+    "detail": "Time intelligence, dynamic titles, user-defined functions",
     "icon_url": "",
-    "type": "chip",
     "show": "TRUE"
   },
   {
-    "order": "18",
-    "name": "Google Workspace",
-    "detail": "",
+    "order": "22",
+    "group": "Business Intelligence",
+    "name": "Power Query",
+    "detail": "M transformations and parameterised sources",
     "icon_url": "",
-    "type": "chip",
+    "show": "TRUE"
+  },
+  {
+    "order": "23",
+    "group": "Business Intelligence",
+    "name": "Tableau",
+    "detail": "Six dashboards published on Tableau Public",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "24",
+    "group": "Business Intelligence",
+    "name": "Looker Studio",
+    "detail": "Self-service reporting",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "30",
+    "group": "Data Management",
+    "name": "Data modelling",
+    "detail": "Star schemas, role-playing dates, semi-additive measures",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "31",
+    "group": "Data Management",
+    "name": "Data validation",
+    "detail": "Reconciling every figure to its source before it is reported",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "32",
+    "group": "Data Management",
+    "name": "Data warehousing",
+    "detail": "Google BigQuery and SQL Server sources",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "33",
+    "group": "Data Management",
+    "name": "Reporting automation",
+    "detail": "Recurring reports automated end to end",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "34",
+    "group": "Data Management",
+    "name": "BI as code",
+    "detail": "Power BI projects (PBIP, TMDL) under Git version control",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "40",
+    "group": "Business Analytics",
+    "name": "KPI development",
+    "detail": "Defining, documenting and monitoring business KPIs",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "41",
+    "group": "Business Analytics",
+    "name": "Financial analysis",
+    "detail": "Margin, EBITDA and working capital; MBA in AIS, ACCA in progress",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "42",
+    "group": "Business Analytics",
+    "name": "Performance monitoring",
+    "detail": "Branch, product and channel scorecards",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "43",
+    "group": "Business Analytics",
+    "name": "Trend analysis",
+    "detail": "Growth, seasonality and cohort trends",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "44",
+    "group": "Business Analytics",
+    "name": "Root cause analysis",
+    "detail": "Testing hypotheses until one explanation is left",
+    "icon_url": "",
+    "show": "TRUE"
+  },
+  {
+    "order": "45",
+    "group": "Business Analytics",
+    "name": "Stakeholder reporting",
+    "detail": "Requirements gathering and plain-language recommendations",
+    "icon_url": "",
     "show": "TRUE"
   }
 ]

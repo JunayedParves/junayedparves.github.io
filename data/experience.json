@@ -6,7 +6,9 @@
     "city": "Dhaka",
     "start": "Jan 2025",
     "end": "",
-    "bullets": "Designed, developed and deployed operational and financial Power BI dashboards tracking premium collection, renewal rates and branch performance, now used by 6 business units for daily decision-making | Maintained SQL and Power BI reporting solutions across underwriting and finance, reducing manual compilation time and improving report turnaround | Automated 3 recurring reporting workflows, eliminating manual errors and freeing analyst capacity for higher-value analysis | Partnered with underwriting, finance and reporting stakeholders to gather requirements and align dashboards with evolving business needs",
+    "bullets": "Built and deployed operational and financial Power BI dashboards for premium collection, renewal rates and branch performance, now used by 6 business units for daily decisions | Maintain SQL and Power BI reporting for underwriting and finance, cutting manual compilation time and speeding up report turnaround | Automated 3 recurring reporting workflows, removing manual errors and freeing analyst time for deeper analysis | Gather requirements with underwriting, finance and reporting stakeholders to keep dashboards aligned with changing business needs",
+    "tools": "Power BI | SQL",
+    "impact": "Dashboards in daily use by 6 business units; 3 reporting workflows automated",
     "logo_url": "assets/images/logos/green-delta-insurance-mark.png",
     "show": "TRUE"
   },
@@ -17,7 +19,9 @@
     "city": "Dhaka",
     "start": "Mar 2024",
     "end": "Dec 2024",
-    "bullets": "Analyzed operational risk datasets to detect exposure trends across claims, policy services and underwriting, informing mitigation decisions for a regulated life insurance portfolio | Produced regulatory-grade risk reports for compliance governance, ensuring data integrity across cross-functional submissions | Collaborated with underwriting, claims and finance teams to evaluate and mitigate risk exposure and align reporting with regulatory requirements",
+    "bullets": "Analysed operational risk data across claims, policy services and underwriting to detect exposure trends that informed mitigation decisions for a regulated life insurance portfolio | Produced regulatory-grade risk reports for compliance governance, keeping data consistent across cross-functional submissions | Worked with underwriting, claims and finance to evaluate risk exposure and align reporting with regulatory requirements",
+    "tools": "Risk analytics | Regulatory reporting | Data integrity",
+    "impact": "Risk insights used in mitigation decisions for a regulated portfolio",
     "logo_url": "assets/images/logos/metlife-mark.png",
     "show": "TRUE"
   },
@@ -28,7 +32,9 @@
     "city": "Dhaka",
     "start": "Mar 2023",
     "end": "Aug 2023",
-    "bullets": "Developed and maintained QA metrics and reports using SQL and Google Sheets to extract actionable insights from large product and platform datasets | Tracked and documented platform defects, producing structured reports that reduced issue-resolution time with the engineering team | Conducted field research and translated user feedback into data-driven recommendations for the product team",
+    "bullets": "Built QA metrics and reports with SQL and Google Sheets to extract actionable insight from large product and platform datasets | Tracked and documented platform defects in structured reports that shortened issue-resolution time with engineering | Turned field research and user feedback into data-driven recommendations for the product team",
+    "tools": "SQL | Google Sheets | QA metrics",
+    "impact": "Shorter defect-resolution time with engineering",
     "logo_url": "assets/images/logos/bikroy-mark.png",
     "show": "TRUE"
   },
@@ -39,7 +45,9 @@
     "city": "Dhaka",
     "start": "Feb 2022",
     "end": "Mar 2023",
-    "bullets": "Designed and maintained Power BI and Excel sales performance dashboards, enabling real-time visibility into revenue trends across outlets | Analyzed POS data to optimize inventory turnover and sourcing, reducing food waste by 10% and food costs by 8% | Delivered ongoing KPI reporting and sales forecasts to operations and leadership, informing pricing and promotional strategy",
+    "bullets": "Designed and maintained Power BI and Excel sales dashboards giving real-time visibility of revenue trends across outlets | Analysed POS data to improve inventory turnover and sourcing decisions | Delivered KPI reporting and sales forecasts to operations and leadership, informing pricing and promotional strategy",
+    "tools": "Power BI | Excel | POS data",
+    "impact": "Food waste down 10% and food costs down 8%",
     "logo_url": "assets/images/logos/secret-recipe-mark.png",
     "show": "TRUE"
   },
@@ -50,7 +58,9 @@
     "city": "Dhaka",
     "start": "Sep 2020",
     "end": "Sep 2021",
-    "bullets": "Conducted systematic data quality checks and validation protocols to improve data integrity across client datasets | Collaborated with 80+ team members across functions to maintain data compliance, privacy standards and process efficiency",
+    "bullets": "Ran systematic data-quality checks and validation protocols that improved data integrity across client datasets | Worked with 80+ colleagues across functions to maintain data compliance, privacy standards and process efficiency",
+    "tools": "Data quality | Validation",
+    "impact": "Improved data integrity across client datasets",
     "logo_url": "assets/images/logos/quantanite-mark.png",
     "show": "TRUE"
   }

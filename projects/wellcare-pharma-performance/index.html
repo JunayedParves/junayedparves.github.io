@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WellCare Pharma: Growth, Profit &amp; Outlook | Case Study by M K Junayed Parves</title>
+  <meta name="description" content="Pharmacy retail analytics case study: Power BI report on BigQuery data reconciled line by line, 46 DAX measures, same-store growth, margin, working capital and a Holt-Winters sales forecast in Python.">
+  <link rel="canonical" href="https://junayedparves.github.io/projects/wellcare-pharma-performance/">
+  <meta name="author" content="M K Junayed Parves">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="M K Junayed Parves">
+  <meta property="og:title" content="WellCare Pharma: Growth, Profit &amp; Outlook | Case Study by M K Junayed Parves">
+  <meta property="og:description" content="Pharmacy retail analytics case study: Power BI report on BigQuery data reconciled line by line, 46 DAX measures, same-store growth, margin, working capital and a Holt-Winters sales forecast in Python.">
+  <meta property="og:url" content="https://junayedparves.github.io/projects/wellcare-pharma-performance/">
+  <meta property="og:image" content="https://junayedparves.github.io/assets/images/projects/wellcare/cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WellCare Pharma: Growth, Profit &amp; Outlook | Case Study by M K Junayed Parves">
+  <meta name="twitter:description" content="Pharmacy retail analytics case study: Power BI report on BigQuery data reconciled line by line, 46 DAX measures, same-store growth, margin, working capital and a Holt-Winters sales forecast in Python.">
+  <meta name="twitter:image" content="https://junayedparves.github.io/assets/images/projects/wellcare/cover.jpg">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/variables.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/base.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/components.css?v=3.0.0">
+  <link rel="stylesheet" href="/css/pages.css?v=3.0.0">
+  <script defer src="/js/navigation.js?v=3.0.0"></script>
+  <script defer src="/js/project-filter.js?v=3.0.0"></script>
+  <script defer src="/js/main.js?v=3.0.0"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CreativeWork","name":"WellCare Pharma: Growth, Profit & Outlook","headline":"WellCare Pharma: Growth, Profit & Outlook","description":"Pharmacy retail analytics case study: Power BI report on BigQuery data reconciled line by line, 46 DAX measures, same-store growth, margin, working capital and a Holt-Winters sales forecast in Python.","url":"https://junayedparves.github.io/projects/wellcare-pharma-performance/","image":"https://junayedparves.github.io/assets/images/projects/wellcare/cover.jpg","author":{"@id":"https://junayedparves.github.io/#person"},"keywords":"Power BI, Python, Predictive Analytics, Business Analytics, Power BI, DAX, Google BigQuery, Python, Holt-Winters","about":"Healthcare retail (pharmacy chain)","isBasedOn":"https://github.com/JunayedParves/wellcare-pharma-powerbi"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://junayedparves.github.io/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://junayedparves.github.io/projects/"},{"@type":"ListItem","position":3,"name":"WellCare Pharma: Growth, Profit & Outlook","item":"https://junayedparves.github.io/projects/wellcare-pharma-performance/"}]},{"@type":"Person","@id":"https://junayedparves.github.io/#person","name":"M K Junayed Parves","jobTitle":"Business Intelligence Analyst","description":"Data Analyst and Business Intelligence Analyst in Dhaka, Bangladesh. Power BI, SQL, DAX, Tableau and Python case studies in credit risk, retail, supply chain and financial analytics.","url":"https://junayedparves.github.io/","image":"https://junayedparves.github.io/assets/images/portrait.jpg","email":"mailto:jndparves@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Dhaka","addressCountry":"BD"},"worksFor":{"@type":"Organization","name":"Green Delta Insurance PLC"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Dhaka"},{"@type":"CollegeOrUniversity","name":"Dhaka College (University of Dhaka)"}],"knowsAbout":["Business Intelligence","Data Analysis","Business Analysis","Power BI","DAX","SQL","Tableau","Python","Data Visualization","Financial Analytics"],"sameAs":["https://www.linkedin.com/in/junayedparves","https://github.com/JunayedParves","https://public.tableau.com/app/profile/junayed.parves"]}]}</script>
+</head>
+<!-- This page is generated by scripts/build.js from data/*.json and content/.
+     Edit the content there (or in the Google Sheet), not in this file. -->
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="/" aria-label="M K Junayed Parves, home">
+        <span class="brand-mark" aria-hidden="true">JP</span>
+        <span class="brand-text"><span class="brand-name">M K Junayed Parves</span><span class="brand-role">Business Intelligence Analyst</span></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="visually-hidden">Menu</span><span class="nav-toggle-bar" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/#about">About</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#skills">Skills</a></li><li><a href="/#experience">Experience</a></li><li><a href="/#education">Education</a></li><li><a href="/#knowledge">Knowledge Hub</a></li><li><a href="/#contact">Contact</a></li>
+        <li><a class="btn btn-primary btn-small" href="/assets/resume.pdf" download><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg> Résumé</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+
+    <article>
+      <header class="page-header cs-hero">
+        <div class="container">
+          <ol class="breadcrumb" aria-label="Breadcrumb"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">WellCare Pharma</li></ol>
+          <div class="cs-hero-meta"><span class="category">Power BI · Pharmacy Retail</span><span class="badge badge-practice">Practice data</span></div>
+          <h1 class="page-title">WellCare Pharma: Growth, Profit &amp; Outlook</h1>
+          <p class="page-lead">A consulting-style Power BI report and a Python forecast for a 24-store pharmacy chain: where the growth comes from, what it costs, and what to do next.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://junayedparves.github.io/wellcare-executive-dashboard/" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="m10 8.5 5 2.5-5 2.5z"/><path d="M8 21h8"/></svg> Open live demo<span class="visually-hidden"> (opens in a new tab)</span></a>
+            <a class="btn btn-outline" href="https://github.com/JunayedParves/wellcare-pharma-powerbi" target="_blank" rel="noopener noreferrer"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg> View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+          <ul class="facts"><li><span class="k">Domain</span><span class="v">Pharmacy retail · 24 stores in Dhaka</span></li><li><span class="k">Scale</span><span class="v">525,906 sales lines · FY2022–FY2025</span></li><li><span class="k">Analytics</span><span class="v">Descriptive · diagnostic · forecasting</span></li><li><span class="k">Built with</span><span class="v">Power BI, DAX, Google BigQuery, Python</span></li></ul>
+          <div class="cs-cover"><img src="/assets/images/projects/wellcare/cover.jpg" alt="WellCare Pharma executive summary page in Power BI" width="1200" height="750" fetchpriority="high" decoding="async"></div>
+        </div>
+      </header>
+      <div class="section" style="padding-top:clamp(32px,5vw,56px)">
+        <div class="container cs-layout">
+          <nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#summary">Executive summary</a></li><li><a href="#problem">Business problem</a></li><li><a href="#objectives">Analytical objectives</a></li><li><a href="#data">Dataset</a></li><li><a href="#preparation">Data preparation &amp; validation</a></li><li><a href="#method">Data model &amp; methodology</a></li><li><a href="#kpis">Key metrics</a></li><li><a href="#dashboard">The report</a></li><li><a href="#findings">Key findings</a></li><li><a href="#recommendations">Recommendations</a></li><li><a href="#implementation">Technical implementation</a></li><li><a href="#limitations">Limitations &amp; assumptions</a></li><li><a href="#links">Repository &amp; live demo</a></li></ol></nav>
+          <div class="cs-content">
+          <section class="cs-section" id="summary" aria-labelledby="summary-h">
+            <h2 id="summary-h">Executive summary</h2>
+            <p>WellCare Pharma grew from <strong>1 store to 24</strong> in four years, and net sales rose about <strong>24×</strong>, from BDT 29.8m in FY2022 to BDT 708.0m in FY2025. Leadership had the data in Google BigQuery, but no single view that said in plain language whether the expansion was healthy.</p>
+            <p>I built a six-page Power BI report that a managing director can read in five minutes, in the style of a board deck, and a companion Python analysis with a six-month sales forecast. Every page leads with its conclusion, every number is checked against the source, and every page ends with what management should do.</p>
+            <div class="cs-callout warn">Sales, store, customer and product data come from a <strong>BigQuery practice dataset</strong>. The inventory and procurement tables were <strong>generated in Python (synthetic)</strong> to demonstrate those pages, and they reconcile to the sales and finance data. No real company is described.</div>
+          </section>
+
+          <section class="cs-section" id="problem" aria-labelledby="problem-h">
+            <h2 id="problem-h">Business problem</h2>
+            <p>Fast roll-out can hide weak fundamentals. Management needed to know whether growth came from existing stores getting better or only from new openings, whether growth was making money, how much cash was tied up in stock, and how dependent the business was on a few customers.</p>
+          </section>
+
+          <section class="cs-section" id="objectives" aria-labelledby="objectives-h">
+            <h2 id="objectives-h">Analytical objectives</h2>
+            <ul><li>Separate network growth from same-store (like-for-like) growth.</li><li>Explain profitability with a margin bridge (mix versus rate) and operating leverage.</li><li>Size working capital in stock and the cash a tighter stock policy would release.</li><li>Identify customer concentration and lapsed loyal customers.</li><li>Forecast mature-store sales for the next six months.</li></ul>
+          </section>
+
+          <section class="cs-section" id="data" aria-labelledby="data-h">
+            <h2 id="data-h">Dataset</h2>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th scope="col">Source</th><th scope="col">Tables</th><th scope="col">Notes</th></tr></thead><tbody><tr><td>Google BigQuery (practice dataset)</td><td>Sales line items, store monthly finance, customers, employees, outlets, products, suppliers</td><td>525,906 sales lines, 24 stores, 315 products, about 25,000 customers</td></tr><tr><td>Generated in Python (synthetic)</td><td>Inventory snapshots and movements, purchases, batches, returns, targets, supplier prices, cost history</td><td>Built to reconcile to the sales and finance tables</td></tr></tbody></table></div>
+          </section>
+
+          <section class="cs-section" id="preparation" aria-labelledby="preparation-h">
+            <h2 id="preparation-h">Data preparation &amp; validation</h2>
+            <ul><li>Assessed every table, relationship and column before building, and listed which KPIs the data could support.</li><li>Fixed ratio columns (margin %, NPS, coordinates) that were set to sum, which would have made totals wrong.</li><li>Added a marked date table with the business&#39;s <strong>March–February fiscal year</strong>.</li><li>Linked sales directly to stores instead of through the employee table.</li><li>Treated one customer ID holding 31% of sales as a separate key account rather than averaging it into retail.</li><li>Kept health and HR fields (chronic-condition tags, salaries, ratings) out of the report.</li><li>Reconciled 525,906 lines with no duplicate keys: net = gross − discount, gross = quantity × MRP and gross profit = net − COGS, with zero exceptions. All 413 store-months match the finance table exactly.</li></ul>
+          </section>
+
+          <section class="cs-section" id="method" aria-labelledby="method-h">
+            <h2 id="method-h">Data model &amp; methodology</h2>
+            <ul><li><strong>Star schema:</strong> 8 dimension and 8 fact tables, one marked fiscal-year date table, inactive relationships used through <code>USERELATIONSHIP</code>.</li><li><strong>46 DAX measures:</strong> sales, margin, EBITDA, year-on-year growth, key-account share, stock cover, write-offs, fill rate, lead time and target attainment.</li><li><strong>Every narrative figure re-checked</strong> with a DAX query against the model.</li><li><strong>Forecast (Python):</strong> damped Holt-Winters on mature-store daily sales (trend plus 12-month seasonality), scaled by each store&#39;s ramp factor, backtested on the previous six months.</li><li><strong>Correlations:</strong> Pearson coefficients across the 24 stores, treated as signals to test, not proof of cause.</li></ul>
+          </section>
+
+          <section class="cs-section" id="kpis" aria-labelledby="kpis-h">
+            <h2 id="kpis-h">Key metrics</h2>
+            <div class="table-wrap"><table class="kpi-table"><thead><tr><th scope="col">Metric</th><th scope="col">Definition</th></tr></thead><tbody><tr><td>Same-store growth</td><td>Sales growth of stores open in both periods</td></tr><tr><td>Gross margin</td><td>(Net sales − COGS) ÷ net sales</td></tr><tr><td>EBITDA margin</td><td>Store EBITDA ÷ net sales</td></tr><tr><td>Key-account share</td><td>Key account sales ÷ net sales</td></tr><tr><td>Stock cover (days)</td><td>Inventory value ÷ average daily COGS</td></tr><tr><td>Supplier fill rate</td><td>Units received ÷ units ordered</td></tr></tbody></table></div>
+          </section>
+
+          <section class="cs-section" id="dashboard" aria-labelledby="dashboard-h">
+            <h2 id="dashboard-h">The report</h2>
+            <p>Action titles, numbered exhibits, a source line on every page and a navy &quot;So what for management&quot; box that links to the numbered actions on page 6.</p>
+            <ul class="gallery">
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/wellcare/01.jpg" data-alt="WellCare Pharma: Growth, Profit &amp; Outlook: 1 · Executive summary: is the business on track?" data-caption="1 · Executive summary: is the business on track?" aria-label="Enlarge screenshot: 1 · Executive summary: is the business on track?"><img src="/assets/images/projects/wellcare/01.jpg" alt="WellCare Pharma: Growth, Profit &amp; Outlook: 1 · Executive summary: is the business on track?" width="1600" height="755" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>1 · Executive summary: is the business on track?</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/wellcare/02.jpg" data-alt="WellCare Pharma: Growth, Profit &amp; Outlook: 2 · Growth: new stores, not existing ones" data-caption="2 · Growth: new stores, not existing ones" aria-label="Enlarge screenshot: 2 · Growth: new stores, not existing ones"><img src="/assets/images/projects/wellcare/02.jpg" alt="WellCare Pharma: Growth, Profit &amp; Outlook: 2 · Growth: new stores, not existing ones" width="1600" height="755" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>2 · Growth: new stores, not existing ones</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/wellcare/03.jpg" data-alt="WellCare Pharma: Growth, Profit &amp; Outlook: 3 · Profitability: flat gross margin, rising EBITDA through operating leverage" data-caption="3 · Profitability: flat gross margin, rising EBITDA through operating leverage" aria-label="Enlarge screenshot: 3 · Profitability: flat gross margin, rising EBITDA through operating leverage"><img src="/assets/images/projects/wellcare/03.jpg" alt="WellCare Pharma: Growth, Profit &amp; Outlook: 3 · Profitability: flat gross margin, rising EBITDA through operating leverage" width="1600" height="755" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>3 · Profitability: flat gross margin, rising EBITDA through operating leverage</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/wellcare/04.jpg" data-alt="WellCare Pharma: Growth, Profit &amp; Outlook: 4 · Inventory &amp; procurement: stock cover and supplier fill rate" data-caption="4 · Inventory &amp; procurement: stock cover and supplier fill rate" aria-label="Enlarge screenshot: 4 · Inventory &amp; procurement: stock cover and supplier fill rate"><img src="/assets/images/projects/wellcare/04.jpg" alt="WellCare Pharma: Growth, Profit &amp; Outlook: 4 · Inventory &amp; procurement: stock cover and supplier fill rate" width="1600" height="755" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>4 · Inventory &amp; procurement: stock cover and supplier fill rate</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/wellcare/05.jpg" data-alt="WellCare Pharma: Growth, Profit &amp; Outlook: 5 · Customers &amp; stores: key-account concentration and lapsed loyal customers" data-caption="5 · Customers &amp; stores: key-account concentration and lapsed loyal customers" aria-label="Enlarge screenshot: 5 · Customers &amp; stores: key-account concentration and lapsed loyal customers"><img src="/assets/images/projects/wellcare/05.jpg" alt="WellCare Pharma: Growth, Profit &amp; Outlook: 5 · Customers &amp; stores: key-account concentration and lapsed loyal customers" width="1600" height="755" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>5 · Customers &amp; stores: key-account concentration and lapsed loyal customers</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/wellcare/06.jpg" data-alt="WellCare Pharma: Growth, Profit &amp; Outlook: 6 · Action plan: six actions with owners and measures" data-caption="6 · Action plan: six actions with owners and measures" aria-label="Enlarge screenshot: 6 · Action plan: six actions with owners and measures"><img src="/assets/images/projects/wellcare/06.jpg" alt="WellCare Pharma: Growth, Profit &amp; Outlook: 6 · Action plan: six actions with owners and measures" width="1600" height="755" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>6 · Action plan: six actions with owners and measures</figcaption>
+              </figure></li>
+              <li><figure>
+                <button type="button" data-zoom="/assets/images/projects/wellcare/web.jpg" data-alt="WellCare Pharma: Growth, Profit &amp; Outlook: Companion web dashboard (Python): growth, profit drivers and a six-month forecast" data-caption="Companion web dashboard (Python): growth, profit drivers and a six-month forecast" aria-label="Enlarge screenshot: Companion web dashboard (Python): growth, profit drivers and a six-month forecast"><img src="/assets/images/projects/wellcare/web.jpg" alt="WellCare Pharma: Growth, Profit &amp; Outlook: Companion web dashboard (Python): growth, profit drivers and a six-month forecast" width="1600" height="1000" class="zoomable" loading="lazy" decoding="async"></button>
+                <figcaption>Companion web dashboard (Python): growth, profit drivers and a six-month forecast</figcaption>
+              </figure></li>
+            </ul>
+          </section>
+
+          <section class="cs-section" id="findings" aria-labelledby="findings-h">
+            <h2 id="findings-h">Key findings</h2>
+            <ol class="cs-findings"><li><strong>The growth is roll-out, not stores getting better.</strong> Sales per store-month rose only 7.7% in FY2025 while total sales rose 124%; the two oldest stores slowed from +19.1% to +10.7%.</li><li><strong>Profit comes from scale, not margin.</strong> Gross margin has sat at about 21.9% for four years; EBITDA margin rose from 1.2% to 8.1% only because rent and salaries became a smaller share of sales.</li><li><strong>The business leans on one customer.</strong> A single key account bought BDT 215.6m in FY2025, 30.5% of net sales.</li><li><strong>Rx Chronic Care is the biggest category at the lowest margin:</strong> 36.5% of sales at 18.7%.</li><li><strong>Cash sits in stock.</strong> BDT 94.4m of stock covers about 53 days against 5-day supplier lead times.</li><li><strong>New stores need about nine months</strong> to reach 90% of mature sales per day, so they should be judged against the ramp curve.</li><li><strong>Forecast:</strong> mature-store sales for March–August 2026 of ৳47.4 Cr (range ৳44.7–50.1 Cr), with a 2.9% backtest error.</li></ol>
+          </section>
+
+          <section class="cs-section" id="recommendations" aria-labelledby="recommendations-h">
+            <h2 id="recommendations-h">Recommendations</h2>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th scope="col">Action</th><th scope="col">Why</th><th scope="col">Value at stake</th></tr></thead><tbody><tr><td>Renegotiate Rx Chronic Care supplier terms</td><td>Largest category at the lowest margin</td><td>About BDT 2.6m gross profit a year per +1pp of margin</td></tr><tr><td>Set ramp targets for new stores</td><td>2025 stores earn 2–8% EBITDA vs 7–10% for older stores</td><td>Faster ramp lifts network EBITDA</td></tr><tr><td>Win back lapsed loyal customers</td><td>5,222 customers with 5+ purchases lapsed 90+ days</td><td>About BDT 9m if 10% return</td></tr><tr><td>Reduce key-account concentration</td><td>One account is 30.5% of net sales</td><td>Almost a third of revenue at risk</td></tr><tr><td>Diagnose slowing same-store growth</td><td>Oldest stores slowed from +19.1% to +10.7%</td><td>Separates maturity from cannibalisation</td></tr><tr><td>Release cash tied up in stock</td><td>53 days of cover vs 5-day lead times</td><td>About BDT 14m by cutting to 45 days</td></tr></tbody></table></div>
+            <p style="margin-top:14px">The 10% win-back rate and the 45-day cover target are planning assumptions used to size the opportunity, not forecasts.</p>
+          </section>
+
+          <section class="cs-section" id="implementation" aria-labelledby="implementation-h">
+            <h2 id="implementation-h">Technical implementation</h2>
+            <ul><li>Power BI Project (PBIP): TMDL model and PBIR report generated by script, with a custom theme and logo.</li><li>Google BigQuery source; generated operational tables loaded from CSV.</li><li>Python analysis (<code>prepare_data.py</code>, <code>build_dashboard.py</code>) producing a self-contained HTML dashboard, with a pytest smoke test.</li><li>Live companion dashboard on GitHub Pages.</li></ul>
+          </section>
+
+          <section class="cs-section" id="limitations" aria-labelledby="limitations-h">
+            <h2 id="limitations-h">Limitations &amp; assumptions</h2>
+            <ul><li>Inventory and procurement figures come from generated tables and show how the analysis works, not real stock records.</li><li>With 24 stores, correlations above about |0.40| are meaningful signals, not proof of cause.</li><li>The forecast assumes no new store openings.</li></ul>
+          </section>
+
+          <section class="cs-section" id="links" aria-labelledby="links-h">
+            <h2 id="links-h">Repository & live demo</h2>
+            <p>Explore the working dashboard, or review the code and documentation.</p>
+            <div class="cs-links"><a href="https://junayedparves.github.io/wellcare-executive-dashboard/" target="_blank" rel="noopener noreferrer">Live demo <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span>junayedparves.github.io/wellcare-executive-dashboard/</span></a><a href="https://github.com/JunayedParves/wellcare-pharma-powerbi" target="_blank" rel="noopener noreferrer">GitHub repository <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span>github.com/JunayedParves/wellcare-pharma-powerbi</span></a></div>
+          </section>
+            <nav class="cs-nav" aria-label="More case studies">
+              <a href="/projects/nabanna-retail-decision-intelligence/"><span class="dir">← Previous</span><strong>Nabanna Bazar</strong></a>
+              <a class="next" href="/projects/checkout-conversion-root-cause/"><span class="dir">Next →</span><strong>Project Tollgate</strong></a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">M K Junayed Parves</p>
+          <p>Data Analyst · Business Intelligence Analyst · Business Analyst<br>Dhaka, Bangladesh</p>
+        </div>
+        <div>
+          <p class="footer-title">Explore</p>
+          <ul class="footer-links">
+            <li><a href="/projects/">All projects</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/assets/resume.pdf" download>Download résumé</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-title">Connect</p>
+          <ul class="footer-links">
+            <li><a href="mailto:jndparves@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/junayedparves" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/JunayedParves" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://public.tableau.com/app/profile/junayed.parves" target="_blank" rel="noopener noreferrer">Tableau Public</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 M K Junayed Parves</span>
+        <span class="mono">Last updated: 31 October 2026</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+  <dialog class="lightbox" id="lightbox" aria-label="Enlarged screenshot">
+    <img src="" alt="">
+    <div class="lightbox-bar"><span class="lightbox-caption"></span><button class="lightbox-close" type="button">Close</button></div>
+  </dialog>
+</body>
+</html>
