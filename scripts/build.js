@@ -120,9 +120,9 @@ const tableau = gallery.filter(p => p.category === "Tableau");
 const otherGallery = gallery.filter(p => p.category !== "Tableau");
 const block = (id, title, intro, items, compact) => items.length ? `
       <div data-filter-block>
-        <h2 class="subsection-title">${esc(title)}</h2>
-        <p class="subsection-intro">${md(intro)}</p>
-        <ul class="project-grid" id="${id}">${items.map(p => T.projectCard(p, { compact, level: 3 })).join("")}
+        <h2 class="subsection-title" data-reveal>${esc(title)}</h2>
+        <p class="subsection-intro" data-reveal>${md(intro)}</p>
+        <ul class="project-grid" id="${id}" data-stagger>${items.map(p => T.projectCard(p, { compact, level: 3 })).join("")}
         </ul>
       </div>` : "";
 
@@ -151,7 +151,7 @@ write("projects/index.html", T.page(site, {
         <div data-filter-block>
           <h2 class="subsection-title" style="margin-top:8px">Case studies</h2>
           <p class="subsection-intro">End-to-end projects with a dedicated write-up.</p>
-          <ul class="project-grid" id="cs-grid">${caseStudies.map(p => T.projectCard(p, { level: 3 })).join("")}
+          <ul class="project-grid" id="cs-grid" data-stagger>${caseStudies.map(p => T.projectCard(p, { level: 3 })).join("")}
           </ul>
         </div>
         ${block("gallery-grid", "More projects", "Interactive dashboards and analyses with a live demo or repository.", otherGallery, true)}
@@ -164,18 +164,18 @@ write("projects/index.html", T.page(site, {
 /* ================================================================== */
 function caseSection(s, p, folder, c) {
   let h = `
-          <section class="cs-section" id="${esc(s.id)}" aria-labelledby="${esc(s.id)}-h">
+          <section class="cs-section" id="${esc(s.id)}" aria-labelledby="${esc(s.id)}-h" data-reveal>
             <h2 id="${esc(s.id)}-h">${esc(s.title)}</h2>`;
   (s.paragraphs || []).forEach(t => { h += `\n            <p>${md(t)}</p>`; });
   if (s.list) h += `\n            <ul>${s.list.map(t => `<li>${md(t)}</li>`).join("")}</ul>`;
-  if (s.findings) h += `\n            <ol class="cs-findings">${s.findings.map(t => `<li>${md(t)}</li>`).join("")}</ol>`;
+  if (s.findings) h += `\n            <ol class="cs-findings" data-stagger>${s.findings.map(t => `<li>${md(t)}</li>`).join("")}</ol>`;
   if (s.kpis) h += `
             <div class="table-wrap"><table class="kpi-table"><thead><tr><th scope="col">Metric</th><th scope="col">Definition</th></tr></thead><tbody>${s.kpis.map(([k, v]) => `<tr><td>${md(k)}</td><td>${md(v)}</td></tr>`).join("")}</tbody></table></div>`;
   if (s.table) h += `
             <div class="table-wrap"><table class="data-table"><thead><tr>${s.table.head.map(x => `<th scope="col">${esc(x)}</th>`).join("")}</tr></thead><tbody>${s.table.rows.map(r => `<tr>${r.map(x => `<td>${md(x)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
   if (s.gallery && c.gallery) {
     h += `
-            <ul class="gallery">${c.gallery.map(g => {
+            <ul class="gallery" data-stagger>${c.gallery.map(g => {
               const src = `assets/images/projects/${folder}/${g.src}`;
               const alt = `${p.title}: ${g.caption}`;
               return `
@@ -201,7 +201,7 @@ caseStudies.forEach((p, index) => {
   const toc = sections.map(s => `<li><a href="#${esc(s.id)}">${esc(s.title.replace(/:.*$/, ""))}</a></li>`).join("");
   const body = sections.map(s => s._links
     ? `
-          <section class="cs-section" id="links" aria-labelledby="links-h">
+          <section class="cs-section" id="links" aria-labelledby="links-h" data-reveal>
             <h2 id="links-h">Repository & live demo</h2>
             <p>${p.demo_url ? "Explore the working dashboard, or review the code and documentation." : "Review the full project, documentation and screenshots on GitHub."}</p>
             <div class="cs-links">${links.join("")}</div>
@@ -237,14 +237,14 @@ caseStudies.forEach((p, index) => {
             ${p.repo_url ? `<a class="btn btn-outline" href="${esc(p.repo_url)}"${extAttrs(p.repo_url)}>${icon.github(17)} View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>` : ""}
           </div>
           <ul class="facts">${(c.facts || []).map(([k, v]) => `<li><span class="k">${esc(k)}</span><span class="v">${esc(v)}</span></li>`).join("")}</ul>
-          ${fileExists(href(p.image_url)) ? `<div class="cs-cover">${img(p.image_url, p.image_alt || p.title, { eager: true })}</div>` : ""}
+          ${fileExists(href(p.image_url)) ? `<div class="cs-cover">${img(p.image_url, p.image_alt || p.title, { eager: true, style: `view-transition-name:cover-${p.slug}` })}</div>` : ""}
         </div>
       </header>
       <div class="section" style="padding-top:clamp(32px,5vw,56px)">
         <div class="container cs-layout">
           <nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol>${toc}</ol></nav>
           <div class="cs-content">${body}
-            <nav class="cs-nav" aria-label="More case studies">
+            <nav class="cs-nav" aria-label="More case studies" data-reveal>
               <a href="/projects/${prev.slug}/"><span class="dir">← Previous</span><strong>${esc(prev.title.split(":")[0])}</strong></a>
               <a class="next" href="/projects/${next.slug}/"><span class="dir">Next →</span><strong>${esc(next.title.split(":")[0])}</strong></a>
             </nav>

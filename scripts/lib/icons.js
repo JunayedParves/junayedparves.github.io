@@ -11,9 +11,9 @@ const filled = (body, size = 18) =>
   `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">${body}</svg>`;
 
 module.exports = {
-  arrowRight: (s) => svg('<path d="M5 12h14M13 6l6 6-6 6"/>', s),
-  external: (s = 15) => svg('<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>', s),
-  download: (s) => svg('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>', s),
+  arrowRight: (s) => svg('<path d="M5 12h14M13 6l6 6-6 6"/>', s, ' class="i-arrow"'),
+  external: (s = 15) => svg('<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>', s, ' class="i-external"'),
+  download: (s) => svg('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>', s, ' class="i-download"'),
   mail: (s) => svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', s),
   pin: (s) => svg('<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>', s),
   check: (s = 16) => svg('<path d="m5 12.5 4.5 4.5L19 7.5"/>', s),

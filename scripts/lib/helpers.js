@@ -75,13 +75,14 @@ function imageSize(webPath) {
 const fileExists = webPath => !!webPath && !isExternal(webPath) && fs.existsSync(path.join(ROOT, webPath.replace(/^\/+/, "")));
 
 /* <img> with lazy loading and intrinsic size. */
-function img(src, alt, { eager = false, cls = "", sizes = "" } = {}) {
+function img(src, alt, { eager = false, cls = "", sizes = "", style = "" } = {}) {
   const url = href(src);
   const s = imageSize(url);
   return `<img src="${esc(url)}" alt="${esc(plain(alt))}"` +
     (s ? ` width="${s.w}" height="${s.h}"` : "") +
     (cls ? ` class="${cls}"` : "") +
     (sizes ? ` sizes="${sizes}"` : "") +
+    (style ? ` style="${esc(style)}"` : "") +
     (eager ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">';
 }
 

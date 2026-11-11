@@ -32,6 +32,8 @@ stat4_value,{case_studies}
 stat4_label,Portfolio case studies
 stat4_detail,"Documented end to end, each with a data note"
 industries,Insurance | Financial services | E-commerce | F&B operations
+process_title,How every analysis runs
+process_steps,"Business question: Start from the decision the business needs to make. | Data & validation: Profile, clean and reconcile the data before trusting it. | Analysis: SQL, DAX, Python or Excel, whichever answers the question. | Findings: Quantified insight on a dashboard built for its audience. | Recommendation: Prioritised actions that management can act on."
 role1_title,Data Analyst
 role1_text,"Clean, validate and analyse data with SQL, Python and Excel, from hypothesis tests that isolate a root cause to models that rank risk."
 role2_title,Business Intelligence Analyst

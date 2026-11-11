@@ -31,7 +31,15 @@
           var tags = card.getAttribute("data-tags").split("|");
           var match = chosen === "All" || tags.indexOf(chosen) !== -1;
           card.hidden = !match;
-          if (match) count++;
+          if (match) {
+            // replay a short "pop" on every card that is shown, one after another (css/motion.css)
+            card.classList.remove("pop");
+            card.classList.add("is-in");               // already revealed: skip the scroll reveal
+            void card.offsetWidth;                     // restart the animation
+            card.style.setProperty("--d", Math.min(shown + count, 9) * 45 + "ms");
+            card.classList.add("pop");
+            count++;
+          }
         });
         shown += count;
         // hide a whole sub-gallery (and its heading) when nothing in it matches

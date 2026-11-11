@@ -30,7 +30,7 @@ content is managed from a **Google Sheet**, so updating it needs no code.
 10. [Deployment](#deployment)
 11. [Releasing a new version (code/design changes)](#releasing-a-new-version-codedesign-changes)
 12. [Rolling back](#rolling-back)
-13. [SEO and accessibility notes](#seo-and-accessibility-notes)
+13. [Animations](#animations) · [SEO and accessibility notes](#seo-and-accessibility-notes)
 14. [Alternative: manage content in Excel instead](#alternative-manage-content-in-excel-instead)
 15. [Sheet reference (every tab and column)](#sheet-reference)
 16. [Troubleshooting](#troubleshooting)
@@ -67,9 +67,11 @@ content is managed from a **Google Sheet**, so updating it needs no code.
 | `404.html` | "Page not found" page | Rarely |
 | `css/variables.css` | Colours, fonts, spacing (the design system) | To restyle |
 | `css/base.css`, `css/components.css`, `css/pages.css` | Layout, reusable components, page layouts + responsive rules | For design changes |
+| `css/motion.css` | **Every animation** (scroll reveals, hero, hover effects, page transitions) and their timings | To tune or switch off an animation |
 | `js/navigation.js` | Mobile menu, current-section highlight | No |
 | `js/project-filter.js` | Project filter buttons | No |
-| `js/main.js` | Knowledge Hub tabs, "show more", screenshot lightbox, contact form | No |
+| `js/main.js` | Knowledge Hub tabs, "show more", screenshot lightbox (← → to step through), contact form | No |
+| `js/motion.js` | Scroll reveals, count-up numbers, reading-progress bar, timeline fill, pointer effects | No |
 | `js/config.js` | **Settings:** site address, Google Sheet IDs, Formspree ID | Once |
 | `data/*.json` | Content copied from the Sheet (or from `templates/`) | No, it's automatic |
 | `templates/*.csv` | The content in spreadsheet form: import into Google Sheets, or edit directly | Until the Sheet is connected |
@@ -306,6 +308,30 @@ git push
 
 ---
 
+## Animations
+
+All motion lives in two files: `css/motion.css` (what moves and how fast) and `js/motion.js`
+(when it starts). What visitors see:
+
+- **Hero:** the headline, buttons and portrait rise in one after another, and a decorative line
+  chart draws itself behind them. The chart and the two small tiles on the portrait are
+  illustrations, not data.
+- **Scrolling:** sections and cards rise in as they enter the screen, the snapshot numbers count
+  up, the experience timeline fills, and a thin bar under the header shows how far down the page you are.
+- **Interaction:** cards lift and catch a soft light under the pointer, filtered projects pop back
+  in, screenshots open in an animated lightbox, and in Chrome, Edge and Safari a project's cover
+  glides from its card into its case-study page.
+
+It is all optional by design. Visitors whose device is set to **reduce motion** get the plain,
+fully visible page, and so does anyone without JavaScript. Only `transform` and `opacity` are
+animated, so it stays smooth on phones.
+
+To change it: the timings are at the top of `css/motion.css` (`--reveal-time`, `--reveal-shift`).
+To make something animate on scroll, add `data-reveal` to an element in `scripts/lib/templates.js`,
+or `data-stagger` to a list so its items arrive one by one.
+
+---
+
 ## SEO and accessibility notes
 
 - Every page has a unique `<title>`, meta description, canonical URL, Open Graph and Twitter tags.
@@ -349,6 +375,7 @@ Every tab except `profile`: **`order`** = position (lower first); **`show`** = `
 | `seo_title`, `seo_description` | Homepage `<title>` and meta description (≤ 160 characters) |
 | `stat1_value` … `stat4_detail` | Snapshot cards. `{case_studies}` in a value is replaced by the real count |
 | `industries` | Industry chips, `\|`-separated |
+| `process_title`, `process_steps` | The animated "how every analysis runs" steps. `process_steps` is `Title: text \| Title: text \| …`; leave it empty to hide the block |
 | `role1_title`/`role1_text` … `role3_…` | The three "roles I fit" cards |
 | `<section>_label`, `<section>_title`, `<section>_intro` | Headings for `snapshot`, `projects`, `skills`, `experience`, `education`, `knowledge`, `contact` |
 | `books_visible`, `podcasts_visible`, `following_visible` | Items shown before "Show more" (default 5) |

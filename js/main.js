@@ -3,7 +3,7 @@
    every piece of content is readable without JavaScript)
      1. Knowledge Hub tabs (Books / Podcasts / People / Platforms)
      2. "Show more" shelves with a smooth height animation
-     3. Lightbox for case-study screenshots
+     3. Lightbox for case-study screenshots (← → to step through them)
      4. Contact form (only rendered when a Formspree ID is configured)
    ===================================================================== */
 (function () {
@@ -83,22 +83,49 @@
     });
   });
 
-  /* ---------- 3. Lightbox ---------- */
+  /* ---------- 3. Lightbox (← → or the buttons step through the screenshots) ---------- */
   var dialog = document.getElementById("lightbox");
   if (dialog && typeof dialog.showModal === "function") {
     var img = dialog.querySelector("img");
     var caption = dialog.querySelector(".lightbox-caption");
+    var counter = dialog.querySelector(".lightbox-count");
+    var navButtons = [].slice.call(dialog.querySelectorAll(".lightbox-nav"));
+    var triggers = [].slice.call(document.querySelectorAll("[data-zoom]"));
+    var current = 0;
+
+    var show = function (index, swap) {
+      current = (index + triggers.length) % triggers.length;
+      var trigger = triggers[current];
+      img.src = trigger.getAttribute("data-zoom");
+      img.alt = trigger.getAttribute("data-alt") || "";
+      caption.textContent = trigger.getAttribute("data-caption") || "";
+      if (counter) counter.textContent = (current + 1) + " / " + triggers.length;
+      if (swap && !reduceMotion) {                       // quick cross-fade between screenshots
+        img.classList.remove("is-swapping");
+        void img.offsetWidth;
+        img.classList.add("is-swapping");
+      }
+    };
+    var single = triggers.length < 2;
+    navButtons.forEach(function (b) { b.hidden = single; });
+    if (counter) counter.hidden = single;
+
     document.addEventListener("click", function (e) {
       var trigger = e.target.closest("[data-zoom]");
       if (!trigger) return;
       e.preventDefault();
-      img.src = trigger.getAttribute("data-zoom");
-      img.alt = trigger.getAttribute("data-alt") || "";
-      caption.textContent = trigger.getAttribute("data-caption") || "";
+      show(triggers.indexOf(trigger), false);
       dialog.showModal();
     });
     dialog.addEventListener("click", function (e) {
+      var step = e.target.closest(".lightbox-nav");
+      if (step) { show(current + Number(step.getAttribute("data-step")), true); return; }
       if (e.target === dialog || e.target.closest(".lightbox-close")) dialog.close();
+    });
+    dialog.addEventListener("keydown", function (e) {
+      if (single) return;
+      if (e.key === "ArrowRight") { e.preventDefault(); show(current + 1, true); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); show(current - 1, true); }
     });
   }
 

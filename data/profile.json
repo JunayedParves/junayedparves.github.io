@@ -132,6 +132,14 @@
     "value": "Insurance | Financial services | E-commerce | F&B operations"
   },
   {
+    "key": "process_title",
+    "value": "How every analysis runs"
+  },
+  {
+    "key": "process_steps",
+    "value": "Business question: Start from the decision the business needs to make. | Data & validation: Profile, clean and reconcile the data before trusting it. | Analysis: SQL, DAX, Python or Excel, whichever answers the question. | Findings: Quantified insight on a dashboard built for its audience. | Recommendation: Prioritised actions that management can act on."
+  },
+  {
     "key": "role1_title",
     "value": "Data Analyst"
   },

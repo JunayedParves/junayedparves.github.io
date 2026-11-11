@@ -13,6 +13,28 @@ This project uses [Semantic Versioning](https://semver.org/):
 
 ## [Unreleased]
 
+## [3.1.0] — 2026-11-11
+
+### Added — motion
+- **Hero:** staged entrance for the headline, buttons and portrait; a decorative line chart that
+  draws itself; two small floating dashboard tiles; a pulse on the "Currently" dot; the portrait
+  leans slightly towards the pointer.
+- **Scroll:** sections and cards rise in as they enter the screen (staggered), snapshot numbers
+  count up, the experience timeline fills as you read, and a reading-progress bar sits under the header.
+- **Interaction:** pointer-following light and lift on cards, an underline for the current menu
+  section, animated mobile menu, filtered projects pop back in, tab panels fade.
+- **Lightbox:** open animation, plus previous/next buttons, a counter and ← → keys to step through
+  a case study's screenshots.
+- **Page transitions:** pages cross-fade and a project's cover glides from its card into its case
+  study (View Transitions; browsers without it load pages as before).
+- **"How every analysis runs":** a five-step process strip in the snapshot section, edited through
+  the new `process_title` / `process_steps` keys in the `profile` tab.
+- New files `css/motion.css` and `js/motion.js`. Motion is skipped entirely for visitors who ask
+  for reduced motion or have JavaScript off; nothing is ever left hidden.
+
+### Changed
+- "Read case study" links now include the project name for screen readers.
+
 ## [3.0.0] — 2026-10-31
 
 ### Changed — complete redesign
